@@ -1,8 +1,15 @@
 <?php
 date_default_timezone_set("America/Sao_Paulo");
 
+$server = $_SERVER['SERVER_NAME'];
+if ($server === "localhost") {
+    $server = "http://localhost/lscapinello";
+} else {
+    $server = "https://" . $server;
+}
+
 define("DIRNAME", dirname(__FILE__) . "/");
-define("SERVER_ADDRESS", "http://localhost/lscapinello/");
+define("SERVER_ADDRESS", $server . "/");
 define("BLOG_ADDRESS", SERVER_ADDRESS . "blog/");
 define("LOGIN_URL", SERVER_ADDRESS . "login");
 define("REGISTER_URL", SERVER_ADDRESS . "cadastro");

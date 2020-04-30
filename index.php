@@ -1,5 +1,5 @@
 <?php
-require_once("src/properties/index.php");
+require_once("./src/properties/index.php");
 $category_url = $contents->getCategoryUrl();
 $semantic_url = $contents->getSemanticRequest();
 if (notempty($contents->getIdAuthor())) {
