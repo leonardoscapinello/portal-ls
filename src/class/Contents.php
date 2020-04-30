@@ -61,8 +61,6 @@ class Contents
             if ($order_by !== null) $q_o = " ORDER BY " . $order_by;
             $query = "SELECT ct.id_category, ct.id_content, ct.title, ct.cover_image, ct.semantic_url, cc.category_name, cc.category_url, ct.description FROM contents ct LEFT JOIN contents_categories cc ON cc.id_category = ct.id_category WHERE ct.content_type = 'blog' AND ct.is_active = 'Y' AND ct.is_analyzed = 'Y' " . $q_f . " " . $q_o . " " . $q_l;
 
-            error_log($query);
-
             $database = new Database();
             $database->query($query);
             $result = $database->resultset();
