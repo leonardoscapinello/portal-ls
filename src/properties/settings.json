@@ -1,0 +1,11 @@
+{
+  "database": {
+    "server": "localhost",
+    "port": "3308",
+    "user": "developer",
+    "password": "cbPw7zw4eNtU2DGX",
+    "password_encryption": "",
+    "database": "lscapinello",
+    "driver": "mysql"
+  }
+}

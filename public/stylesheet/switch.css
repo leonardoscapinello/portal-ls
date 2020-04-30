@@ -1,0 +1,210 @@
+.switch {
+    height: 24px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch input + span {
+    padding-left: 50px;
+    min-height: 24px;
+    line-height: 24px;
+    display: block;
+    color: #99a3ba;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.switch input + span:before, .switch input + span:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 12px;
+}
+
+.switch input + span:before {
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 24px;
+    background: #e4ecfa;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.switch input + span:after {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    top: 3px;
+    left: 3px;
+    box-shadow: 0 1px 3px rgba(18, 22, 33, 0.1);
+    -webkit-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+}
+
+.switch input + span em {
+    width: 8px;
+    height: 7px;
+    background: #99a3ba;
+    position: absolute;
+    left: 8px;
+    bottom: 7px;
+    border-radius: 2px;
+    display: block;
+    z-index: 1;
+    -webkit-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+}
+
+.switch input + span em:before {
+    content: "";
+    width: 2px;
+    height: 2px;
+    border-radius: 1px;
+    background: #fff;
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    margin: -1px 0 0 -1px;
+}
+
+.switch input + span em:after {
+    content: "";
+    display: block;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #99a3ba;
+    border-bottom: 0;
+    width: 6px;
+    height: 4px;
+    left: 1px;
+    bottom: 6px;
+    position: absolute;
+    z-index: 1;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+    -webkit-transform: rotate(-35deg) translate(0, 1px);
+    transform: rotate(-35deg) translate(0, 1px);
+}
+
+.switch input + span strong {
+    font-weight: normal;
+    position: relative;
+    display: block;
+    top: 1px;
+}
+
+.switch input + span strong:before, .switch input + span strong:after {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    font-family: "Gilroy", Arial, sans-serif;
+    -webkit-backface-visibility: hidden;
+}
+
+.switch input + span strong:before {
+    content: "Desabilitado";
+    -webkit-transition: all 0.3s ease 0.2s;
+    transition: all 0.3s ease 0.2s;
+}
+
+.switch input + span strong:after {
+    content: "Habilitado";
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #2cc36b;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-transform: translate(2px, 0);
+    transform: translate(2px, 0);
+}
+
+.switch input:checked + span:before {
+    background: rgba(44, 195, 107, 0.55);
+}
+
+.switch input:checked + span:after {
+    background: #fff;
+    -webkit-transform: translate(18px, 0);
+    transform: translate(18px, 0);
+}
+
+.switch input:checked + span em {
+    -webkit-transform: translate(18px, 0);
+    transform: translate(18px, 0);
+    background: #2cc36b;
+}
+
+.switch input:checked + span em:after {
+    border-color: #2cc36b;
+    -webkit-transform: rotate(0deg) translate(0, 0);
+    transform: rotate(0deg) translate(0, 0);
+}
+
+.switch input:checked + span strong:before {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-transform: translate(-2px, 0);
+    transform: translate(-2px, 0);
+}
+
+
+.switch input:checked + span strong:after {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    -webkit-transition: all 0.3s ease 0.2s;
+    transition: all 0.3s ease 0.2s;
+}
+
+.switch-form {
+    display: block;
+    width: 100%;
+}
+
+.switch-item-label {
+    text-align: left;
+    line-height: 25px;
+    font-size: 13px;
+}
+
+.switch-line {
+    cursor: pointer;
+    margin: 18px 0;
+}
+
+.switch-line * {
+    cursor: pointer;
+}
+
+.col-xl-2-swt {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+}
+
+.col-xl-10-swt {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+}
+

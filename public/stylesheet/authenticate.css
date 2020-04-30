@@ -1,0 +1,114 @@
+
+body {
+    background: #000 url("../images/mountain-background.png");
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Gilroy', sans-serif;
+}
+
+body ::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, .5);
+    letter-spacing: 0;
+}
+
+.authentibox {
+    background: #000000;
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3333;
+    border-top: 2px solid rgb(237, 20, 91);
+    box-sizing: border-box;
+    padding-bottom: 50px;
+}
+
+input[type="password"] {
+    letter-spacing: 5px;
+}
+
+
+.authentibox h2 {
+    color: #FFFFFF;
+}
+
+.authentibox .company {
+    padding: 50px 20px;
+    padding-bottom: 0;
+}
+
+.authentibox .company img {
+    width: 45px;
+}
+
+.authentibox .input_line {
+    display: block;
+    margin-top: -1px;
+}
+
+.authentibox .input_line label {
+    display: block;
+    color: #4d4d4d;
+}
+
+.bt {
+    padding-top: 30px;
+}
+
+.authentibox .input_line input {
+    width: 100%;
+    display: block;
+    background: #1d1d1d;
+    color: #ffffff;
+    border: none;
+    line-height: 30px;
+    border-top: 1px #3d3d3d solid;
+    border-bottom: 1px #3d3d3d solid;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+
+.authentibox .input_line input:focus {
+    color: #FFFFFF;
+}
+
+*:focus {
+    outline: 0;
+    border-color: #ed145b !important;
+}
+
+.btn {
+    background: none;
+    border: 1px #FFFFFF solid;
+    color: #FFFFFF;
+    line-height: 32px;
+    padding: 5px 22px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: .8em;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+    min-width: 200px;
+    transition: all .7s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #FFFFFF;
+    color: #090C16;
+}
+
+a {
+    display: block;
+    color: #FFF;
+    font-size: 13px;
+    margin-top: 20px;
+    text-decoration: none;
+}

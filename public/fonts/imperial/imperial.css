@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-normal-400.ttf);
+    src: local('Imperial 400'), local('Imperial-400'), url(imperial-normal-400.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-normal-500.ttf);
+    src: local('Imperial 500'), local('Imperial-500'), url(imperial-normal-500.ttf) format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-normal-600.ttf);
+    src: local('Imperial 600'), local('Imperial-600'), url(imperial-normal-600.ttf) format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-normal-700.ttf);
+    src: local('Imperial 700'), local('Imperial-700'), url(imperial-normal-700.ttf) format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap
+}
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-italic-400.ttf);
+    src: local('Imperial Italic 400'), local('Imperial-Italic-400'), url(imperial-italic-400.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap
+}
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-italic-500.ttf);
+    src: local('Imperial Italic 500'), local('Imperial-Italic-500'), url(imperial-italic-500.ttf) format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap
+}
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-italic-600.ttf);
+    src: local('Imperial Italic 600'), local('Imperial-Italic-600'), url(imperial-italic-600.ttf) format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap
+}
+@font-face {
+    font-family: Imperial;
+    src: url(imperial-italic-700.ttf);
+    src: local('Imperial Italic 700'), local('Imperial-Italic-700'), url(imperial-italic-700.ttf) format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap
+}

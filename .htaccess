@@ -1,0 +1,28 @@
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^newsletter$                                         ./src/applications/interfaces/newsletter-register.php [L,NC,QSA]
+RewriteRule ^cadastro/concluir$                                  ./index.php?semantic_url=concluir_cadastro [L,NC,QSA]
+
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)$                          ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/$                         ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([0-9]+)$                 ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$     ./index.php?ctblog=Y&category_url=$1&semantic_url=$2 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/$    ./index.php?ctblog=Y&category_url=$1&semantic_url=$2 [L,NC,QSA]
+
+# LANDING ASSETS
+RewriteRule ^launch/stylesheet/(.*)$                             ./public/landings/_global/static/stylesheet/$1 [L,NC,QSA]
+RewriteRule ^launch/javascript/(.*)$                             ./public/landings/_global/static/javascript/$1 [L,NC,QSA]
+RewriteRule ^launch/images/(.*)$                                 ./public/landings/_global/static/images/$1 [L,NC,QSA]
+RewriteRule ^launch/media/(.*)$                                  ./public/landings/_global/static/media/$1 [L,NC,QSA]
+RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/media/(.*)$             ./public/landings/$1/media/$2 [L,NC,QSA]
+RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/images/(.*)$            ./public/landings/$1/images/$2 [L,NC,QSA]
+RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/stylesheet/(.*)$        ./public/landings/$1/stylesheet/$2 [L,NC,QSA]
+# LANDING PAGES
+RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)$                        ./public/landings/index.php?launch=$1&subload=index.php [L,NC,QSA]
+RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$   ./public/landings/index.php?launch=$1&subload=$2 [L,NC,QSA]
+
+RewriteRule ^([a-zA-Z0-9-z\-\_]+)$                               ./index.php?semantic_url=$1 [L,NC,QSA]
