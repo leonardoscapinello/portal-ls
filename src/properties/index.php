@@ -9,6 +9,7 @@ if ($server === "localhost") {
 }
 
 define("DIRNAME", dirname(__FILE__) . "/");
+define("DEPLOY_SERVER", "https://leonardoscapinello.com/");
 define("SERVER_ADDRESS", $server . "/");
 define("BLOG_ADDRESS", SERVER_ADDRESS . "blog/");
 define("LOGIN_URL", SERVER_ADDRESS . "login");
@@ -77,7 +78,8 @@ $license = new AccountsLicense();
 $blogIntelligence = new BlogIntelligence();
 $numeric = new Numeric();
 
-/* DISABLED BECAUSE GOING DO PRODUCTION
+/*
+ //DISABLED BECAUSE GOING DO PRODUCTION
 $less = new lessc();
 $less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/stylesheet.css");
 $static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
@@ -89,7 +91,7 @@ $static->add(DIRNAME . "../../public/stylesheet/bootoast.css");
 $static->add(DIRNAME . "../../public/stylesheet/switch.css");
 $static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
 $static->setOutputPath(DIRNAME . "../../public/stylesheet/");
-$static->replace("../images/", SERVER_ADDRESS . "public/images/");
+$static->replace("../images/", DEPLOY_SERVER . "public/images/");
 $static->minifyStyleSheet("stylesheet");
 */
 
