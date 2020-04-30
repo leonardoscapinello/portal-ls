@@ -62,7 +62,7 @@ require DIRNAME . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
-
+use \ForceUTF8\Encoding;
 
 $static = new StaticCompiler();
 $social = new SocialAnalytics();

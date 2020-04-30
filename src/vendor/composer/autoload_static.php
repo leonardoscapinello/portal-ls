@@ -143,6 +143,13 @@ class ComposerStaticInit2239ce6dd16498c2d006484b10fc38a4
                 0 => __DIR__ . '/..' . '/ps/image-optimizer/src',
             ),
         ),
+        'F' => 
+        array (
+            'ForceUTF8\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/neitanod/forceutf8/src',
+            ),
+        ),
         'A' => 
         array (
             'Algorithmia' => 

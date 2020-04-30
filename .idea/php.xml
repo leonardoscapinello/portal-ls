@@ -24,6 +24,7 @@
       <path value="$PROJECT_DIR$/src/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/src/vendor/ps/image-optimizer" />
       <path value="$PROJECT_DIR$/src/vendor/algorithmia/algorithmia" />
+      <path value="$PROJECT_DIR$/src/vendor/neitanod/forceutf8" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7" />

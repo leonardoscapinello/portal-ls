@@ -1,5 +1,7 @@
 <?php
 
+use ForceUTF8\Encoding;
+
 class Text
 {
 
@@ -27,21 +29,23 @@ class Text
     public function utf8($string)
     {
 
-        $string = $this->base64_decode($string);
+        //$string = $this->base64_decode($string);
+//
+        //if ($this->isString($string)) {
+        //    if (preg_match('!!u', $string)) {
+        //        // UTF8 STRING
+        //        return utf8_decode($string);
+        //    } else {
+        //        // NOT UTF=8 STRING, SO CONVERT
+        //        //$string = htmlentities($string, ENT_COMPAT, 'ISO-8859-1', true);
+        //        //$string = iconv(mb_detect_encoding($string, "UTF-8"), "UTF-8//TRANSLIT", $string);
+        //        $string = iconv(mb_detect_encoding($string, "UTF-16BE"), "UTF-8//TRANSLIT", $string);
+        //        return $string;
+        //    }
+        //}
+        //return null;
 
-        if ($this->isString($string)) {
-            if (preg_match('!!u', $string)) {
-                // UTF8 STRING
-                return utf8_decode($string);
-            } else {
-                // NOT UTF=8 STRING, SO CONVERT
-                //$string = htmlentities($string, ENT_COMPAT, 'ISO-8859-1', true);
-                //$string = iconv(mb_detect_encoding($string, "UTF-8"), "UTF-8//TRANSLIT", $string);
-                $string = iconv(mb_detect_encoding($string, "UTF-16BE"), "UTF-8//TRANSLIT", $string);
-                return $string;
-            }
-        }
-        return null;
+        return Encoding::fixUTF8($string);
     }
 
     public function base64_decode($data)
