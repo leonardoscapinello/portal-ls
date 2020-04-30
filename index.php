@@ -45,12 +45,6 @@ $user_can_view = $license->userCanAccessByPrivateLevel($content_private_level);
     <meta name="application-name" content="<?= $contents->getTitle() ?>"/>
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
-    <?= $static->load("gilroy/Gilroy.ttf"); ?>
-    <?= $static->load("imperial/imperial.ttf"); ?>
-    <?= $static->load("stylesheet.min.css"); ?>
-    <?= $static->load("owl.carousel.css"); ?>
-    <?= $static->load("owl.theme.default.css"); ?>
 </head>
 <body>
 <div id="wrapper">
@@ -95,6 +89,13 @@ $user_can_view = $license->userCanAccessByPrivateLevel($content_private_level);
     </script>
 <?php } ?>
 
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+<?= $static->load("gilroy/Gilroy.ttf"); ?>
+<?= $static->load("imperial/imperial.ttf"); ?>
+<?= $static->load("stylesheet.min.css"); ?>
+<?= $static->load("owl.carousel.css"); ?>
+<?= $static->load("owl.theme.default.css"); ?>
 <?= $static->load("owl.carousel.css"); ?>
 <?= $static->load("owl.theme.default.css"); ?>
 <?= $static->load("jquery.min.js"); ?>
