@@ -65,7 +65,7 @@ $license = new AccountsLicense();
                         </div>
                         <div class="offset-3"></div>
                         <div class="col-xl-2 col-lg-2 col-sm-12" style="text-align: right">
-                            <a href="<?=PROFILE_ADDRESS?>#downloads" class="premium-btn">Acessar</a>
+                            <a href="<?= PROFILE_ADDRESS ?>#downloads" class="premium-btn">Acessar</a>
                         </div>
                     </div>
                 </div>
@@ -132,6 +132,19 @@ $license = new AccountsLicense();
 <?= $static->load("skrollr.ie.min.js"); ?>
 <![endif]-->
 <script type="text/javascript">
+
+    var promise = document.querySelector('video').play();
+
+    if (promise !== undefined) {
+        promise.catch(error => {
+            /* Auto-play was prevented
+            // Show a UI element to let the user manually start playback */
+        }).then(() => {
+            /* Auto-play started */
+        });
+    }
+
+
     if (!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
         skrollr.init({
             forceHeight: false

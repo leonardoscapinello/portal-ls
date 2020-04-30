@@ -4,7 +4,7 @@
             <div class="col-xl-12 col-lg-12 col-sm-12">
 
                 <div class="branding" data-0="opacity:1" data-1500="opacity:.85">
-                    <video width="400" muted autoPlay loop>
+                    <video width="400" muted autoplay playsinline loop>
                         <source src="<?= $landing->loadAsset("brand.mp4") ?>" type="video/mp4">
                         <img src="<?= $landing->loadAsset("brand.png") ?>">
                     </video>
@@ -301,7 +301,7 @@
             </div>
             <div class="col-xl-5 col-lg-5 col-sm-12" style="text-align: center">
                 <div class="guarentee" data-0="opacity:1" data-1500="opacity:.85">
-                    <video muted autoPlay>
+                    <video muted autoplay playsinline>
                         <source src="<?= $landing->loadGlobalAsset("garantia-premium-non-loop.mp4") ?>"
                                 type="video/mp4">
                         <img src="<?= $landing->loadGlobalAsset("brand.png") ?>">
