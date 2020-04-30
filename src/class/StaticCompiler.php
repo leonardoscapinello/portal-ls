@@ -23,10 +23,10 @@ class StaticCompiler
     public function load($file, $encoded = false)
     {
         $path_parts = pathinfo($file);
-        if ($path_parts['extension'] === "css") return "<link href=\"" . STATIC_URL . "stylesheet/" . $path_parts['basename'] . "?v=2.1\" type=\"text/css\" rel=\"stylesheet\" />";
+        if ($path_parts['extension'] === "css") return "<link href=\"" . STATIC_URL . "stylesheet/" . $path_parts['basename'] . "?v=1.0.0.106\" type=\"text/css\" rel=\"stylesheet\" />";
         if ($path_parts['extension'] === "ttf") return "<link href=\"" . STATIC_URL . "fonts/" . $path_parts['dirname'] . "/" . $path_parts['filename'] . ".css\" type=\"text/css\" rel=\"stylesheet\" />";
         if ($path_parts['extension'] === "js" && $encoded) return "<script src=\"" . STATIC_URL . "javascript/" . $path_parts['basename'] . "?v=12\" type=\"text/javascript\"></script>";
-        if ($path_parts['extension'] === "js") return "<script src=\"" . STATIC_URL . "javascript/" . $path_parts['basename'] . "?v=12\" type=\"text/javascript\"></script>";
+        if ($path_parts['extension'] === "js") return "<script src=\"" . STATIC_URL . "javascript/" . $path_parts['basename'] . "?v=1.0.0.106\" type=\"text/javascript\"></script>";
         return STATIC_URL . "images/" . $path_parts['basename'];
     }
 
