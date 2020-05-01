@@ -89,17 +89,17 @@ class EmailNotification
             //$mail->setFrom($this->fromFix($this->sender), $this->sender . " do Portal LS");
             $mail->setFrom("leonardoscapinello@outlook.com", $this->sender . " do Portal LS");
 
-            $template = get_page(SERVER_ADDRESS . "src/notifications/" . $template);
+            $template = @file_get_contents(DIRNAME . "../notifications/" . $template);
 
             $users = $this->contacts;
             $content = $content_r = "";
             $elements = $this->elements;
 
 
-            if ($template["content"] !== null && $template["content"] !== "") {
+            if ($template !== null && $template !== "") {
                 for ($i = 0; $i < count($users); $i++) {
 
-                    $content = $template["content"];
+                    $content = $template;
                     $content_r = "";
 
                     for ($x = 0; $x < count($elements); $x++) {
