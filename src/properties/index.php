@@ -63,7 +63,6 @@ require DIRNAME . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
-use \ForceUTF8\Encoding;
 
 $static = new StaticCompiler();
 $social = new SocialAnalytics();
@@ -78,22 +77,26 @@ $license = new AccountsLicense();
 $blogIntelligence = new BlogIntelligence();
 $numeric = new Numeric();
 
-/*
- //DISABLED BECAUSE GOING DO PRODUCTION
+
+//DISABLED BECAUSE GOING DO PRODUCTION
 $less = new lessc();
 $less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/stylesheet.css");
-$static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
 $static->add(DIRNAME . "../../public/stylesheet/reset.css");
 $static->add(DIRNAME . "../../public/stylesheet/container.css");
 $static->add(DIRNAME . "../../public/stylesheet/stylesheet.css");
 $static->add(DIRNAME . "../../public/stylesheet/tooltip.css");
 $static->add(DIRNAME . "../../public/stylesheet/bootoast.css");
+$static->add(DIRNAME . "../../public/stylesheet/owl.carousel.css");
+$static->add(DIRNAME . "../../public/stylesheet/owl.theme.default.css");
 $static->add(DIRNAME . "../../public/stylesheet/switch.css");
 $static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
+$static->add(DIRNAME . "../../public/fonts/imperial/imperial.ttf");
+$static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
 $static->setOutputPath(DIRNAME . "../../public/stylesheet/");
-$static->replace("../images/", DEPLOY_SERVER . "public/images/");
+$static->replace("../images/", "../../public/images/");
+$static->replace("../fonts/", "../../public/fonts/");
 $static->minifyStyleSheet("stylesheet");
-*/
+
 
 $next = get_request("next");
 if (not_empty($next)) {
