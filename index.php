@@ -145,7 +145,7 @@ $user_can_view = $license->userCanAccessByPrivateLevel($content_private_level);
         });
     });
 
-    $(window).bind('beforeunload', function () {
+    $(window).bind('beforeunload unload', function () {
         $(".fp-loader").fadeIn(200);
     });
 
