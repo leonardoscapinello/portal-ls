@@ -1228,6 +1228,12 @@ h5.featured-title {
     -webkit-background-size: cover;
     background-size: cover;
   }
+  .content-blog-text-section {
+    font-size: 1.3em !important;
+  }
+  .content-blog-text-section * {
+    line-height: 35px !important;
+  }
   .sidebar {
     display: none;
   }

@@ -119,8 +119,9 @@ $user_can_view = $license->userCanAccessByPrivateLevel($content_private_level);
     <?php } ?>
 </div>
 
-
+<!--
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+-->
 <?php if (notempty($contents->getSemanticUrl())) { ?>
     <script type="text/javascript">
         function getSemanticURL() {
