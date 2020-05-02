@@ -76,7 +76,7 @@ $account = new Accounts();
 $license = new AccountsLicense();
 $blogIntelligence = new BlogIntelligence();
 $numeric = new Numeric();
-
+/*
 //DISABLED BECAUSE GOING DO PRODUCTION
 $less = new lessc();
 $less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/stylesheet.css");
@@ -95,7 +95,7 @@ $static->setOutputPath(DIRNAME . "../../public/stylesheet/");
 $static->replace("../images/", "../../public/images/");
 $static->replace("../fonts/", "../../public/fonts/");
 $static->minifyStyleSheet("stylesheet");
-
+*/
 
 $next = get_request("next");
 if (not_empty($next)) {
