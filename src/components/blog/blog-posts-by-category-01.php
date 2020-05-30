@@ -1,11 +1,14 @@
-<?php
-$list = $contents->getContentsList("ct.id_category = 1", 6);
-?>
+
 <section>
     <div class="section white-bg top-separator">
         <div class="container">
-            <h3 class="text dark featured-title">Marketing Digital</h3>
+            <h3 class="text dark featured-title">Publicações</h3>
 
+
+
+            <?php
+            $list = $contents->getContentsList("ct.id_category = 1", 6);
+            ?>
             <div class="home-posts">
                 <div class="row no-left">
                     <?php if (count($list) > 0) { ?>

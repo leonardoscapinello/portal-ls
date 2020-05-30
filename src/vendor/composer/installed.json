@@ -115,17 +115,17 @@
     },
     {
         "name": "guzzlehttp/guzzle",
-        "version": "6.5.3",
-        "version_normalized": "6.5.3.0",
+        "version": "6.5.4",
+        "version_normalized": "6.5.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
+            "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
-            "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
+            "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
             "shasum": ""
         },
         "require": {
@@ -133,7 +133,7 @@
             "guzzlehttp/promises": "^1.0",
             "guzzlehttp/psr7": "^1.6.1",
             "php": ">=5.5",
-            "symfony/polyfill-intl-idn": "^1.11"
+            "symfony/polyfill-intl-idn": "1.17.0"
         },
         "require-dev": {
             "ext-curl": "*",
@@ -143,7 +143,7 @@
         "suggest": {
             "psr/log": "Required for using the Log middleware"
         },
-        "time": "2020-04-18T10:38:46+00:00",
+        "time": "2020-05-25T19:35:05+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -348,6 +348,49 @@
         "description": "Converts HTML to formatted plain text"
     },
     {
+        "name": "leafo/lessphp",
+        "version": "v0.5.0",
+        "version_normalized": "0.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/leafo/lessphp.git",
+            "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/leafo/lessphp/zipball/0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
+            "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
+            "shasum": ""
+        },
+        "time": "2014-11-24T18:39:20+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "lessc.inc.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Leaf Corcoran",
+                "email": "leafot@gmail.com",
+                "homepage": "http://leafo.net"
+            }
+        ],
+        "description": "lessphp is a compiler for LESS written in PHP.",
+        "homepage": "http://leafo.net/lessphp/"
+    },
+    {
         "name": "monolog/monolog",
         "version": "1.0.2",
         "version_normalized": "1.0.2.0",
@@ -514,17 +557,17 @@
     },
     {
         "name": "phpmailer/phpmailer",
-        "version": "v6.1.5",
-        "version_normalized": "6.1.5.0",
+        "version": "v6.1.6",
+        "version_normalized": "6.1.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/PHPMailer/PHPMailer.git",
-            "reference": "a8bf068f64a580302026e484ee29511f661b2ad3"
+            "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/a8bf068f64a580302026e484ee29511f661b2ad3",
-            "reference": "a8bf068f64a580302026e484ee29511f661b2ad3",
+            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
+            "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
             "shasum": ""
         },
         "require": {
@@ -545,7 +588,7 @@
             "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
             "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
         },
-        "time": "2020-03-14T14:23:48+00:00",
+        "time": "2020-05-27T12:24:03+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -773,6 +816,141 @@
         "description": "A polyfill for getallheaders."
     },
     {
+        "name": "rosell-dk/image-mime-type-guesser",
+        "version": "0.3",
+        "version_normalized": "0.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rosell-dk/image-mime-type-guesser.git",
+            "reference": "204fd61ca81e3b0ba46c6165dab8f74816b1fe99"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/rosell-dk/image-mime-type-guesser/zipball/204fd61ca81e3b0ba46c6165dab8f74816b1fe99",
+            "reference": "204fd61ca81e3b0ba46c6165dab8f74816b1fe99",
+            "shasum": ""
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.11",
+            "phpunit/phpunit": "^5.7.27",
+            "squizlabs/php_codesniffer": "3.*"
+        },
+        "time": "2019-03-29T09:33:28+00:00",
+        "type": "library",
+        "extra": {
+            "scripts-descriptions": {
+                "ci": "Run tests before CI",
+                "phpcs": "Checks coding styles (PSR2) of file/dir, which you must supply. To check all, supply 'src'",
+                "phpcbf": "Fix coding styles (PSR2) of file/dir, which you must supply. To fix all, supply 'src'",
+                "cs-fix-all": "Fix the coding style of all the source files, to comply with the PSR-2 coding standard",
+                "cs-fix": "Fix the coding style of a PHP file or directory, which you must specify.",
+                "test": "Launches the preconfigured PHPUnit"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ImageMimeTypeGuesser\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Bjørn Rosell",
+                "homepage": "https://www.bitwise-it.dk/contact",
+                "role": "Project Author"
+            }
+        ],
+        "description": "Guess mime type of images",
+        "keywords": [
+            "image",
+            "images",
+            "mime",
+            "mime type"
+        ]
+    },
+    {
+        "name": "rosell-dk/webp-convert",
+        "version": "2.3.2",
+        "version_normalized": "2.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rosell-dk/webp-convert.git",
+            "reference": "5da7989e87cc0b6c61a5fd73262ed28999be27ab"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/rosell-dk/webp-convert/zipball/5da7989e87cc0b6c61a5fd73262ed28999be27ab",
+            "reference": "5da7989e87cc0b6c61a5fd73262ed28999be27ab",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 | ^7.0",
+            "rosell-dk/image-mime-type-guesser": "^0.3"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.11",
+            "phpunit/phpunit": "5.7.27",
+            "squizlabs/php_codesniffer": "3.*"
+        },
+        "suggest": {
+            "ext-gd": "to use GD extension for converting. Note: Gd must be compiled with webp support",
+            "ext-imagick": "to use Imagick extension for converting. Note: Gd must be compiled with webp support",
+            "ext-vips": "to use Vips extension for converting.",
+            "php-stan/php-stan": "Suggested for dev, in order to analyse code before committing"
+        },
+        "time": "2020-04-18T14:41:50+00:00",
+        "type": "library",
+        "extra": {
+            "scripts-descriptions": {
+                "ci": "Run tests before CI",
+                "phpcs": "Checks coding styles (PSR2) of file/dir, which you must supply. To check all, supply 'src'",
+                "phpcbf": "Fix coding styles (PSR2) of file/dir, which you must supply. To fix all, supply 'src'",
+                "cs-fix-all": "Fix the coding style of all the source files, to comply with the PSR-2 coding standard",
+                "cs-fix": "Fix the coding style of a PHP file or directory, which you must specify.",
+                "test": "Launches the preconfigured PHPUnit"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "WebPConvert\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Bjørn Rosell",
+                "homepage": "https://www.bitwise-it.dk/contact",
+                "role": "Project Author"
+            },
+            {
+                "name": "Martin Folkers",
+                "homepage": "https://twobrain.io",
+                "role": "Collaborator"
+            }
+        ],
+        "description": "Convert JPEG & PNG to WebP with PHP",
+        "keywords": [
+            "Webp",
+            "cwebp",
+            "gd",
+            "image conversion",
+            "images",
+            "imagick",
+            "jpg",
+            "jpg2webp",
+            "png",
+            "png2webp"
+        ]
+    },
+    {
         "name": "sabberworm/php-css-parser",
         "version": "8.3.0",
         "version_normalized": "8.3.0.0",
@@ -929,17 +1107,17 @@
     },
     {
         "name": "symfony/polyfill-intl-idn",
-        "version": "v1.15.0",
-        "version_normalized": "1.15.0.0",
+        "version": "v1.17.0",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-intl-idn.git",
-            "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf"
+            "reference": "3bff59ea7047e925be6b7f2059d60af31bb46d6a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
-            "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/3bff59ea7047e925be6b7f2059d60af31bb46d6a",
+            "reference": "3bff59ea7047e925be6b7f2059d60af31bb46d6a",
             "shasum": ""
         },
         "require": {
@@ -950,11 +1128,11 @@
         "suggest": {
             "ext-intl": "For best performance"
         },
-        "time": "2020-03-09T19:04:49+00:00",
+        "time": "2020-05-12T16:47:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.15-dev"
+                "dev-master": "1.17-dev"
             }
         },
         "installation-source": "dist",
@@ -993,17 +1171,17 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.15.0",
-        "version_normalized": "1.15.0.0",
+        "version": "v1.17.0",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac"
+            "reference": "fa79b11539418b02fc5e1897267673ba2c19419c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
-            "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fa79b11539418b02fc5e1897267673ba2c19419c",
+            "reference": "fa79b11539418b02fc5e1897267673ba2c19419c",
             "shasum": ""
         },
         "require": {
@@ -1012,11 +1190,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2020-03-09T19:04:49+00:00",
+        "time": "2020-05-12T16:47:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.15-dev"
+                "dev-master": "1.17-dev"
             }
         },
         "installation-source": "dist",
@@ -1054,27 +1232,27 @@
     },
     {
         "name": "symfony/polyfill-php72",
-        "version": "v1.15.0",
-        "version_normalized": "1.15.0.0",
+        "version": "v1.17.0",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php72.git",
-            "reference": "37b0976c78b94856543260ce09b460a7bc852747"
+            "reference": "f048e612a3905f34931127360bdd2def19a5e582"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/37b0976c78b94856543260ce09b460a7bc852747",
-            "reference": "37b0976c78b94856543260ce09b460a7bc852747",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
+            "reference": "f048e612a3905f34931127360bdd2def19a5e582",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2020-02-27T09:26:54+00:00",
+        "time": "2020-05-12T16:47:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.15-dev"
+                "dev-master": "1.17-dev"
             }
         },
         "installation-source": "dist",

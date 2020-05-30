@@ -1,5 +1,6 @@
 <?php
-date_default_timezone_set("America/Sao_Paulo");
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
 
 $server = $_SERVER['SERVER_NAME'];
 if ($server === "localhost") {
@@ -20,6 +21,7 @@ define("STATIC_URL", SERVER_ADDRESS . "public/");
 define("LAUNCH_ADDRESS", SERVER_ADDRESS . "launch/");
 define("PROFILE_ADDRESS", SERVER_ADDRESS . "perfil");
 define("PAGE_TITLE", "Leonardo Scapinello");
+define("VERSION", "1.0.0.0");
 
 
 define("MONTHLY_SUB", "https://pay.hotmart.com/O27570351G?off=0mfqr1y5");
@@ -45,7 +47,7 @@ require_once(DIRNAME . "/../class/Date.php");
 require_once(DIRNAME . "/../class/Token.php");
 require_once(DIRNAME . "/../class/Numeric.php");
 require_once(DIRNAME . "/../class/Database.php");
-require_once(DIRNAME . "/../class/lessphp/lessc.inc.php");
+require_once(DIRNAME . "/../vendor/leafo/lessphp/lessc.inc.php");
 require_once(DIRNAME . "/../class/Accounts.php");
 require_once(DIRNAME . "/../class/AccountSession.php");
 require_once(DIRNAME . "/../class/AccountsLicense.php");
@@ -54,9 +56,12 @@ require_once(DIRNAME . "/../class/Security.php");
 require_once(DIRNAME . "/../class/SocialAnalytics.php");
 require_once(DIRNAME . "/../class/StaticCompiler.php");
 require_once(DIRNAME . "/../class/Contents.php");
+require_once(DIRNAME . "/../class/Series.php");
 require_once(DIRNAME . "/../class/BlogIntelligence.php");
 require_once(DIRNAME . "/../class/EmailNotification.php");
 require_once(DIRNAME . "/../class/Landing.php");
+require_once(DIRNAME . "/../class/ContentsViews.php");
+require_once(DIRNAME . "/../class/BrowserDetection.php");
 
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -76,32 +81,22 @@ $account = new Accounts();
 $license = new AccountsLicense();
 $blogIntelligence = new BlogIntelligence();
 $numeric = new Numeric();
-/*
+$contentsViews = new ContentsViews();
+$browser = new BrowserDetection();
+
+
+
 //DISABLED BECAUSE GOING DO PRODUCTION
-$less = new lessc();
-$less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/stylesheet.css");
-$static->add(DIRNAME . "../../public/stylesheet/reset.css");
-$static->add(DIRNAME . "../../public/stylesheet/container.css");
-$static->add(DIRNAME . "../../public/stylesheet/stylesheet.css");
-$static->add(DIRNAME . "../../public/stylesheet/tooltip.css");
-$static->add(DIRNAME . "../../public/stylesheet/bootoast.css");
-$static->add(DIRNAME . "../../public/stylesheet/owl.carousel.css");
-$static->add(DIRNAME . "../../public/stylesheet/owl.theme.default.css");
-$static->add(DIRNAME . "../../public/stylesheet/switch.css");
-$static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
-$static->add(DIRNAME . "../../public/fonts/imperial/imperial.css");
-$static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
-$static->setOutputPath(DIRNAME . "../../public/stylesheet/");
-$static->replace("../images/", "../../public/images/");
-$static->replace("../fonts/", "../../public/fonts/");
-$static->minifyStyleSheet("stylesheet");
-*/
+
+
 
 $next = get_request("next");
 if (not_empty($next)) {
     $next = $text->base64_encode($next);
 }
 
+
 $account->storeSession();
+$contentsViews->add();
 
 ob_start("sanitize_output");

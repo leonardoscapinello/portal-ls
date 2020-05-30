@@ -11,7 +11,7 @@ class Date
 
     public function formatDate($date)
     {
-        return date($this->date_format, strtotime($date));
+        return strftime($this->date_format, strtotime($date));
     }
 
     public function setCustomDateFormat($format)
@@ -28,6 +28,11 @@ class Date
     public function formatDatetime($date)
     {
         return date($this->date_format, strtotime($date));
+    }
+
+    public function stringMonthAndYear($date)
+    {
+        return strftime('%B de %Y', strtotime($date));
     }
 
     public function getDate()
@@ -123,23 +128,21 @@ class Date
         $date1 = strtotime($date1);
         $date2 = strtotime($date2);
         $diff = abs($date2 - $date1);
-        $years = floor($diff / (365 * 60 * 60 * 24));
-        $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-        $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-        $hours = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
-        $minutes = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
-        $seconds = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60 - $minutes * 60));
+        //$years = floor($diff / (365 * 60 * 60 * 24));
+        //$months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+        //$days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+        //$hours = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
+        //$minutes = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
+        //$seconds = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60 - $minutes * 60));
 
+        //if ($return_type === "Y") $return = $years;
+        //if ($return_type === "M") $return = $months;
+        //if ($return_type === "D") $return = $days;
+        //if ($return_type === "H") $return = $hours;
+        //if ($return_type === "I") $return = $minutes;
+        //if ($return_type === "S") $return = $seconds;
 
-        $return = $days;
-        if ($return_type === "Y") $return = $years;
-        if ($return_type === "M") $return = $months;
-        if ($return_type === "D") $return = $days;
-        if ($return_type === "H") $return = $hours;
-        if ($return_type === "I") $return = $minutes;
-        if ($return_type === "S") $return = $seconds;
-
-        return $return;
+        return floor(abs($diff) / (60 * 60 * 24));
     }
 
 

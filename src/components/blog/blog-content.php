@@ -1,3 +1,4 @@
+<?php $views = $contentsViews->getViews(); ?>
 <div id="bctn" class="blog-next-posts">
     <article class="post">
         <div class="section white-bg">
@@ -6,14 +7,18 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-sm-12">
                             <div class="content-title text center">
-                                <div class="category-flag-post" style="background:<?=$contents->getCategoryColor()?>"><?= $contents->getCategoryName() ?></div>
+                                <div class="category-flag-post"
+                                     style="background:<?= $contents->getCategoryColor() ?>"><?= $contents->getCategoryName() ?></div>
                                 <h2><?= $contents->getTitle() ?></h2>
                             </div>
                             <div class="content-social-info">
                                 <ul>
                                     <li><?= $author->getFullName(); ?></li>
                                     <li><?= $date->formatDatetime($contents->getInsertTime()) ?></li>
-                                    <li><a href="#read"><?= $text->readingTime($contents->getContentHtml()) ?> minutos
+                                    <li><?= $contentsViews->getViews() ?> visualizações</li>
+                                    <li>
+                                        <a href="#r<?= md5($contents->getIdContent() . $views) ?>"><?= $text->readingTime($contents->getContentHtml()) ?>
+                                            minutos
                                             de
                                             leitura</a></li>
                                 </ul>
@@ -33,81 +38,27 @@
                     <?php } else {
                         $rm = "margin-top:-11px;";
                     } ?>
-                    <div class="content-blog-text-section" id="read" style="<?= $rm ?>">
+                    <div class="content-blog-text-section" id="r<?= md5($contents->getIdContent() . $views) ?>"
+                         style="<?= $rm ?>">
                         <div class="row">
                             <div class="offset-1"></div>
                             <div class="col-xl-7 col-lg-7 col-sm-12">
+
+                                <div class="sharebox">
+                                    <ul>
+                                        <li>Compartilhe:</li>
+                                        <li><a href="<?=$contents->getShare__Facebook()?>" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a href="<?=$contents->getShare__Twitter()?>" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="<?=$contents->getShare__Linkedin()?>" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="<?=$contents->getShare__WhatsApp()?>" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fab fa-whatsapp"></i></a></li>
+                                    </ul>
+                                </div>
+
+
                                 <div class="check-for-view"></div>
-                                <?php /* == USER CAN VIEW CONTENT */
-                                if ($user_can_view) { ?>
-                                    <div class="blog-content-ld">
-                                        <?= $contents->getContentHtml() ?>
-                                    </div>
-                                    <?php if (!$session->isLogged()) { ?>
-                                        <div class="row">
-                                            <div class="blog-newsletter-block">
-                                                <h3>Faça parte de nossa Lista VIP e receba as novidades por e-mail.</h3>
-                                                <?php require("./src/components/landing/newsletter-widget.php") ?>
-                                            </div>
-                                        </div>
-                                    <?php } else if (!$license->isPremium()) { ?>
-                                        <div class="row">
-                                            <div class="blog-premium-offer">
-                                                <h3 class="text light">Você ainda não é Premium, torne-se agora com uma
-                                                    condição
-                                                    especial para você.</h3>
-                                                <div class="price">
-                                                    <div class="row">
-                                                        <div class="col-xl-5 col-lg-5 col-sm-12">
-                                                            <div class="p--name">Acesso Premium Mensal</div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-lg-3 col-sm-12">
-                                                            <div class="p--price">R$ 29,90</div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-4 col-sm-12 text right"
-                                                             style="text-align: right">
-                                                            <button>Assine Agora</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                    <?php /* == USER CAN'T VIEW CONTENT */
-                                } else { ?>
-                                    <div class="blog-content-ld">
-                                        <?= $text->getFirstParagraph($contents->getContentHtml()) ?>
-                                    </div>
-                                    <?php if ($content_private_level === "3" || $content_private_level === 3) { ?>
-                                        <div class="row">
-                                            <div class="blog-premium-offer">
-                                                <h3 class="text light">O conteúdo não acabou, assine premium para ter
-                                                    acesso
-                                                    completo.</h3>
-                                                <div class="price">
-                                                    <div class="row">
-                                                        <div class="col-xl-5 col-lg-5 col-sm-12">
-                                                            <div class="p--name">Acesso Premium Mensal</div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-lg-3 col-sm-12">
-                                                            <div class="p--price">R$ 29,90</div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-4 col-sm-12 text right"
-                                                             style="text-align: right">
-                                                            <button>Assine Agora</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php } else { ?>
-                                        <div class="blog-newsletter-block">
-                                            <h3>Crie uma conta gratuita para acessar esse conteúdo exclusivo para
-                                                membros.</h3>
-                                            <?php require("./src/components/landing/newsletter-widget.php") ?>
-                                        </div>
-                                    <?php } ?>
-                                <?php } ?>
+                                <div class="blog-content-ld">
+                                    <?= $contents->getContentHtml() ?>
+                                </div>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-sm-2">
                                 <div class="sidebar">

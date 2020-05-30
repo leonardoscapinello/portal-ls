@@ -17,6 +17,10 @@ class ComposerStaticInit2239ce6dd16498c2d006484b10fc38a4
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WebPConvert\\' => 12,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php72\\' => 23,
@@ -32,6 +36,10 @@ class ComposerStaticInit2239ce6dd16498c2d006484b10fc38a4
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'I' => 
+        array (
+            'ImageMimeTypeGuesser\\' => 21,
         ),
         'H' => 
         array (
@@ -54,6 +62,10 @@ class ComposerStaticInit2239ce6dd16498c2d006484b10fc38a4
     );
 
     public static $prefixDirsPsr4 = array (
+        'WebPConvert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/webp-convert/src',
+        ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
@@ -93,6 +105,10 @@ class ComposerStaticInit2239ce6dd16498c2d006484b10fc38a4
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'ImageMimeTypeGuesser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-guesser/src',
         ),
         'Html2Text\\' => 
         array (
@@ -166,6 +182,11 @@ class ComposerStaticInit2239ce6dd16498c2d006484b10fc38a4
         'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
         'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
         'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
+        'lessc' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_formatter_classic' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_formatter_compressed' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_formatter_lessjs' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_parser' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

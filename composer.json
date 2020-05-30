@@ -28,7 +28,9 @@
     "algorithmia/algorithmia": "^1.0",
     "ext-pdo": "*",
     "ext-iconv": "*",
-    "neitanod/forceutf8": "~2.0"
+    "neitanod/forceutf8": "~2.0",
+    "leafo/lessphp":  "*",
+    "rosell-dk/webp-convert": "^2.3"
   },
   "config": {
     "vendor-dir": "src/vendor/"

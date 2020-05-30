@@ -13,29 +13,24 @@
            class="mp-menu-link mp-white w-nav-link">Direito Digital</a>
         <a href="<?= SERVER_ADDRESS ?>blog/customer-experience/"
            class="mp-menu-link mp-white w-nav-link">Customer Experience</a>
-       <!-- <a href="<?= SERVER_ADDRESS ?>blog/sua-empresa-online/"
+        <!-- <a href="<?= SERVER_ADDRESS ?>blog/sua-empresa-online/"
            class="mp-menu-link mp-white w-nav-link">Sua Empresa Online</a>
         <a href="<?= SERVER_ADDRESS ?>consultoria" class="mp-menu-link mp-white w-nav-link">Consultoria</a> -->
-        <?php if (!$license->isPremium()) { ?>
-            <a href="<?= SERVER_ADDRESS ?>assinatura" class="mobile mp-menu-link mp-white w-nav-link"><i class="far fa-star"></i>Assinatura Premium</a>
-        <?php } ?>
-
-
-        <?php if ($session->isLogged()) { ?>
-                <a href="<?= SERVER_ADDRESS ?>perfil" class="mp-menu-link mp-white w-nav-link w-separator"><i
-                            class="far fa-user"></i><?= $account->getFirstName() ?></a>
+        <?php if (!$session->isLogged()) { ?>
+            <a href="<?= SERVER_ADDRESS ?>login" class="mobile mp-menu-link mp-white w-nav-link">Fazer Login</a>
         <?php } else { ?>
-            <a href="<?= SERVER_ADDRESS ?>login" class="mp-menu-link mp-white w-nav-link w-separator">Fazer Login</a>
+            <a href="<?= SERVER_ADDRESS ?>perfil?t=downloads#downloads" class="mobile mp-menu-link mp-white w-nav-link">Minha Conta</a>
         <?php } ?>
+
 
         <div class="div-block-106 div-block-107 mp-line"></div>
 
-        <?php if (!$license->isPremium()) { ?>
-            <a href="<?= SERVER_ADDRESS ?>assinatura"
-               class="mp-menu-unlim mp-white w-nav-link">Acesso Ilimitado</a>
-        <?php }else{ ?>
+        <?php if (!$session->isLogged()) { ?>
+            <a href="<?= SERVER_ADDRESS ?>login"
+               class="mp-menu-unlim mp-white w-nav-link">Fazer Login</a>
+        <?php } else { ?>
             <a href="<?= SERVER_ADDRESS ?>perfil?t=downloads#downloads"
-               class="mp-menu-unlim mp-white w-nav-link">Meus Downloads</a>
+               class="mp-menu-unlim mp-white w-nav-link">Minha Conta</a>
         <?php } ?>
     </nav>
 </div>

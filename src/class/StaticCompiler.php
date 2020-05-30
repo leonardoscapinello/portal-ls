@@ -20,6 +20,7 @@ class StaticCompiler
         array_push($this->replaces, array($search, $replace));
     }
 
+    /*
     public function load($file, $encoded = false)
     {
         $path_parts = pathinfo($file);
@@ -29,6 +30,46 @@ class StaticCompiler
         if ($path_parts['extension'] === "js" && $encoded) return "<script src=\"" . STATIC_URL . "javascript/" . $path_parts['basename'] . $version . "\" type=\"text/javascript\"></script>";
         if ($path_parts['extension'] === "js") return "<script src=\"" . STATIC_URL . "javascript/" . $path_parts['basename'] . $version . "\" type=\"text/javascript\"></script>";
         return STATIC_URL . "images/" . $path_parts['basename'];
+    }*/
+
+    public function load($file, $encoded = false)
+    {
+        try {
+            $path_parts = pathinfo($file);
+            $ext = $path_parts['extension'];
+            $base = $path_parts['basename'];
+            $additional_folder = $path_parts['dirname'];
+            $initial = STATIC_URL;
+
+            if ($ext === "css") {
+                $file_folder = "stylesheet";
+                $file_tag = "<link href=\"%s\" rel=\"stylesheet\" rel=\"preload\" as=\"style\" media=\"none\" onload=\"if(media!='all')media='all'\"/>";
+            } else if ($ext === "ttf") {
+                $base = $path_parts['filename'] . ".css";
+                $file_folder = "fonts";
+                $file_tag = "<link href=\"%s\" rel=\"stylesheet\" rel=\"preload\" as=\"style\" media=\"none\" onload=\"if(media!='all')media='all'\"/>";
+            } else if ($ext === "js") {
+                $file_folder = "javascript";
+                $file_tag = "<script async src=\"%s\" type=\"text/javascript\"></script>";
+            } else {
+                $initial = $initial . "../";
+                if ($ext === "png" || $ext === "jpg") {
+                    $file_folder = "images/display?src=";
+                } else {
+                    $file_folder = "public/images/";
+                }
+                $file_tag = "%s";
+            }
+
+            $additional_folder = ($additional_folder === "" || $additional_folder === ".") ? null : $additional_folder . "/";
+            $file = $initial . $file_folder . "/" . $additional_folder . $base;
+            $file_load = sprintf($file_tag, $file);
+
+            return $file_load;
+
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
     }
 
     public function printCSS($file)
@@ -47,7 +88,12 @@ class StaticCompiler
     public function loadBlog($file)
     {
         $path_parts = pathinfo($file);
-        return STATIC_URL . "images/blog/" . $path_parts['basename'];
+        return $this->load("/blog/" . $path_parts['basename']);
+    }
+
+    public function loadSeries($file, $short_key)
+    {
+        return $this->load("../series/" . $short_key . "/" . $file);
     }
 
     public function setOutputPath($path)

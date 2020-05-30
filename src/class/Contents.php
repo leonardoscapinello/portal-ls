@@ -24,19 +24,19 @@ class Contents
     public function __construct()
     {
         try {
-            $content_type = (get_request("ctblog") === "Y" ? "blog" : "page");
+            $this->content_type = (get_request("ct_type") === null ? "page" : get_request("ct_type"));
             $semantic_url = $this->getSemanticRequest() === null ? "index" : $this->getSemanticRequest();
             $category_url = $this->getCategoryUrl();
-            if ($content_type !== null && $semantic_url !== null) {
+            if ($this->content_type !== null && $semantic_url !== null) {
                 $database = new Database();
                 $text = new Text();
-                if ($content_type === "blog") {
+                if ($this->content_type === "blog") {
                     $database->query("SELECT * FROM contents ct LEFT JOIN contents_categories cc ON cc.id_category = ct.id_category WHERE ct.content_type = ? AND ct.semantic_url = ? AND ct.id_category = (SELECT id_category FROM contents_categories WHERE category_url = ?)");
                     $database->bind(3, $category_url);
                 } else {
                     $database->query("SELECT * FROM contents ct LEFT JOIN contents_categories cc ON cc.id_category = ct.id_category WHERE content_type = ? AND semantic_url = ?");
                 }
-                $database->bind(1, $content_type);
+                $database->bind(1, $this->content_type);
                 $database->bind(2, $semantic_url);
                 $result = $database->resultsetObject();
                 if ($result && count(get_object_vars($result)) > 0) {
@@ -196,6 +196,38 @@ class Contents
         return $this->id_author;
     }
 
+    public function getShare__Facebook()
+    {
+        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $text = urlencode($this->getTitle());
+        return "https://www.facebook.com/sharer/sharer.php?u=" . $url . "&t=" . $text . "&quote=";
+    }
+
+    public function getShare__Twitter()
+    {
+        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $text = urlencode($this->getTitle());
+        return "https://twitter.com/intent/tweet?text=" . $text . "&url=" . $url . "&via=leoscapinello&lang=pt&related=leoscapinello";
+    }
+
+    public function getShare__Linkedin()
+    {
+        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $text = urlencode($this->getTitle());
+        $summary = urlencode($this->getTitle());
+        return "https://www.linkedin.com/shareArticle/?mini=true&url=" . $url . "&title=" . $text . "&summary=" . $summary . "&source=leonardoscapinello.com";
+    }
+
+
+    public function getShare__WhatsApp()
+    {
+        global $browser;
+        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $text = urlencode($this->getTitle());
+        if ($browser->isMobile()) return "whatsapp://send?text=" . $url . "\" data-action=\"share/whatsapp/share\"";
+        return "https://api.whatsapp.com/send?text=" . $url;
+    }
+
     public function getIdCategory()
     {
         return $this->id_category;
@@ -282,7 +314,6 @@ class Contents
     {
         return $this->category_color;
     }
-
 
 
 }
