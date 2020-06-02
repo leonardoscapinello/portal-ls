@@ -97,7 +97,7 @@ class Accounts
             $database->bind(2, $email_address);
             $r = $database->resultset();
             if (count($r) > 0) return 0;
-            $database->query("INSERT INTO accounts (username, email, first_name, last_name, phone_number, is_active, id_license) VALUES (?,?,?,?,?,?, 4)");
+            $database->query("INSERT INTO accounts (username, email, first_name, last_name, phone_number, is_active, id_license) VALUES (?,?,?,?,?,?,1)");
             $database->bind(1, $email_address);
             $database->bind(2, $email_address);
             $database->bind(3, $first_name);
