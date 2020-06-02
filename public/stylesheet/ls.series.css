@@ -15,6 +15,9 @@ section {
   position: relative;
   margin-top: -1px;
 }
+.mobile {
+  display: none;
+}
 img {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -524,9 +527,28 @@ img {
   margin-left: 10px;
   opacity: .4;
 }
+.nav-menu a.mp-menu-link.mobile {
+  display: none;
+}
+.nav-bars {
+  display: none;
+}
 @media (max-width: 720px) {
+  .desktop {
+    display: none !important;
+  }
+  .dropselect-links {
+    display: block;
+    width: 100%;
+  }
+  .mp-header-content {
+    padding-left: 0;
+  }
   .mobile {
     display: unset;
+  }
+  .mobile-center {
+    text-align: center;
   }
   .w-separator:before {
     content: " ";
@@ -619,9 +641,16 @@ img {
     height: 102vh;
     max-height: 520px;
   }
+  .product-image img {
+    max-width: 130px;
+  }
+  .mp-header-container {
+    background-size: cover;
+    background-position: -575px center;
+  }
   .mp-hero-description {
-    font-size: 2.3em;
-    line-height: 42px;
+    font-size: 1.1em;
+    line-height: 26px;
   }
   .nav-menu {
     background: #FFF;
@@ -755,15 +784,20 @@ img {
   transform: translate(-50%,0);
 }
 .series-promoshow {
-  background-color: #fff;
+  background-color: #141414;
   background-size: cover;
   background-position: center center;
   width: 100%;
   padding: 80px 0;
+  color: #FFFFFF;
 }
 .series-promoshow .huge {
   font-size: 5.5em;
   color: #e20001;
+}
+.series-promoshow .serie-brand {
+  max-width: 200px;
+  margin: 50px auto 10px auto;
 }
 .brand.novo-play {
   letter-spacing: 18px;
@@ -846,7 +880,7 @@ img {
   top: 0;
   left: 0;
   background: rgba(0,0,0,0.4);
-  background: linear-gradient(0deg,#000000 20%,rgba(0,0,0,0.3) 100%);
+  background: linear-gradient(0deg,#000000 0%,rgba(0,0,0,0.8) 20%,rgba(0,0,0,0.3) 100%);
   width: 100%;
   height: 100%;
 }
@@ -1210,4 +1244,35 @@ img {
 }
 .serie-sidebar-box {
   margin-bottom: 40px;
+}
+@media (max-width: 720px) {
+  .dropselect-links {
+    display: block;
+    width: 100%;
+  }
+  .dropselect-links span {
+    width: 100%;
+    display: block;
+    -webkit-box-sizing: border-box;
+  }
+  .dropselect-links span:after {
+    float: right;
+  }
+  .dropselect-links .more_options .scrollabe ul li a {
+    font-size: 1.2em;
+  }
+  .season-widget-sml .btn.serie-view {
+    width: 80%;
+    margin: 30px auto !important;
+  }
+  .vw_serie_title h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-top: 30px;
+    line-height: 36px;
+  }
+  .mp-header-container.no-hh {
+    background-position: center center !important;
+    background-size: cover !important;
+  }
 }

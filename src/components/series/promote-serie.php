@@ -1,26 +1,38 @@
-<div class="series-promoshow"
-     style="background-image:url('<?= $static->load("../series/infinity-experience-20200528/banners/promoshow-bg.png") ?>')">
-    <div class="container">
-        <div class="row">
-            <div class="offset-1"></div>
-            <div class="col-xl-5 col-lg-5 col-sm-12">
-                <div class="mbrand medium"
-                     style="background-image:url('<?= $static->load("../series/novo-play-20200529/banners/serie-moviecover.png") ?>')"></div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-sm-12">
-                <h2 class="huge text red brand novo-play">
-                    NOV<i class="fas fa-play"></i>
-                </h2>
-                <ul class="presentation-season-info">
-                    <li>1º Temporada</li>
-                    <li>Estreia em 15/Julho/2020</li>
-                </ul>
-                <div class="sinopsis">
-                    <p>O que as empresas que mais faturaram durante a pandêmia fizeram para dar a volta por cima durante
-                        a crise do COVID-19.</p>
+<?php
+$featured = new Series();
+$featured->loadRandomFutureSerie();
+if ($featured->isExists()) {
+    ?>
+    <div class="series-promoshow">
+        <div class="container">
+
+            <h3 class="text dark featured-title" align="center"> Estreia em <?= $date->stringMonthAndYear($featured->getLaunchDate()) ?> </h3>
+
+
+            <div class="row">
+
+
+                <div class="offset-1"></div>
+                <div class="col-xl-5 col-lg-5 col-sm-12">
+                    <div class="mbrand medium"
+                         style="background-image:url('<?= $static->loadSeries($featured->getSeasonCover(), $featured->getShortKey()) ?>')"></div>
                 </div>
+                <div class="col-xl-4 col-lg-4 col-sm-12 mobile-center">
+                    <img src="<?= $static->loadSeries($featured->getSeasonBrand(), $featured->getShortKey()) ?>"
+                         alt="Série: <?= $featured->getSeasonTitle() ?>" class="serie-brand"/>
+                    <ul class="presentation-season-info">
+                        <li style="font-weight: 600;">
+                            TEMPORADA <?= $featured->fixSeasonLevel($featured->getSeasonLevel()) ?></li>
+                        <li>Estreia em <?= $date->stringMonthAndYear($featured->getLaunchDate()) ?></li>
+                    </ul>
+                    <div class="sinopsis">
+                        <p>
+                            <?= $text->utf8($featured->getSeasonDescription()) ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="offset-2"></div>
             </div>
-            <div class="offset-2"></div>
         </div>
     </div>
-</div>
+<?php } ?>

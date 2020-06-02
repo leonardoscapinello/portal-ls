@@ -49,9 +49,19 @@ $views = $contentsViews->getViews();
                                 <div class="offset-1"></div>
                                 <div class="col-xl-7 col-lg-7 col-sm-12">
 
+                                    <div class="mobile">
+                                        <input type="text" class="share_input"
+                                               onClick="this.setSelectionRange(0, this.value.length)"
+                                               value="https://ls-go.com/<?= $contents->getShortUrl() ?>" readonly>
+                                    </div>
+
                                     <div class="sharebox">
+
+
                                         <ul>
-                                            <li>Compartilhe:</li>
+                                            <li class="desktop"><input type="text" class="share_input"
+                                                                       onClick="this.setSelectionRange(0, this.value.length)"
+                                                                       value="https://ls-go.com/<?= $contents->getShortUrl() ?>" readonly></li>
                                             <li><a href="<?= $contents->getShare__Facebook() ?>"
                                                    onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
                                                             class="fab fa-facebook"></i></a></li>

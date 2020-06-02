@@ -1,21 +1,5 @@
 <?php
-$series = new Series();
-$serie_url = get_request("serie_url");
-$season_short_key = get_request("season_short_key");
-$episode = get_request("episode");
-if (!notempty($serie_url) || !notempty($season_short_key) || !notempty($episode)) {
-    header("location: " . SERVER_ADDRESS . "series");
-    die;
-}
 
-$loaded = $series->loadEpisode($episode, $season_short_key);
-if (!$loaded) {
-    header("location: " . SERVER_ADDRESS . "series");
-    die;
-}
-
-$contents = new Contents(true);
-$contents->loadById($series->getIdContent());
 require_once(DIRNAME . "../components/series/view-episode/header.php");
 require_once(DIRNAME . "../components/series/view-episode/view-content.php");
 ?>

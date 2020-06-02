@@ -36,7 +36,7 @@ class StaticCompiler
     {
         try {
             $path_parts = pathinfo($file);
-            $ext = $path_parts['extension'];
+            $ext = isset($path_parts['extension']) ? $path_parts['extension'] : "png";
             $base = $path_parts['basename'];
             $additional_folder = $path_parts['dirname'];
             $initial = STATIC_URL;

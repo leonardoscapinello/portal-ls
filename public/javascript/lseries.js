@@ -5,18 +5,20 @@ $("[data-dropselect='open']").on("click", function () {
     let ts = $(this);
 
     if (!ts.is(".overlayer")) {
-        $([document.documentElement, document.body]).animate({
-            scrollTop: ts.offset().top - 100
-        }, 620, function () {
-            ts.next(".overlayer").fadeIn(200, function () {
-                $("body").css("overflow", "hidden");
-                ts.nextAll(".more_options").stop(true, true).show(0).animate({
-                    opacity: 1
-                }, 300).animate({
-                    maxHeight: "300px",
-                }, 500);
-            });
+
+        ts.next(".overlayer").fadeIn(200, function () {
+            $("body").css("overflow", "hidden");
+            ts.nextAll(".more_options").stop(true, true).show(0).animate({
+                opacity: 1
+            }, 300).animate({
+                maxHeight: "300px",
+            }, 500);
         });
+
+        $([document.documentElement, document.body]).animate({
+            scrollTop: ts.offset().top - 150
+        }, 350);
+
     }
 });
 $(".overlayer").on("click", function () {
@@ -59,8 +61,8 @@ $('.seasons-articles').owlCarousel({
 $(".scrollTo").on("click", function () {
     let hr = $(this).attr("href");
     $([document.documentElement, document.body]).animate({
-        scrollTop: $(hr).offset().top - 100
-    }, 1000, function () {
+        scrollTop: $(hr).offset().top - 150
+    }, 350, function () {
         document.querySelector(hr).click();
     });
 });
@@ -251,7 +253,8 @@ function saveContent2User() {
     });
 }
 
-$(document).on("click", ".ajax-download", function () {
+$(document).on("click", ".ajax-download", function (e) {
+    e.preventDefault();
     let th = $(this);
     let cl = th.attr("data-download");
     let nm = th.attr("data-name");

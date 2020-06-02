@@ -33,7 +33,7 @@ class Series
     private $episode;
 
     private $main_url = SERVER_ADDRESS . "series/";
-
+    private $exists = false;
 
     public function getAllSeries()
     {
@@ -59,7 +59,7 @@ class Series
         $contents = array();
         try {
             $database = new Database();
-            $query = "SELECT ss.id_serie_season, ss.id_serie, ss.short_key, ss.season_level, ss.season_title, ss.season_description, ss.season_brand, ss.season_bg, ss.season_cover, ss.season_banner, ss.season_banner_bg, ss.insert_time, ss.launch_date, ss.is_active AS 'season_active', ss.permission_key, sr.serie_name, sr.serie_description, sr.semantic_url AS 'serie_url', sr.is_active AS 'serie_active' FROM series_seasons ss LEFT JOIN series sr ON sr.id_serie = ss.id_serie WHERE (sr.is_active = 'Y' AND ss.is_active = 'Y') AND NOW() >= ss.launch_date AND sr.semantic_url = ?";
+            $query = "SELECT ss.id_serie_season, ss.id_serie, ss.short_key, ss.season_level, ss.season_title, ss.season_description, ss.season_brand, ss.season_bg, ss.season_cover, ss.season_banner, ss.season_banner_bg, ss.insert_time, ss.launch_date, ss.is_active AS 'season_active', ss.permission_key, sr.serie_name, sr.serie_description, sr.semantic_url AS 'serie_url', sr.is_active AS 'serie_active' FROM series_seasons ss LEFT JOIN series sr ON sr.id_serie = ss.id_serie WHERE (sr.is_active = 'Y' AND ss.is_active = 'Y') AND NOW() >= ss.launch_date AND sr.semantic_url = ? ORDER BY season_level";
             $database->query($query);
             $database->bind(1, $this->getSerieUrl());
             $result = $database->resultset();
@@ -84,7 +84,50 @@ class Series
             $database->bind(2, $season_short_key);
             $result = $database->resultsetObject();
             if ($result && count(get_object_vars($result)) > 0) {
+                $this->exists = true;
                 foreach ($result as $key => $value) {
+                    $this->$key = $text->utf8($value);
+                }
+                return true;
+            }
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return false;
+    }
+
+    public function loadRandomSerie()
+    {
+        global $text;
+        try {
+            $database = new Database();
+            $query = "SELECT ss.id_serie_season, ss.id_serie, ss.short_key, ss.season_level, ss.season_title, ss.season_description, ss.season_brand, ss.season_bg, ss.season_cover, ss.season_banner, ss.season_banner_bg, ss.insert_time, ss.launch_date, ss.is_active AS 'season_active', ss.permission_key, sr.serie_name, sr.serie_description, sr.semantic_url AS 'serie_url', sr.is_active AS 'serie_active' FROM series_seasons ss LEFT JOIN series sr ON sr.id_serie = ss.id_serie WHERE (sr.is_active = 'Y' AND ss.is_active = 'Y') AND NOW() > ss.launch_date ORDER BY RAND()  LIMIT 1";
+            $database->query($query);
+            $result = $database->resultsetObject();
+            if ($result && count(get_object_vars($result)) > 0) {
+                foreach ($result as $key => $value) {
+                    $this->exists = true;
+                    $this->$key = $text->utf8($value);
+                }
+                return true;
+            }
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return false;
+    }
+
+    public function loadRandomFutureSerie()
+    {
+        global $text;
+        try {
+            $database = new Database();
+            $query = "SELECT ss.id_serie_season, ss.id_serie, ss.short_key, ss.season_level, ss.season_title, ss.season_description, ss.season_brand, ss.season_bg, ss.season_cover, ss.season_banner, ss.season_banner_bg, ss.insert_time, ss.launch_date, ss.is_active AS 'season_active', ss.permission_key, sr.serie_name, sr.serie_description, sr.semantic_url AS 'serie_url', sr.is_active AS 'serie_active' FROM series_seasons ss LEFT JOIN series sr ON sr.id_serie = ss.id_serie WHERE (sr.is_active = 'Y' AND ss.is_active = 'Y') AND  ss.launch_date > NOW() ORDER BY RAND()  LIMIT 1";
+            $database->query($query);
+            $result = $database->resultsetObject();
+            if ($result && count(get_object_vars($result)) > 0) {
+                foreach ($result as $key => $value) {
+                    $this->exists = true;
                     $this->$key = $text->utf8($value);
                 }
                 return true;
@@ -100,13 +143,14 @@ class Series
         global $text;
         try {
             $database = new Database();
-            $query = "SELECT * FROM series_seasons_contents ssc LEFT JOIN series_seasons ss ON ss.id_serie_season = ssc.id_season WHERE (ss.short_key = ? AND id_serie_season_content = ?) AND (NOW() > ssc.launch_date) ORDER BY ssc.episode, ssc.launch_date";
+            $query = "SELECT * FROM series_seasons_contents ssc LEFT JOIN series_seasons ss ON ss.id_serie_season = ssc.id_season LEFT JOIN series sr ON sr.id_serie = ss.id_serie WHERE (ss.short_key = ? AND id_serie_season_content = ?) AND (NOW() > ssc.launch_date) ORDER BY ssc.episode, ssc.launch_date";
             $database->query($query);
             $database->bind(1, $season_short_key);
             $database->bind(2, $episode);
             $result = $database->resultsetObject();
             if ($result && count(get_object_vars($result)) > 0) {
                 foreach ($result as $key => $value) {
+                    $this->exists = true;
                     $this->$key = $text->utf8($value);
                 }
                 return true;
@@ -128,6 +172,61 @@ class Series
             $result = $database->resultset();
             if (!empty($result)) {
                 return $result;
+            }
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return array();
+    }
+
+
+    public function getNextSerieEpisode()
+    {
+        try {
+            $same_season = $this->getNextEpisodeInsideSeason();
+            if (!empty($same_season)) return $same_season;
+
+            $next_season = $this->getNextSeasonInsideSerie();
+            if (!empty($next_season)) return $next_season;
+
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return array();
+    }
+
+    private function getNextEpisodeInsideSeason()
+    {
+        try {
+            $database = new Database();
+            $database->query("SELECT ssc.id_serie_season_content, ss.id_serie, ss.short_key, ss.season_level, MIN(ssc.episode) episode, ssc.id_content, sr.id_serie, ss.permission_key, sr.semantic_url FROM series_seasons ss RIGHT JOIN series_seasons_contents ssc ON ssc.id_season = ss.id_serie_season LEFT JOIN series sr ON sr.id_serie = ss.id_serie WHERE ss.id_serie = ? AND ssc.episode > ? AND ss.season_level = ? ORDER BY ssc.episode LIMIT 1");
+            $database->bind(1, $this->getIdSerie());
+            $database->bind(2, $this->getEpisode());
+            $database->bind(3, $this->getSeasonLevel());
+            $result = $database->resultset();
+            if (!empty($result)) {
+                if (notempty($result[0]['id_serie'])) {
+                    return $result[0];
+                }
+            }
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return array();
+    }
+
+    private function getNextSeasonInsideSerie()
+    {
+        try {
+            $database = new Database();
+            $database->query("SELECT ssc.id_serie_season_content, ss.id_serie, ss.short_key, ss.season_level, MIN(ssc.episode) episode, ssc.id_content, sr.id_serie, ss.permission_key, sr.semantic_url FROM series_seasons ss RIGHT JOIN series_seasons_contents ssc ON ssc.id_season = ss.id_serie_season LEFT JOIN series sr ON sr.id_serie = ss.id_serie WHERE ss.id_serie = ? AND ss.season_level > ? LIMIT 1");
+            $database->bind(1, $this->getIdSerie());
+            $database->bind(2, $this->getSeasonLevel());
+            $result = $database->resultset();
+            if (!empty($result)) {
+                if (notempty($result[0]['id_serie'])) {
+                    return $result[0];
+                }
             }
         } catch (Exception $exception) {
             error_log($exception);
@@ -368,6 +467,15 @@ class Series
     {
         return $this->episode;
     }
+
+    /**
+     * @return bool
+     */
+    public function isExists(): bool
+    {
+        return $this->exists;
+    }
+
 
 
 }

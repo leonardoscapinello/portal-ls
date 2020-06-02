@@ -815,7 +815,7 @@ h5.featured-title {
         font-weight: 400;
         display: inline-block;
         color: #989da2;
-        font-size: .9em;
+        font-size: 1em;
 
 
         & a {
@@ -956,6 +956,7 @@ h5.featured-title {
 
     & .category-flag {
       margin: 10px 0 0 0;
+      font-size: 1.2em;
     }
   }
 }
@@ -1342,6 +1343,7 @@ h5.featured-title {
   p {
     line-height: 25px;
     margin: 6px 0;
+    font-size: 1.1em;
   }
 
 
@@ -1382,7 +1384,7 @@ h5.featured-title {
   }
 
   .post-widget-sml a {
-    font-size: .941em;
+    font-size: 1.1em;
   }
 
   .mp-header-content {
@@ -1705,11 +1707,23 @@ h5.featured-title {
   color: #FFFFFF;
 }
 
+.share_input {
+  display: block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  padding: 3px 5px;
+  border: 1px #ccc solid;
+}
+
+
 .sharebox {
   padding: 6px 12px;
   background: #f1f2f4;
   border-radius: 5px;
   margin-bottom: 20px;
+
 
   & ul {
     text-align: right;
@@ -1717,15 +1731,6 @@ h5.featured-title {
     & li {
       display: inline-block;
       margin: 0 12px;
-
-      &:first-child {
-        font-size: .7em;
-        text-transform: uppercase;
-        margin-left: 12px;
-        line-height: 12px;
-        padding: 0 !important;
-        display: none;
-      }
 
       & i {
         font-size: 1.4em;
@@ -1751,6 +1756,33 @@ h5.featured-title {
   }
 }
 
+
+@media (max-width: 720px) {
+
+  .desktop {
+    display: none !important;
+  }
+
+  .sharebox {
+    padding: 6px 12px;
+    background: #f1f2f4;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  & ul {
+    text-align: center !important;
+
+    & li {
+      display: inline-block;
+      margin: 0 12px;
+      text-align: center;
+    }
+  }
+
+
+}
+
 .series-banner {
   position: relative;
   overflow: hidden;
@@ -1774,3 +1806,4 @@ h5.featured-title {
     z-index: 333;
   }
 }
+

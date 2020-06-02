@@ -112,6 +112,38 @@ class SocialAnalytics
         return $this->google_analytics;
     }
 
+    public function extractCommonWords($string)
+    {
+        $stopWords = array('eu', 'um', 'sobre', 'uns', 'e', 'estamos', 'como', 'no', 'se', 'por', 'com', 'de', 'por', 'é', 'isso', 'foi', 'o que', 'quando', 'onde', 'quem', 'será', 'o', 'www');
+
+        $string = preg_replace('/\s\s+/i', '', $string); // replace whitespace
+        $string = trim($string); // trim the string
+        $string = preg_replace('/[^a-zA-Z0-9 -]/', '', $string); // only take alphanumerical characters, but keep the spaces and dashes too…
+        $string = strtolower($string); // make it lowercase
+
+        preg_match_all('/\b.*?\b/i', $string, $matchWords);
+        $matchWords = $matchWords[0];
+
+        foreach ($matchWords as $key => $item) {
+            if ($item == '' || in_array(strtolower($item), $stopWords) || strlen($item) <= 3) {
+                unset($matchWords[$key]);
+            }
+        }
+        $wordCountArr = array();
+        if (is_array($matchWords)) {
+            foreach ($matchWords as $key => $val) {
+                $val = strtolower($val);
+                if (isset($wordCountArr[$val])) {
+                    $wordCountArr[$val]++;
+                } else {
+                    $wordCountArr[$val] = 1;
+                }
+            }
+        }
+        arsort($wordCountArr);
+        $wordCountArr = array_slice($wordCountArr, 0, 10);
+        return $wordCountArr;
+    }
 
 
 }

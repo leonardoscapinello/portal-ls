@@ -1,11 +1,4 @@
-<?php
-$days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDate());
 
-$image = $static->loadBlog($contents->getCoverImage());
-if (!notempty($image)) {
-    $image = $static->loadSeries($contents->getCoverImage(), $series->getShortKey());
-}
-?>
 <header>
     <div class="collection-list-wrapper-8 w-dyn-list serie-header-view">
         <div class="w-dyn-items">

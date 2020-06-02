@@ -47,5 +47,10 @@ class AccountsLicense
         return false;
     }
 
+    public function isPremium()
+    {
+        return $this->userCanAccessByKey("PREMIUM_PRIVILEGES") === "Y" ? true : false;
+    }
+
 
 }

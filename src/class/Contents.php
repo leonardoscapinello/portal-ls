@@ -19,6 +19,8 @@ class Contents
     private $is_active;
     private $private_level;
     private $category_name;
+    private $permission_key;
+    private $short_url;
 
     private $content_exists = false;
 
@@ -182,6 +184,7 @@ class Contents
         return $unique;
     }
 
+
     public function getCategoryByURL($category_url = null)
     {
         try {
@@ -214,6 +217,11 @@ class Contents
         return ($blog_address ? BLOG_ADDRESS : "../") . $category_url . "/" . $semantic_url;
     }
 
+    private function createShortUrl()
+    {
+        return "https://ls-go.com/" . $this->getShortUrl();
+    }
+
     public function getSemanticRequest()
     {
         $s = get_request("semantic_url");
@@ -244,21 +252,21 @@ class Contents
 
     public function getShare__Facebook()
     {
-        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $url = urlencode($this->createShortUrl());
         $text = urlencode($this->getTitle());
         return "https://www.facebook.com/sharer/sharer.php?u=" . $url . "&t=" . $text . "&quote=";
     }
 
     public function getShare__Twitter()
     {
-        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $url = urlencode($this->createShortUrl());
         $text = urlencode($this->getTitle());
         return "https://twitter.com/intent/tweet?text=" . $text . "&url=" . $url . "&via=leoscapinello&lang=pt&related=leoscapinello";
     }
 
     public function getShare__Linkedin()
     {
-        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $url = urlencode($this->createShortUrl());
         $text = urlencode($this->getTitle());
         $summary = urlencode($this->getTitle());
         return "https://www.linkedin.com/shareArticle/?mini=true&url=" . $url . "&title=" . $text . "&summary=" . $summary . "&source=leonardoscapinello.com";
@@ -268,7 +276,7 @@ class Contents
     public function getShare__WhatsApp()
     {
         global $browser;
-        $url = urlencode($this->createUrl($this->getCategoryUrl(), $this->getSemanticUrl()));
+        $url = urlencode("Eu encontrei esse artigo e acho que você vai gostar: *" . $this->getTitle() . "* em " . $this->createShortUrl());
         $text = urlencode($this->getTitle());
         if ($browser->isMobile()) return "whatsapp://send?text=" . $url . "\" data-action=\"share/whatsapp/share\"";
         return "https://api.whatsapp.com/send?text=" . $url;
@@ -370,6 +378,22 @@ class Contents
     public function isContentExists(): bool
     {
         return $this->content_exists;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPermissionKey()
+    {
+        return $this->permission_key;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShortUrl()
+    {
+        return $this->short_url;
     }
 
 

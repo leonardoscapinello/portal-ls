@@ -21,6 +21,7 @@ define("STATIC_URL", SERVER_ADDRESS . "public/");
 define("LAUNCH_ADDRESS", SERVER_ADDRESS . "launch/");
 define("PROFILE_ADDRESS", SERVER_ADDRESS . "perfil");
 define("PAGE_TITLE", "Leonardo Scapinello");
+define("PAGE_TITLE_SERIES", "LS Séries");
 define("VERSION", "1.0.0.0");
 
 

@@ -703,7 +703,7 @@ h5.featured-title {
   font-weight: 400;
   display: inline-block;
   color: #989da2;
-  font-size: .9em;
+  font-size: 1em;
 }
 .blog-content .content-social-info ul li a {
   font-weight: bold;
@@ -810,6 +810,7 @@ h5.featured-title {
 }
 .sidebar .post-widget-sml .category-flag {
   margin: 10px 0 0 0;
+  font-size: 1.2em;
 }
 .nav-menu a.mp-menu-link.mobile {
   display: none;
@@ -1111,6 +1112,7 @@ h5.featured-title {
   p {
     line-height: 25px;
     margin: 6px 0;
+    font-size: 1.1em;
   }
   .text.featured-title {
     line-height: 40px;
@@ -1144,7 +1146,7 @@ h5.featured-title {
     line-height: 15px;
   }
   .post-widget-sml a {
-    font-size: .941em;
+    font-size: 1.1em;
   }
   .mp-header-content {
     background: #000000;
@@ -1409,6 +1411,15 @@ h5.featured-title {
   padding: 6px 20px;
   color: #FFFFFF;
 }
+.share_input {
+  display: block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  padding: 3px 5px;
+  border: 1px #ccc solid;
+}
 .sharebox {
   padding: 6px 12px;
   background: #f1f2f4;
@@ -1421,14 +1432,6 @@ h5.featured-title {
 .sharebox ul li {
   display: inline-block;
   margin: 0 12px;
-}
-.sharebox ul li:first-child {
-  font-size: .7em;
-  text-transform: uppercase;
-  margin-left: 12px;
-  line-height: 12px;
-  padding: 0 !important;
-  display: none;
 }
 .sharebox ul li i {
   font-size: 1.4em;
@@ -1445,6 +1448,25 @@ h5.featured-title {
 }
 .sharebox ul li i.fa-linkedin {
   color: #0077B5;
+}
+@media (max-width: 720px) {
+  .desktop {
+    display: none !important;
+  }
+  .sharebox {
+    padding: 6px 12px;
+    background: #f1f2f4;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+   ul {
+    text-align: center !important;
+  }
+  ul li {
+    display: inline-block;
+    margin: 0 12px;
+    text-align: center;
+  }
 }
 .series-banner {
   position: relative;

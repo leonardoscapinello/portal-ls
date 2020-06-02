@@ -15,7 +15,7 @@ $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDa
                     <div class="div-block-960">
                         <div class="container">
                             <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-sm-12">
+                                <div class="col-xl-6 col-lg-6 col-sm-12 desktop">
                                     <div class="mbrand medium"
                                          style="background-image:url('<?= $static->loadSeries($series->getSeasonCover(), $series->getShortKey()); ?>')"></div>
                                 </div>
