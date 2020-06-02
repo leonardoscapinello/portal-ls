@@ -8,11 +8,11 @@ RewriteRule ^images/display$                                     ./public/images
 RewriteRule ^newsletter$                                         ./src/applications/interfaces/newsletter-register.php [L,NC,QSA]
 RewriteRule ^cadastro/concluir$                                  ./index.php?semantic_url=concluir_cadastro [L,NC,QSA]
 
-RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)$                          ./index.php?ct_type=page&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
-RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/$                         ./index.php?ct_type=page&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
-RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([0-9]+)$                 ./index.php?ct_type=page&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
-RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$     ./index.php?ct_type=blog&category_url=$1&semantic_url=$2 [L,NC,QSA]
-RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/$    ./index.php?ct_type=blog&category_url=$1&semantic_url=$2 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)$                          ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/$                         ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([0-9]+)$                 ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$     ./index.php?ctblog=Y&category_url=$1&semantic_url=$2 [L,NC,QSA]
+RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/$    ./index.php?ctblog=Y&category_url=$1&semantic_url=$2 [L,NC,QSA]
 
 RewriteRule ^series$                                                                            ./src/applications/series/index.php?ct_main=index&serie_url=index [L,NC,QSA]
 RewriteRule ^series/updateContent$                                                              ./src/applications/series/update-content.php [L,NC,QSA]

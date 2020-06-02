@@ -158,7 +158,9 @@ if ($ct_main === "view-serie") {
     </style>
 
     <?= $static->load("ls.series.min.css") ?>
-
+    <?=$social->getGoogleTagManagerScript_Head(); ?>
+    <?=$social->getGoogleAnalyticsScript_Head(); ?>
+    <?=$social->getFacebookPixel_Head(); ?>
 </head>
 <body>
 <div id="wrapper">
@@ -182,5 +184,7 @@ if ($ct_main === "view-serie") {
 <?= $static->load("withinviewport.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $static->load("lseries.js"); ?>
+<?=$social->getGoogleTagManagerScript_Body(); ?>
+<?=$social->getFacebookTrack_Body(); ?>
 </body>
 </html>

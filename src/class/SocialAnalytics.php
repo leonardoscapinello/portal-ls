@@ -7,12 +7,13 @@ class SocialAnalytics
     private $google_analytics = "UA-162090744-1";
 
     private $facebook_pixel = array(
-        "website" => "208143977128540"
+        "website" => "718959562261662"
     );
     private $facebook_meta = array(
         "uri" => "https://www.facebook.com/oleonardoscapinello",
         "entity_id" => "100048923713721"
     );
+
 
 
     public function getGoogleAnalyticsScript_Head($google_analytics = null)
@@ -27,9 +28,6 @@ class SocialAnalytics
         $script .= "gtag('js', new Date());";
         $script .= "gtag('config', '" . $google_analytics . "');";
         $script .= "</script>";
-
-
-        $script = null;
         return $script;
     }
 
@@ -44,9 +42,6 @@ class SocialAnalytics
         $script .= "'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);";
         $script .= "})(window,document,'script','dataLayer','" . $google_tagManager . "');</script>";
         $script .= "<!-- End Google Tag Manager -->";
-
-
-        $script = null;
         return $script;
     }
 
@@ -59,9 +54,6 @@ class SocialAnalytics
         $script .= "<noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=" . $google_tagManager . "\"";
         $script .= "height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>";
         $script .= "<!-- End Google Tag Manager (noscript) -->";
-
-
-        $script = null;
         return $script;
     }
 
@@ -89,18 +81,12 @@ class SocialAnalytics
         $script .= "src=\"https://www.facebook.com/tr?id=" . $pixel_id . "&ev=PageView&noscript=1\"";
         $script .= "/></noscript>";
         $script .= "<!-- End Facebook Pixel Code -->";
-
-
-        $script = null;
         return $script;
     }
 
     public function getFacebookTrack_Body($custom_track = "PageView", $js_object = "")
     {
         if ($js_object === "") return "<script>fbq('track', '" . $custom_track . "');</script>";
-
-
-        $script = null;
         return "<script>fbq('track', '" . $custom_track . "',  " . $js_object . ");</script>";
     }
 

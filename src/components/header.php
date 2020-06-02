@@ -13,10 +13,12 @@
 </header>
 
 <?php if ($contents->getContentType() === "blog") { ?>
-    <div class="series-banner"
-         style="background-image:url('<?= $static->load("../series/notes-20200528/banners/topbanner-bg.png") ?>')">
-        <div class="banner-block">
-            <img src="<?= $static->load("../series/notes-20200528/banners/topbanner.png") ?>" alt="Notes">
+    <a href="<?= SERVER_ADDRESS ?>series/notes/3E3HQW?utm_source=blog&utm_medium=blog_top_banner">
+        <div class="series-banner"
+             style="background-image:url('<?= $static->load("../series/3E3HQW/banners/topbanner-bg.png") ?>')">
+            <div class="banner-block">
+                <img src="<?= $static->load("../series/3E3HQW/banners/topbanner.png") ?>" alt="Notes">
+            </div>
         </div>
-    </div>
+    </a>
 <?php } ?>
