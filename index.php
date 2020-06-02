@@ -99,9 +99,9 @@ $contentsViews->add();
 
     </style>
     <?= $static->load("stylesheet.min.css"); ?>
-    <?=$social->getGoogleTagManagerScript_Head(); ?>
-    <?=$social->getGoogleAnalyticsScript_Head(); ?>
-    <?=$social->getFacebookPixel_Head(); ?>
+    <?= $social->getGoogleTagManagerScript_Head(); ?>
+    <?= $social->getGoogleAnalyticsScript_Head(); ?>
+    <?= $social->getFacebookPixel_Head("website"); ?>
 </head>
 <body>
 <div id="wrapper">
@@ -161,8 +161,8 @@ $contentsViews->add();
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $static->load("leonardoscapinello.scroll.js"); ?>
 
-<?=$social->getGoogleTagManagerScript_Body(); ?>
-<?=$social->getFacebookTrack_Body(); ?>
+<?= $social->getGoogleTagManagerScript_Body(); ?>
+<?= $social->getFacebookTrack_Body(); ?>
 <script type="text/javascript">
 
     const path = document.querySelector('#wave');
