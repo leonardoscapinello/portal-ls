@@ -34,13 +34,13 @@ $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDa
                                         <?php if ($days_to_launch > 0) { ?>
                                             <a class="btn serie-view"><i class="far fa-bell"></i> Avise-me quando lançar</a>
                                         <?php } elseif (!$session->isLogged()) { ?>
-                                            <a href="<?= SERVER_ADDRESS ?>assinatura?ref=series&src=<?= md5($series->getIdSerie()) ?>&utm_source=series_view&utm_medium=premium_middle_btn"
+                                            <a href="<?= LOGIN_URL ?>?next=<?=$url->getActualURLAsNext()?>"
                                                class="btn serie-view">
                                                 <i class="far fa-user"></i>
                                                 Faça Login para Continuar
                                             </a>
                                             <div style="height: 12px;"></div>
-                                            <a href="<?= LOGIN_URL ?>?next=<?= $url->getActualURLAsNext() ?>"
+                                            <a href="<?= REGISTER_URL ?>?next=<?= $url->getActualURLAsNext() ?>"
                                                class="btn clean-white">
                                                 <i class="far fa-user"></i>
                                                 Cadastre-se Grátis
