@@ -160,7 +160,7 @@ if ($ct_main === "view-serie") {
     <?= $static->load("ls.series.min.css") ?>
     <?=$social->getGoogleTagManagerScript_Head(); ?>
     <?=$social->getGoogleAnalyticsScript_Head(); ?>
-    <?=$social->getFacebookPixel_Head(); ?>
+    <?=$social->getFacebookPixel_Head("webiste"); ?>
 </head>
 <body>
 <div id="wrapper">
