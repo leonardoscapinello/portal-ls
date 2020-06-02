@@ -28,6 +28,7 @@ if (notempty($contents->getIdAuthor())) {
 }
 $content_private_level = $contents->getPrivateLevel();
 $contentsViews = new ContentsViews();
+$contentsViews->add();
 
 ?>
 <html>

@@ -99,6 +99,5 @@ if (not_empty($next)) {
 
 
 $account->storeSession();
-$contentsViews->add();
 
 ob_start("sanitize_output");
