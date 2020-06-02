@@ -27,6 +27,8 @@ if (notempty($contents->getIdAuthor())) {
     $author = new Accounts(1);
 }
 $content_private_level = $contents->getPrivateLevel();
+$contentsViews = new ContentsViews();
+
 ?>
 <html>
 <head>

@@ -84,7 +84,6 @@ $account = new Accounts();
 $license = new AccountsLicense();
 //$blogIntelligence = new BlogIntelligence();
 $numeric = new Numeric();
-$contentsViews = new ContentsViews();
 $browser = new BrowserDetection();
 
 
