@@ -30,20 +30,20 @@ class ContentsViews
             $is_robot = $browser->isRobot() ? "Y" : "N";
             $ip_address = $this->get_user_ip_address();
 
-
-            $vdb->query("INSERT INTO contents_views (id_content, id_account, ip_address, browser_name, browser_version, client_os, client_os_version, client_os_vname, client_os_bits, is_robot) VALUES (?,?,?,?,?,?,?,?,?,?)");
-            $vdb->bind(1, $id_content);
-            $vdb->bind(2, $id_account);
-            $vdb->bind(3, $ip_address);
-            $vdb->bind(4, $browser_name);
-            $vdb->bind(5, $browser_version);
-            $vdb->bind(6, $client_os);
-            $vdb->bind(7, $client_os_version);
-            $vdb->bind(8, $client_os_vname);
-            $vdb->bind(9, $client_os_bits);
-            $vdb->bind(10, $is_robot);
-            $vdb->execute();
-
+            if (notempty($id_content)) {
+                $vdb->query("INSERT INTO contents_views (id_content, id_account, ip_address, browser_name, browser_version, client_os, client_os_version, client_os_vname, client_os_bits, is_robot) VALUES (?,?,?,?,?,?,?,?,?,?)");
+                $vdb->bind(1, $id_content);
+                $vdb->bind(2, $id_account);
+                $vdb->bind(3, $ip_address);
+                $vdb->bind(4, $browser_name);
+                $vdb->bind(5, $browser_version);
+                $vdb->bind(6, $client_os);
+                $vdb->bind(7, $client_os_version);
+                $vdb->bind(8, $client_os_vname);
+                $vdb->bind(9, $client_os_bits);
+                $vdb->bind(10, $is_robot);
+                $vdb->execute();
+            }
 
         } catch (Exception $exception) {
             error_log($exception);
