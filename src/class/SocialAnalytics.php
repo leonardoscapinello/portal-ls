@@ -18,7 +18,7 @@ class SocialAnalytics
 
     public function getGoogleAnalyticsScript_Head($google_analytics = null)
     {
-        if ($google_analytics === null) $google_analytics = $this->google_tagManager;
+        if ($google_analytics === null) $google_analytics = $this->google_analytics;
         if ($google_analytics === null) return null;
         $script = "<!-- Global site tag (gtag.js) - Google Analytics -->";
         $script .= "<script async src=\"https://www.googletagmanager.com/gtag/js?id=" . $google_analytics . "\"></script>";
