@@ -2,6 +2,9 @@
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
+ini_set('display_errors', 1);
+ini_set('error_log', "error_log");
+
 $server = $_SERVER['SERVER_NAME'];
 if ($server === "localhost") {
     $server = "http://localhost/lscapinello";
