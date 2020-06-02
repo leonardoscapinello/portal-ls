@@ -10,7 +10,7 @@ class BlogIntelligence
         global $text;
         try {
             $database = new Database();
-            $database->query("SELECT id_content, title, content_html FROM contents WHERE content_type = 'blog' AND is_active = 'Y' AND is_analyzed = 'N' ");
+            $database->query("SELECT id_content, title, content_html FROM contents WHERE (content_type = 'blog' OR content_type = 'serie') AND is_active = 'Y' AND is_analyzed = 'N' ");
             $result = $database->resultset();
             for ($i = 0; $i < count($result); $i++) {
 
@@ -19,14 +19,14 @@ class BlogIntelligence
                 $content_html = $result[$i]['content_html'];
                 $content_html = $text->utf8($content_html);
                 $summary = $this->summarizer($content_html);
-
                 $semantic_url = $this->createSemanticURL($content_title);
-                $description = $summary['description'];
-                $keywords = $summary['keywords'];
-
-                $this->putIntelligenceOnBlog($semantic_url, $description, $keywords, $id_content);
-
-
+                if ($summary[0] !== null && $summary[1] !== null) {
+                    $description = $summary['description'];
+                    $keywords = $summary['keywords'];
+                    $this->putIntelligenceOnBlog($semantic_url, $description, $keywords, $id_content, true);
+                } else {
+                    $this->putIntelligenceOnBlog($semantic_url, null, null, $id_content, false);
+                }
             }
         } catch (Exception $exception) {
             error_log($exception);
@@ -87,14 +87,15 @@ class BlogIntelligence
         return array(null, null);
     }
 
-    private function putIntelligenceOnBlog($semantic_url, $description, $keywords, $id_content)
+    private function putIntelligenceOnBlog($semantic_url, $description = null, $keywords = null, $id_content, $set_ready = false)
     {
         try {
             $database = new Database();
-            $database->query("UPDATE contents SET semantic_url = ?, description = ?, keywords = ?, is_analyzed = 'Y', analyze_time = CURRENT_TIMESTAMP WHERE id_content = ?");
+            $database->query("UPDATE contents SET semantic_url = ?, description = ?, keywords = ?, is_analyzed = ?, analyze_time = CURRENT_TIMESTAMP WHERE id_content = ?");
             $database->bind(1, $semantic_url);
             $database->bind(2, $description);
             $database->bind(3, $keywords);
+            $database->bind(5, ($set_ready ? "Y" : "N"));
             $database->bind(4, $id_content);
             $database->execute();
             return true;

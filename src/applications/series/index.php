@@ -20,6 +20,7 @@ $static->minifyStyleSheet("ls.series");
 
 $ct_main = get_request("ct_main");
 
+
 ?>
 <html>
 <head>
@@ -29,12 +30,13 @@ $ct_main = get_request("ct_main");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <?= $static->load("ls.series.min.css") ?>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <?php if ($ct_main === "view-serie") {
-    require_once(DIRNAME . "../components/series/header-view-serie.php");
-
-} elseif ($ct_main === "view-season") {
+    require_once(DIRNAME . "../applications/series/view-serie.php");
+} elseif ($ct_main === "view-episode") {
+    require_once(DIRNAME . "../applications/series/view-episode.php");
 } else {
     require_once(DIRNAME . "../components/series/header-featured.php");
     require_once(DIRNAME . "../components/series/featured.php");
@@ -47,6 +49,9 @@ require_once(DIRNAME . "../components/footer.php");
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
+<?= $static->load("jquery.withinviewport.js"); ?>
+<?= $static->load("withinviewport.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
+<?= $static->load("lseries.js"); ?>
 </body>
 </html>

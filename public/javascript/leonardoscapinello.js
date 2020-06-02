@@ -1,4 +1,7 @@
-window.setTimeout(function () {
+function r(f) {
+    /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
+}
+r(function () {
     $('.blog-carousel').owlCarousel({
         loop: true,
         margin: 10,
@@ -160,4 +163,4 @@ window.setTimeout(function () {
         setActiveToHash();
     }, 100);
 
-}, 100);
+});

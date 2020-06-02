@@ -20,9 +20,13 @@ class Contents
     private $private_level;
     private $category_name;
 
+    private $content_exists = false;
 
-    public function __construct()
+
+    public function __construct($ignore_init = false)
     {
+        // PUT FOR JUST INITIALIZE CLASS WITHOUT DATABASE TOUCH
+        if ($ignore_init) return;
         try {
             $this->content_type = (get_request("ct_type") === null ? "page" : get_request("ct_type"));
             $semantic_url = $this->getSemanticRequest() === null ? "index" : $this->getSemanticRequest();
@@ -40,9 +44,51 @@ class Contents
                 $database->bind(2, $semantic_url);
                 $result = $database->resultsetObject();
                 if ($result && count(get_object_vars($result)) > 0) {
+                    $this->content_exists = true;
                     foreach ($result as $key => $value) {
                         $this->$key = $text->utf8($value);
                     }
+                }
+            }
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+    }
+
+    public function loadById($id_content)
+    {
+        try {
+
+            $database = new Database();
+            $text = new Text();
+            $database->query("SELECT * FROM contents ct LEFT JOIN contents_categories cc ON cc.id_category = ct.id_category WHERE content_type = 'serie' AND id_content = ?");
+            $database->bind(1, $id_content);
+            $result = $database->resultsetObject();
+            if ($result && count(get_object_vars($result)) > 0) {
+                $this->content_exists = true;
+                foreach ($result as $key => $value) {
+                    $this->$key = $text->utf8($value);
+                }
+            }
+
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+    }
+
+    public function loadByHash($id_content)
+    {
+        try {
+
+            $database = new Database();
+            $text = new Text();
+            $database->query("SELECT * FROM contents ct LEFT JOIN contents_categories cc ON cc.id_category = ct.id_category WHERE content_type = 'serie' AND MD5(id_content) = ?");
+            $database->bind(1, $id_content);
+            $result = $database->resultsetObject();
+            if ($result && count(get_object_vars($result)) > 0) {
+                $this->content_exists = true;
+                foreach ($result as $key => $value) {
+                    $this->$key = $text->utf8($value);
                 }
             }
         } catch (Exception $exception) {
@@ -116,7 +162,7 @@ class Contents
         $unique = array();
         try {
             $database = new Database();
-            $query = "SELECT ct.title, ct.description, ct.cover_image, ct.semantic_url, cc.category_url, MATCH(ct.title, ct.content_html) AGAINST(?) AS score FROM contents ct LEFT JOIN contents_categories cc ON cc.id_category = ct.id_category WHERE MATCH(ct.title, ct.content_html) AGAINST(?) AND id_content <> ? ORDER BY score DESC LIMIT 1";
+            $query = "SELECT ct.title, ct.description, ct.cover_image, ct.semantic_url, cc.category_url, MATCH(ct.title, ct.content_html) AGAINST(?) AS score FROM contents ct LEFT JOIN contents_categories cc ON cc.id_category = ct.id_category WHERE MATCH(ct.title, ct.content_html) AGAINST(?) AND id_content <> ? AND content_type = 'blog' ORDER BY score DESC LIMIT 1";
             $database->query($query);
             $database->bind(1, $this->getContentHtml());
             $database->bind(2, $this->getContentHtml());
@@ -235,7 +281,10 @@ class Contents
 
     public function getTitle()
     {
-        return $this->fixHTMLString($this->title);
+        if ($this->isContentExists()) {
+            return $this->fixHTMLString($this->title);
+        }
+        return "Página não Encontrada";
     }
 
     public function getContentHtml()
@@ -313,6 +362,14 @@ class Contents
     public function getCategoryColor()
     {
         return $this->category_color;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isContentExists(): bool
+    {
+        return $this->content_exists;
     }
 
 

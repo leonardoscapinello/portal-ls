@@ -50,7 +50,7 @@ class StaticCompiler
                 $file_tag = "<link href=\"%s\" rel=\"stylesheet\" rel=\"preload\" as=\"style\" media=\"none\" onload=\"if(media!='all')media='all'\"/>";
             } else if ($ext === "js") {
                 $file_folder = "javascript";
-                $file_tag = "<script async src=\"%s\" type=\"text/javascript\"></script>";
+                $file_tag = "<script src=\"%s\" type=\"text/javascript\"></script>";
             } else {
                 $initial = $initial . "../";
                 if ($ext === "png" || $ext === "jpg") {

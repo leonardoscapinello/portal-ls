@@ -30,7 +30,8 @@
     "ext-iconv": "*",
     "neitanod/forceutf8": "~2.0",
     "leafo/lessphp":  "*",
-    "rosell-dk/webp-convert": "^2.3"
+    "rosell-dk/webp-convert": "^2.3",
+    "ext-dom": "*"
   },
   "config": {
     "vendor-dir": "src/vendor/"

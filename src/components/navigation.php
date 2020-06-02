@@ -10,9 +10,10 @@
         <a href="#" class="mp-menu-link mp-white w-nav-link mobile hide-nm"><i class="far fa-arrow-left"></i> Voltar</a>
         <a href="<?= SERVER_ADDRESS ?>blog/marketing/" class="mp-menu-link mp-white w-nav-link">Marketing</a>
         <a href="<?= SERVER_ADDRESS ?>blog/direito-digital/"
-           class="mp-menu-link mp-white w-nav-link">Direito Digital</a>
+        class="mp-menu-link mp-white w-nav-link">Direito Digital</a>
         <a href="<?= SERVER_ADDRESS ?>blog/customer-experience/"
            class="mp-menu-link mp-white w-nav-link">Customer Experience</a>
+        <a href="<?= SERVER_ADDRESS ?>series" class="mp-menu-link mp-white w-nav-link">Series</a>
         <!-- <a href="<?= SERVER_ADDRESS ?>blog/sua-empresa-online/"
            class="mp-menu-link mp-white w-nav-link">Sua Empresa Online</a>
         <a href="<?= SERVER_ADDRESS ?>consultoria" class="mp-menu-link mp-white w-nav-link">Consultoria</a> -->
