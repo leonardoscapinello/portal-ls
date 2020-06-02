@@ -85,7 +85,7 @@ $mail = new PHPMailer(true);
 $session = new AccountSession();
 $account = new Accounts();
 $license = new AccountsLicense();
-//$blogIntelligence = new BlogIntelligence();
+$blogIntelligence = new BlogIntelligence();
 $numeric = new Numeric();
 $browser = new BrowserDetection();
 
