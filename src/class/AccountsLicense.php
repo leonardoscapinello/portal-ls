@@ -52,5 +52,10 @@ class AccountsLicense
         return $this->userCanAccessByKey("PREMIUM_PRIVILEGES") === "Y" ? true : false;
     }
 
+    public function userCanAccessAllBooks()
+    {
+        return $this->userCanAccessByKey("PREMIUM_EBOOKS") === "Y" ? true : false;
+    }
+
 
 }
