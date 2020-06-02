@@ -542,7 +542,7 @@ img {
     width: 100%;
   }
   .mp-header-content {
-    padding-left: 0;
+    padding-left: 15px;
   }
   .mobile {
     display: unset;
