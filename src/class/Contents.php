@@ -30,7 +30,7 @@ class Contents
         // PUT FOR JUST INITIALIZE CLASS WITHOUT DATABASE TOUCH
         if ($ignore_init) return;
         try {
-            $this->content_type = (get_request("ct_type") === null ? "page" : get_request("ct_type"));
+            $this->content_type = (get_request("ctblog") === "Y" ? "blog" : "page");
             $semantic_url = $this->getSemanticRequest() === null ? "index" : $this->getSemanticRequest();
             $category_url = $this->getCategoryUrl();
             if ($this->content_type !== null && $semantic_url !== null) {
