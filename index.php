@@ -112,7 +112,7 @@ $contentsViews->add();
             <p>Só um instante...</p>
         </div>
     </div>
-    <?php if (notempty($semantic_url) || $contents->getContentType() === "series") { ?>
+    <?php if (notempty($semantic_url)) { ?>
 
         <?php require_once("./src/components/header.php") ?>
         <div class="inner-ctn ctn--<?= $contents->getContentType() ?>">
