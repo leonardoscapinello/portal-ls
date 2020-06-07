@@ -45,7 +45,7 @@ if (notempty($first_name) && notempty($last_name) && notempty($email_address) &&
                                 Instagram</b>.</p>
 
                         <div class="box-info">
-                            <b>É necessário ter o excel instalado em seu dispositivo.</b> Se possível, acesse à partir
+                            <b>É necessário ter o excel instalado em seu dispositivo.</b> Se possível, acesse &agrave; partir
                             de um computador ou notebook.
                         </div>
 

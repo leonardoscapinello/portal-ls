@@ -526,6 +526,6 @@ a {
     background: #f3f3f3;
     box-sizing: border-box;
     padding: 20px;
-    font-size: 19px;
+    font-size: .9em;
     line-height: 25px;
 }
