@@ -50,7 +50,7 @@
                                    placeholder="E-mail onde enviaremos a planilha" required/>
                         </div>
                         <div class="input-d last-btn">
-                            <button class="dark">Receber Grátis</button>
+                            <button class="dark">Acessar Grátis Agora</button>
                         </div>
                     </div>
                 </form>
