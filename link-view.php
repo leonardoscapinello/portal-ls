@@ -218,6 +218,7 @@ $links_list = array(
             display: inline-block;
             font-size: .7em;
             font-weight: 700;
+            margin: 0 6px 0 0 !important;
         }
 
         .tag {
