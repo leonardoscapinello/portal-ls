@@ -521,3 +521,11 @@ a {
     text-decoration: none;
     font-size: .95em;
 }
+
+.box-info {
+    background: #f3f3f3;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 19px;
+    line-height: 25px;
+}

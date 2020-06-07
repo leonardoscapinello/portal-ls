@@ -44,9 +44,15 @@ if (notempty($first_name) && notempty($last_name) && notempty($email_address) &&
                         <p>Você garantiu sua versão da planilha para <b>Organizar e Otimizar o Desepenho do seu
                                 Instagram</b>.</p>
 
+                        <div class="box-info">
+                            <b>É necessário ter o excel instalado em seu dispositivo.</b> Se possível, acesse à partir
+                            de um computador ou notebook.
+                        </div>
 
                         <div class="input-d last-btn">
-                            <a class="btn dark" href="<?=SERVER_ADDRESS?>get/20200605-organize-seu-instagram.xlsx/<?=$custom_file_name?>" target="_blank"><i
+                            <a class="btn dark"
+                               href="<?= SERVER_ADDRESS ?>get/20200605-organize-seu-instagram.xlsx/<?= $custom_file_name ?>"
+                               target="_blank"><i
                                         class="far fa-file-download"></i> Baixar Planilha</a>
                         </div>
 
