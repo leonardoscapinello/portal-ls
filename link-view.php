@@ -210,11 +210,11 @@ $links_list = array(
 
         ul.tags_vi {
             display: block;
-            margin-top: 8px;
+            margin: 8px 0 0 0;
             text-align: left !important;
         }
 
-        ul li {
+        ul.tags_vi li {
             display: inline-block;
             font-size: .7em;
             font-weight: 700;
@@ -326,7 +326,7 @@ $links_list = array(
                                                 conteúdo bloqueado
                                             <?php } ?>
                                         </div>
-                                        <ul>
+                                        <ul class="tags_vi">
                                             <?php
                                             $tags = $links_list[$i]['tags'];
                                             for ($x = 0; $x < count($tags); $x++) { ?>
