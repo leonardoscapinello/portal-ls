@@ -34,20 +34,20 @@
 
                         <div class="input-d">
                             <label for="first_name">Nome </label>
-                            <input type="text" name="first_name" id="first_name" value="" placeholder="Primeiro Nome"/>
+                            <input type="text" name="first_name" id="first_name" value="<?=$account->getFirstName()?>" placeholder="Primeiro Nome" required/>
                         </div>
                         <div class="input-d">
                             <label for="last_name">Sobrenome</label>
-                            <input type="text" name="last_name" id="last_name" value="" placeholder="Sobrenome"/>
+                            <input type="text" name="last_name" id="last_name" value="<?=$account->getLastName()?>" placeholder="Sobrenome" required/>
                         </div>
                         <div class="input-d">
                             <label for="phone">WhatsApp</label>
-                            <input type="text" name="phone" id="phone" value="" placeholder="WhatsApp"/>
+                            <input type="text" name="phone" id="phone" value="<?=$account->getPhoneNumber()?>" placeholder="WhatsApp" required/>
                         </div>
                         <div class="input-d">
                             <label for="email">E-mail que receberá a planilha</label>
-                            <input type="text" name="email" id="email" value=""
-                                   placeholder="E-mail onde enviaremos a planilha"/>
+                            <input type="text" name="email" id="email" value="<?=$account->getEmail()?>"
+                                   placeholder="E-mail onde enviaremos a planilha" required/>
                         </div>
                         <div class="input-d last-btn">
                             <button class="dark">Receber Grátis</button>
