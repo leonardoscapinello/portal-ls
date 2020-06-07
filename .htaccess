@@ -35,3 +35,5 @@ RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)$                        ./public/landin
 RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$   ./public/landings/index.php?launch=$1&subload=$2 [L,NC,QSA]
 
 RewriteRule ^([a-zA-Z0-9-z\-\_]+)$                               ./index.php?semantic_url=$1 [L,NC,QSA]
+
+RewriteRule ^get/(.*)/([a-zA-Z0-9-z\-\_]+)$                      ./public/downloads/force.php?file=$1&custom_name=$2 [L,NC,QSA]

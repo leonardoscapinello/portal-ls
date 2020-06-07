@@ -92,11 +92,12 @@ class Accounts
             $database = new Database();
             $phone = preg_replace("/[^0-9]/", "", $phone);
             if (strlen($email_address) < 6) return -1;
-            $database->query("SELECT username, email FROM accounts WHERE username = ? OR email = ?");
+            $database->query("SELECT id_account, username, email FROM accounts WHERE username = ? OR email = ?");
             $database->bind(1, $email_address);
             $database->bind(2, $email_address);
             $r = $database->resultset();
-            if (count($r) > 0) return 0;
+            if (count($r) > 0) return $r[0]['id_account'];
+
             $database->query("INSERT INTO accounts (username, email, first_name, last_name, phone_number, is_active, id_license) VALUES (?,?,?,?,?,?,1)");
             $database->bind(1, $email_address);
             $database->bind(2, $email_address);
@@ -136,7 +137,7 @@ class Accounts
         } catch (Exception $exception) {
             error_log($exception);
         }
-        return 0;
+        return false;
     }
 
     public function update($id_account, $first_name, $last_name, $phone, $password, $username, $id_license = "id_license")

@@ -1,7 +1,6 @@
 <?php require_once("../../src/properties/index.php");
 $landing = new Landing();
 $license = new AccountsLicense();
-
 ?>
 <html>
 <head>
@@ -111,6 +110,7 @@ $license = new AccountsLicense();
 
 <?= $static->load("owl.carousel.css"); ?>
 <?= $static->load("owl.theme.default.css"); ?>
+<?= $static->load("fontawesome.all.min.css"); ?>
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
@@ -132,6 +132,8 @@ $license = new AccountsLicense();
 <?= $static->load("skrollr.ie.min.js"); ?>
 <![endif]-->
 <script type="text/javascript">
+
+    $('#phone').mask('(00) 00000-0000');
 
     var promise = document.querySelector('video').play();
 

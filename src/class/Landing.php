@@ -64,7 +64,7 @@ class Landing
         $landingFolder = $this->getInternalPath();
         $subload = get_request("subload");
         if ($subload === null || $subload === "") $subload = "index.php";
-        $file = DIRNAME . "../../public/landings/" . $landingFolder . "/" . $subload;
+        $file = DIRNAME . "../../public/landings/" . $landingFolder . "/" . $subload . ".php";
         if (file_exists($file)) return $file;
 
         # IF FILE NOT EXISTS, TRY LOAD INDEX

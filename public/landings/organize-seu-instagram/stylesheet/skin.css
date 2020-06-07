@@ -1,0 +1,72 @@
+body {
+    font-size: 15px;
+}
+
+.section {
+    padding: 70px 0;
+}
+
+.section.green {
+    background: #2cc36b;
+}
+
+h2 {
+    font-size: 2.5em;
+    line-height: 45px;
+}
+
+h3 {
+    font-size: 1.8em;
+    color: #000;
+    line-height: 35px;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 30px;
+}
+
+.title-superior {
+    color: #FFFFFF;
+}
+
+.company {
+    margin-bottom: 50px;
+}
+
+.form-widget {
+    background: #FFFFFF;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+.form-widget .form-block {
+    margin: 10px 0;
+}
+
+.form-widget label {
+    display: block;
+}
+
+.input-d label {
+    display: block;
+    margin: 20px 0 10px 0;
+}
+
+.last-btn {
+    margin: 15px auto;
+    text-align: center;
+}
+
+.input-d input[type="text"], .input-d input[type="email"], .input-d input[type="password"], .input-d input[type="tel"] {
+    line-height: 44px;
+    display: block;
+    border: 2px #000 solid;
+    font-size: 1em;
+    color: #000000;
+    width: 100%;
+    padding: 0 20px;
+}

@@ -15,7 +15,6 @@ class SocialAnalytics
     );
 
 
-
     public function getGoogleAnalyticsScript_Head($google_analytics = null)
     {
         if ($google_analytics === null) $google_analytics = $this->google_analytics;
@@ -88,6 +87,11 @@ class SocialAnalytics
     {
         if ($js_object === "") return "<script>fbq('track', '" . $custom_track . "');</script>";
         return "<script>fbq('track', '" . $custom_track . "',  " . $js_object . ");</script>";
+    }
+
+    public function getMailChimpStatic_Body()
+    {
+        return "<script id=\"mcjs\">!function (c, h, i, m, p) {m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)}(document, \"script\", \"https://chimpstatic.com/mcjs-connected/js/users/1bdc1f491a693ce497e967ebe/bc61fea27526592f33d98ba01.js\");</script>";
     }
 
     /**

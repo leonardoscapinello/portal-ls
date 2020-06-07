@@ -163,6 +163,7 @@ $contentsViews->add();
 
 <?= $social->getGoogleTagManagerScript_Body(); ?>
 <?= $social->getFacebookTrack_Body(); ?>
+<?= $social->getMailChimpStatic_Body(); ?>
 <script type="text/javascript">
 
     const path = document.querySelector('#wave');
