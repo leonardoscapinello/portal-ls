@@ -290,9 +290,11 @@ $links_list = array(
                 <div class="col-xl-4 col-lg-4 col-sm-12">
 
                     <div class="header">
-                        <div class="company">
-                            <img src="<?= $static->load("leonardo-scapinello-white-background.svg") ?>"/>
-                        </div>
+                        <a href="<?= SERVER_ADDRESS ?>">
+                            <div class="company">
+                                <img src="<?= $static->load("leonardo-scapinello-white-background.svg") ?>"/>
+                            </div>
+                        </a>
                         <div class="personal-image"></div>
                     </div>
 
