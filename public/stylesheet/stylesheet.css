@@ -1459,13 +1459,9 @@ h5.featured-title {
     border-radius: 5px;
     margin-bottom: 20px;
   }
-   ul {
-    text-align: center !important;
-  }
   ul li {
-    display: inline-block;
+    display: block;
     margin: 0 12px;
-    text-align: center;
   }
 }
 .series-banner {
