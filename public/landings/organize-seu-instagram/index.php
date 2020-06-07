@@ -30,7 +30,7 @@
                 <form method="POST" action="<?= $landing->getPurchaseUrl() ?>">
                     <div class="form form-widget">
 
-                        <h3>Preencha para receber a planilha grátis em seu e-mail</h3>
+                        <h3>Preencha abaixo para acessar a planilha grátis em instantes</h3>
 
                         <div class="input-d">
                             <label for="first_name">Nome </label>
