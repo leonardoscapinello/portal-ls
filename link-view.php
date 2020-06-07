@@ -255,7 +255,7 @@ $links_list = array(
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, .2);
+            background: rgba(0, 0, 0, .5);
             z-index: 9999;
             cursor: default;
         }
@@ -265,13 +265,13 @@ $links_list = array(
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #333333;
+            color: #ffffff;
             font-size: 30px;
             text-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
         }
 
         .locked ~ .row {
-            filter: blur(2px) grayscale(100%);
+            filter: grayscale(100%);
         }
 
         a {
