@@ -156,7 +156,6 @@ $links_list = array(
 
         .link-container .link-column {
             width: calc(100% - 40px);
-            height: 100%;
             flex-shrink: 0;
         }
 
