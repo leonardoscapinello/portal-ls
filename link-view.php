@@ -221,6 +221,7 @@ $links_list = array(
             margin: 0 6px 0 0 !important;
         }
 
+
         .tag {
             border-radius: 5px;
             padding: 3px 7px;
@@ -254,7 +255,7 @@ $links_list = array(
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, .51);
+            background: rgba(0, 0, 0, .2);
             z-index: 9999;
             cursor: default;
         }
@@ -264,12 +265,13 @@ $links_list = array(
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: rgba(0, 0, 0, .64);
-            font-size: 40px;
+            color: #333333;
+            font-size: 30px;
+            text-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
         }
 
         .locked ~ .row {
-            filter: blur(1.5px) grayscale(100%);
+            filter: blur(2px) grayscale(100%);
         }
 
         a {
@@ -314,7 +316,7 @@ $links_list = array(
                             <div class="link-container" <?= $go ?>>
                                 <?php if ($locked) { ?>
                                     <div class="locked">
-                                        <i class="far fa-lock"></i>
+                                        <i class="fas fa-lock"></i>
                                     </div>
                                 <?php } ?>
                                 <div class="row">
