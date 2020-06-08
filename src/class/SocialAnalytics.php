@@ -123,6 +123,7 @@ class SocialAnalytics
         $script .= "vgo('setAccount', '" . $id . "');";
         $script .= "vgo('setTrackByDefault', true);";
         $script .= "vgo('process');";
+        $script .= "</script>";
         return $script;
     }
 
