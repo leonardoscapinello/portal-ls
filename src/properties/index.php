@@ -104,4 +104,5 @@ if (not_empty($next)) {
 
 $account->storeSession();
 
+header("Access-Control-Allow-Origin: " . SERVER_ADDRESS);
 ob_start("sanitize_output");
