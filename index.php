@@ -100,8 +100,6 @@ $contentsViews->add();
 
     </style>
     <?= $static->load("stylesheet.min.css"); ?>
-    <?php /*$social->getGoogleAnalyticsScript_Head();* ?>
-    <?= /*$social->getFacebookPixel_Head("website");*/ ?>
 </head>
 <body>
 <div id="wrapper">
@@ -154,16 +152,13 @@ $contentsViews->add();
         }
     </script>
 <?php } ?>
+<?= $social->getGoogleTagManagerScript_Body(); ?>
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
 <?= $static->load("infinite-scroll.pkgd.min.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $static->load("leonardoscapinello.scroll.js"); ?>
-
-<?= $social->getGoogleTagManagerScript_Body(); ?>
-<?php /*$social->getFacebookTrack_Body(); ?>
-<?= //$social->getMailChimpStatic_Body(); */?>
 <script type="text/javascript">
 
     const path = document.querySelector('#wave');
