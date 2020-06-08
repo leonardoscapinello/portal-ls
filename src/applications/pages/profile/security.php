@@ -9,7 +9,8 @@ $cpassword = get_request("cpassword");
 if ($id_user !== null && $password !== null && $cpassword !== null) {
     $u = $account->resetPassword($password, $cpassword);
     if ($u) {
-        header("Refresh: 0");
+        header("location: " . LOGIN_URL . "?next=" . $url->getActualURLAsNext());
+        die;
     } else {
         $attempt = "Não foi possível atualizar sua senha, verifique se ambas estão iguais.";
     }

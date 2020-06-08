@@ -66,7 +66,7 @@ class Accounts
                                 $email->paragraph("Recentemente sua senha foi alterada dentro do portal LS, essa alteração foi feita por você mesmo?");
                                 $email->paragraph("Caso você não tenha solicitado essa alteração, entre em contato com nosso suporte em suporte@flexwei.com para te ajudarmos com o caso e recuperar acesso a sua conta.");
                                 $email->preheader("Se você alterou sua senha, descongele sua conta agora.");
-                                $email->send();
+                                $email->save();
                             }
 
                             $session->logoutFromAllSessions($this->getIdAccount());
@@ -119,7 +119,7 @@ class Accounts
                 $email->paragraph("Preparamos tudo para que você possa acessar de forma simples e rápida, sem enrolação e dificuldade.");
                 $email->button("Fazer Login", LOGIN_URL . "?u=" . base64_encode($id));
                 $email->paragraph("Nos vemos no Portal LS!");
-                $email->send();
+                $email->save();
             } else {
                 $email->subject("Quero te dar as boas-vindas pessoalmente.");
                 $email->contact($first_name, $email_address);
@@ -131,7 +131,7 @@ class Accounts
                 $email->paragraph("Preparamos tudo para que você possa acessar de forma simples e rápida, sem enrolação e dificuldade.");
                 $email->paragraph("Nesse momento é muito importante que você conclua seu cadastro, combinado?");
                 $email->paragraph("Nos vemos no Portal LS!");
-                $email->send();
+                $email->save();
             }
             return $id;
         } catch (Exception $exception) {

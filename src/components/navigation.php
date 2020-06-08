@@ -20,7 +20,7 @@
         <?php if (!$session->isLogged()) { ?>
             <a href="<?= SERVER_ADDRESS ?>login" class="mobile mp-menu-link mp-white w-nav-link">Fazer Login</a>
         <?php } else { ?>
-            <a href="<?= SERVER_ADDRESS ?>perfil?t=downloads#downloads" class="mobile mp-menu-link mp-white w-nav-link">Minha Conta</a>
+            <a href="<?= SERVER_ADDRESS ?>perfil?t=info#info" class="mobile mp-menu-link mp-white w-nav-link">Minha Conta</a>
         <?php } ?>
 
 
@@ -30,7 +30,7 @@
             <a href="<?= SERVER_ADDRESS ?>login"
                class="mp-menu-unlim mp-white w-nav-link">Fazer Login</a>
         <?php } else { ?>
-            <a href="<?= SERVER_ADDRESS ?>perfil?t=downloads#downloads"
+            <a href="<?= SERVER_ADDRESS ?>perfil?t=info#info"
                class="mp-menu-unlim mp-white w-nav-link">Minha Conta</a>
         <?php } ?>
     </nav>

@@ -10,6 +10,8 @@ RewriteRule ^images/display$                                     ./public/images
 RewriteRule ^newsletter$                                         ./src/applications/interfaces/newsletter-register.php [L,NC,QSA]
 RewriteRule ^cadastro/concluir$                                  ./index.php?semantic_url=concluir_cadastro [L,NC,QSA]
 
+RewriteRule ^api/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$      ./src/applications/api/middleware.php?path=$1&component=$2 [L,NC,QSA]
+
 RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)$                          ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
 RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/$                         ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]
 RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([0-9]+)$                 ./index.php?ctblog=N&semantic_url=posts-by-category&category_url=$1 [L,NC,QSA]

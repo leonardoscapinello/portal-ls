@@ -71,6 +71,7 @@ require_once(DIRNAME . "/../class/Landing.php");
 require_once(DIRNAME . "/../class/ContentsViews.php");
 require_once(DIRNAME . "/../class/BrowserDetection.php");
 require_once(DIRNAME . "/../class/ExternalServiceList.php");
+require_once(DIRNAME . "/../class/Scheduler.php");
 
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -84,7 +85,7 @@ $contents = new Contents();
 $text = new Text();
 $date = new Date();
 $url = new URL();
-$mail = new PHPMailer(true);
+
 $session = new AccountSession();
 $account = new Accounts();
 $license = new AccountsLicense();
