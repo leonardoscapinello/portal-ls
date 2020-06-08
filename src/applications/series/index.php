@@ -123,7 +123,7 @@ if ($ct_main === "view-serie") {
     <meta name="application-name" content="<?= $title ?>"/>
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
-    <?= $social->getGoogleTagManagerScript_Head(); ?>
+    <?= $social->getGoogleTagManagerScript_Head("GTM-WJ4HVVL"); ?>
     <style type="text/css">
         .fp-loader {
             background: rgba(255, 255, 255, .5);
@@ -177,6 +177,7 @@ if ($ct_main === "view-serie") {
     ?>
 </div>
 
+<?= $social->getGoogleTagManagerScript_Body("GTM-WJ4HVVL"); ?>
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
@@ -184,7 +185,6 @@ if ($ct_main === "view-serie") {
 <?= $static->load("withinviewport.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $static->load("lseries.js"); ?>
-<?= $social->getGoogleTagManagerScript_Body(); ?>
 <?php /*$social->getFacebookTrack_Body(); ?>
 <?= $social->getMailChimpStatic_Body();*/ ?>
 </body>
