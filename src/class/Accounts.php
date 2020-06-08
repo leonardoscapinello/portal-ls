@@ -19,6 +19,8 @@ class Accounts
 
     private $is_active_default = "N";
     private $is_customer = "N";
+    private $user_exists = false;
+    private $register_notifications = true;
 
     public function __construct($id_account = 0)
     {
@@ -36,6 +38,7 @@ class Accounts
                 foreach ($result as $key => $value) {
                     $this->$key = $text->utf8($value);
                 }
+                $this->user_exists = true;
             }
         }
     }
@@ -108,30 +111,32 @@ class Accounts
             $database->execute();
             $id = $database->lastInsertId();
 
-            if (not_empty($password)) {
-                $tmp_account = new Accounts($id);
-                $tmp_account->resetPassword($password, $password, false);
-                $email->subject("Quero te dar as boas-vindas pessoalmente.");
-                $email->contact($first_name, $email_address);
-                $email->paragraph("Olá, Leonardo aqui.");
-                $email->paragraph("Quero te dar as boas-vindas ao portal <b>LS</b> e te dizer que a partir de agora você tem um forte aliado em busca da sua excelencia no mercado digital.");
-                $email->paragraph("Quero aproveitar a oportunidade para te lembrar: <b>Publicamos conteúdo novo toda semana</b> para que você tenha sempre em mãos, informação de qualidade e relevante para melhorar seu desempenho no mercado digital.");
-                $email->paragraph("Preparamos tudo para que você possa acessar de forma simples e rápida, sem enrolação e dificuldade.");
-                $email->button("Fazer Login", LOGIN_URL . "?u=" . base64_encode($id));
-                $email->paragraph("Nos vemos no Portal LS!");
-                $email->save();
-            } else {
-                $email->subject("Quero te dar as boas-vindas pessoalmente.");
-                $email->contact($first_name, $email_address);
-                $email->paragraph("Olá, Leonardo aqui.");
-                $email->paragraph("Quero te dar as boas-vindas ao portal <b>LS</b>.");
-                $email->paragraph("Pelo que vi aqui, ainda está faltando <b>algumas informações para você finalizar seu cadastro.</b> Mas fique tranquilo, são informações básicas e em menos de 2 minutos você já pode acessar sua conta.");
-                $email->button("Concluir meu cadastro.", LOGIN_URL . "?u=" . base64_encode($id));
-                $email->paragraph("Quero aproveitar a oportunidade para te lembrar: <b>Publicamos conteúdo novo toda semana</b> para que você tenha sempre em mãos, informação de qualidade e relevante para melhorar seu desempenho no mercado digital.");
-                $email->paragraph("Preparamos tudo para que você possa acessar de forma simples e rápida, sem enrolação e dificuldade.");
-                $email->paragraph("Nesse momento é muito importante que você conclua seu cadastro, combinado?");
-                $email->paragraph("Nos vemos no Portal LS!");
-                $email->save();
+            if ($this->register_notifications) {
+                if (not_empty($password)) {
+                    $tmp_account = new Accounts($id);
+                    $tmp_account->resetPassword($password, $password, false);
+                    $email->subject("Quero te dar as boas-vindas pessoalmente.");
+                    $email->contact($first_name, $email_address);
+                    $email->paragraph("Olá, Leonardo aqui.");
+                    $email->paragraph("Quero te dar as boas-vindas ao portal <b>LS</b> e te dizer que a partir de agora você tem um forte aliado em busca da sua excelencia no mercado digital.");
+                    $email->paragraph("Quero aproveitar a oportunidade para te lembrar: <b>Publicamos conteúdo novo toda semana</b> para que você tenha sempre em mãos, informação de qualidade e relevante para melhorar seu desempenho no mercado digital.");
+                    $email->paragraph("Preparamos tudo para que você possa acessar de forma simples e rápida, sem enrolação e dificuldade.");
+                    $email->button("Fazer Login", LOGIN_URL . "?u=" . base64_encode($id));
+                    $email->paragraph("Nos vemos no Portal LS!");
+                    $email->save();
+                } else {
+                    $email->subject("Quero te dar as boas-vindas pessoalmente.");
+                    $email->contact($first_name, $email_address);
+                    $email->paragraph("Olá, Leonardo aqui.");
+                    $email->paragraph("Quero te dar as boas-vindas ao portal <b>LS</b>.");
+                    $email->paragraph("Pelo que vi aqui, ainda está faltando <b>algumas informações para você finalizar seu cadastro.</b> Mas fique tranquilo, são informações básicas e em menos de 2 minutos você já pode acessar sua conta.");
+                    $email->button("Concluir meu cadastro.", LOGIN_URL . "?u=" . base64_encode($id));
+                    $email->paragraph("Quero aproveitar a oportunidade para te lembrar: <b>Publicamos conteúdo novo toda semana</b> para que você tenha sempre em mãos, informação de qualidade e relevante para melhorar seu desempenho no mercado digital.");
+                    $email->paragraph("Preparamos tudo para que você possa acessar de forma simples e rápida, sem enrolação e dificuldade.");
+                    $email->paragraph("Nesse momento é muito importante que você conclua seu cadastro, combinado?");
+                    $email->paragraph("Nos vemos no Portal LS!");
+                    $email->save();
+                }
             }
             return $id;
         } catch (Exception $exception) {
@@ -176,7 +181,7 @@ class Accounts
     }
 
 
-    public function getUserExists($email_address)
+    public function getIdAccountByEmailOrUsername($email_address)
     {
         try {
             $database = new Database();
@@ -285,6 +290,20 @@ class Accounts
     {
         return $this->id_license;
     }
+
+    /**
+     * @return bool
+     */
+    public function userExists(): bool
+    {
+        return $this->user_exists;
+    }
+
+    public function registerNotification($bool)
+    {
+        $this->register_notifications = false;
+    }
+
 
     public function storeSession()
     {

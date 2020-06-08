@@ -9,8 +9,9 @@ class Date
     private $date_format = "d/m/Y";
     private $datetime_format = "d/m/Y H:i";
 
-    public function formatDate($date)
+    public function formatDate($date, $use_date_function = false)
     {
+        if ($use_date_function) return date($this->date_format, strtotime($date));
         return strftime($this->date_format, strtotime($date));
     }
 

@@ -32,6 +32,7 @@ class Scheduler
                 $this->contact_name = $result[$i]['contact_name'];
                 $this->contact_email = $result[$i]['contact_email'];
                 $this->content = $result[$i]['content'];
+                $this->subject = $result[$i]['subject'];
                 $this->content_unformatted = $result[$i]['content_unformatted'];
                 $this->is_active = $result[$i]['is_active'];
                 $this->is_sent = $result[$i]['is_sent'];

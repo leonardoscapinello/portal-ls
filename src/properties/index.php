@@ -72,6 +72,8 @@ require_once(DIRNAME . "/../class/ContentsViews.php");
 require_once(DIRNAME . "/../class/BrowserDetection.php");
 require_once(DIRNAME . "/../class/ExternalServiceList.php");
 require_once(DIRNAME . "/../class/Scheduler.php");
+require_once(DIRNAME . "/../class/Hotmart.php");
+require_once(DIRNAME . "/../class/PurchaseNotifications.php");
 
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';

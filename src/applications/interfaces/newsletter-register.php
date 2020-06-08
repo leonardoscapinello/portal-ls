@@ -3,7 +3,7 @@ require_once("../../properties/index.php");
 
 $nl = new Accounts();
 $username = get_request("username");
-$id_account = $nl->getUserExists($username);
+$id_account = $nl->getIdAccountByEmailOrUsername($username);
 
 if ($id_account === 0) {
     $id_account = $newsletter_register = $nl->register($username);

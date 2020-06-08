@@ -67,7 +67,7 @@ class EmailNotification
 
     public function heading($text)
     {
-        $element = "<h3>" . $text . "</h3>";
+        $element = "<h3 style=\"font-size: 20px;font-weight: 700;color: #000000\">" . $text . "</h3>";
         $this->add($element);
     }
 

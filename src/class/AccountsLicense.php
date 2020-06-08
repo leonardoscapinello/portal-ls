@@ -47,6 +47,22 @@ class AccountsLicense
         return false;
     }
 
+
+    public function setUserLicense($id_license, $id_account)
+    {
+        try {
+            $database = new Database();
+            $database->query("UPDATE accounts SET id_license = ? WHERE id_account = ?");
+            $database->bind(1, $id_license);
+            $database->bind(2, $id_account);
+            $database->execute();
+            return true;
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return false;
+    }
+
     public function isPremium()
     {
         return $this->userCanAccessByKey("PREMIUM_PRIVILEGES") === "Y" ? true : false;
