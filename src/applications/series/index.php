@@ -123,6 +123,7 @@ if ($ct_main === "view-serie") {
     <meta name="application-name" content="<?= $title ?>"/>
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
+    <?= $social->getGoogleTagManagerScript_Head(); ?>
     <style type="text/css">
         .fp-loader {
             background: rgba(255, 255, 255, .5);
@@ -158,9 +159,8 @@ if ($ct_main === "view-serie") {
     </style>
 
     <?= $static->load("ls.series.min.css") ?>
-    <?= $social->getGoogleTagManagerScript_Head(); ?>
-    <?= $social->getGoogleAnalyticsScript_Head(); ?>
-    <?= $social->getFacebookPixel_Head("webiste"); ?>
+    <?php /* $social->getGoogleAnalyticsScript_Head(); ?>
+    <?= $social->getFacebookPixel_Head("webiste");*/ ?>
 </head>
 <body>
 <div id="wrapper">
@@ -185,7 +185,7 @@ if ($ct_main === "view-serie") {
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $static->load("lseries.js"); ?>
 <?= $social->getGoogleTagManagerScript_Body(); ?>
-<?= $social->getFacebookTrack_Body(); ?>
-<?= $social->getMailChimpStatic_Body(); ?>
+<?php /*$social->getFacebookTrack_Body(); ?>
+<?= $social->getMailChimpStatic_Body();*/ ?>
 </body>
 </html>

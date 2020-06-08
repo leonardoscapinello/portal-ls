@@ -65,6 +65,7 @@ $contentsViews->add();
     <meta name="application-name" content="<?= $contents->getTitle() ?>"/>
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
+    <?= $social->getGoogleTagManagerScript_Head(); ?>
     <style type="text/css">
         .fp-loader {
             background: rgba(255, 255, 255, .5);
@@ -99,9 +100,8 @@ $contentsViews->add();
 
     </style>
     <?= $static->load("stylesheet.min.css"); ?>
-    <?= $social->getGoogleTagManagerScript_Head(); ?>
-    <?= $social->getGoogleAnalyticsScript_Head(); ?>
-    <?= $social->getFacebookPixel_Head("website"); ?>
+    <?php /*$social->getGoogleAnalyticsScript_Head();* ?>
+    <?= /*$social->getFacebookPixel_Head("website");*/ ?>
 </head>
 <body>
 <div id="wrapper">
@@ -162,8 +162,8 @@ $contentsViews->add();
 <?= $static->load("leonardoscapinello.scroll.js"); ?>
 
 <?= $social->getGoogleTagManagerScript_Body(); ?>
-<?= $social->getFacebookTrack_Body(); ?>
-<?= $social->getMailChimpStatic_Body(); ?>
+<?php /*$social->getFacebookTrack_Body(); ?>
+<?= //$social->getMailChimpStatic_Body(); */?>
 <script type="text/javascript">
 
     const path = document.querySelector('#wave');

@@ -37,13 +37,13 @@ $license = new AccountsLicense();
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
     <?= $static->load("gilroy/Gilroy.ttf"); ?>
     <link href="<?= LAUNCH_ADDRESS ?>stylesheet/ls.default.css" type="text/css" rel="stylesheet">
+    <?= $social->getGoogleTagManagerScript_Head(); ?>
     <?= $static->load("aos.css") ?>
     <?= $static->load("container.css") ?>
     <?= $landing->loadGlobalAsset("ls.default.css") ?>
     <?= $landing->loadAsset("skin.css") ?>
-    <?= $social->getGoogleTagManagerScript_Head(); ?>
-    <?= $social->getGoogleAnalyticsScript_Head(); ?>
-    <?= $social->getFacebookPixel_Head("website"); ?>
+    <?php /*$social->getGoogleAnalyticsScript_Head(); ?>
+    <?= //$social->getFacebookPixel_Head("website");*/ ?>
 </head>
 <body>
 <div id="skrollr-body">
@@ -120,8 +120,8 @@ $license = new AccountsLicense();
 <?= $static->load("skrollr.min.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $social->getGoogleTagManagerScript_Body(); ?>
-<?= $social->getFacebookTrack_Body(); ?>
-<?= $social->getMailChimpStatic_Body(); ?>
+<?php /*$social->getFacebookTrack_Body(); ?>
+<?= //$social->getMailChimpStatic_Body();*/ ?>
 <script type="text/javascript">
     $(document).ready(function () {
         var firstName = $('#firstName').text();
