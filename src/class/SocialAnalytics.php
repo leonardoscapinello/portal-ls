@@ -14,8 +14,8 @@ class SocialAnalytics
         "entity_id" => "100048923713721"
     );
 
-
-    public function getGoogleAnalyticsScript_Head($google_analytics = null)
+/*
+    private function getGoogleAnalyticsScript_Head($google_analytics = null)
     {
         if ($google_analytics === null) $google_analytics = $this->google_analytics;
         if ($google_analytics === null) return null;
@@ -28,7 +28,7 @@ class SocialAnalytics
         $script .= "gtag('config', '" . $google_analytics . "');";
         $script .= "</script>";
         return $script;
-    }
+    }*/
 
     public function getGoogleTagManagerScript_Head($google_tagManager = null)
     {
@@ -56,7 +56,8 @@ class SocialAnalytics
         return $script;
     }
 
-    public function getFacebookPixel_Head($pixel_name_or_id, $custom_track = "PageView")
+    /*
+    private function getFacebookPixel_Head($pixel_name_or_id, $custom_track = "PageView")
     {
         $pixel_id = $pixel_name_or_id;
         if (array_key_exists($pixel_id, $this->facebook_pixel)) {
@@ -83,24 +84,22 @@ class SocialAnalytics
         return $script;
     }
 
-    public function getFacebookTrack_Body($custom_track = "PageView", $js_object = "")
+    priate function getFacebookTrack_Body($custom_track = "PageView", $js_object = "")
     {
         if ($js_object === "") return "<script>fbq('track', '" . $custom_track . "');</script>";
         return "<script>fbq('track', '" . $custom_track . "',  " . $js_object . ");</script>";
     }
 
-    public function getMailChimpStatic_Body()
+    private function getMailChimpStatic_Body()
     {
         return "<script id=\"mcjs\">!function (c, h, i, m, p) {m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)}(document, \"script\", \"https://chimpstatic.com/mcjs-connected/js/users/1bdc1f491a693ce497e967ebe/bc61fea27526592f33d98ba01.js\");</script>";
     }
 
-    /**
-     * @return string
-     */
-    public function getGoogleAnalytics(): string
+    private function getGoogleAnalytics(): string
     {
         return $this->google_analytics;
     }
+*/
 
     public function extractCommonWords($string)
     {
