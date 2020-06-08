@@ -94,12 +94,12 @@ class SocialAnalytics
     {
         return "<script id=\"mcjs\">!function (c, h, i, m, p) {m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)}(document, \"script\", \"https://chimpstatic.com/mcjs-connected/js/users/1bdc1f491a693ce497e967ebe/bc61fea27526592f33d98ba01.js\");</script>";
     }
-
-    private function getGoogleAnalytics(): string
+*/
+    public function getGoogleAnalytics(): string
     {
         return $this->google_analytics;
     }
-*/
+
 
     public function extractCommonWords($string)
     {
