@@ -161,7 +161,7 @@ $social->mailChimp();
     </script>
 <?php } ?>
 <?= $static->load("jquery.min.js"); ?>
-<?= $static->load("owl.carousel.min.jMins"); ?>
+<?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
 <?= $static->load("infinite-scroll.pkgd.min.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
