@@ -280,7 +280,6 @@ $links_list = array(
 
     </style>
     <?= $static->load("stylesheet.min.css"); ?>
-    <?= $social->getGoogleTagManagerScript_Head(); ?>
     <?php /* $social->getGoogleAnalyticsScript_Head(); ?>
     <?= $social->getFacebookPixel_Head("website"); */ ?>
 </head>
@@ -352,7 +351,6 @@ $links_list = array(
     </div>
 </div>
 
-<?= $social->getGoogleTagManagerScript_Body()?>
 <script type="text/javascript">
     function go(url) {
         window.location.href = url;
