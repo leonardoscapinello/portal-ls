@@ -19,12 +19,12 @@ class Scheduler
 
     public function execute()
     {
+        $notifications = array();
         try {
             $database = new Database();
             $database->query("SELECT * FROM `notifications` WHERE is_sent = 'N' AND sent_time IS NULL AND NOW() > scheduled_time LIMIT 10");
             $result = $database->resultset();
             for ($i = 0; $i < count($result); $i++) {
-
                 $this->id_notification = $result[$i]['id_notification'];
                 $this->notification_serial = $result[$i]['notification_serial'];
                 $this->sender_name = $result[$i]['sender_name'];
@@ -40,14 +40,15 @@ class Scheduler
                 $this->sent_time = $result[$i]['sent_time'];
                 $submit = $this->sendEmail();
                 if ($submit) {
+                    array_push($notifications, array("serial" => $this->notification_serial));
                     $this->markAsSent();
                 }
                 $this->cleanEverything();
-
             }
         } catch (Exception $exception) {
-
+            error_log($exception);
         }
+        return $notifications;
     }
 
     private function sendEmail()
