@@ -1,0 +1,7 @@
+Array
+(
+    [path] => hotmart
+    [component] => subscribe-complete
+    [a] => sd
+    [oauth] => 13ea09f8-08af-4cb8-bfc9-a6c905d1b37c
+)
