@@ -65,7 +65,6 @@ $contentsViews->add();
     <meta name="application-name" content="<?= $contents->getTitle() ?>"/>
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
-    <?= $social->getGoogleTagManagerScript_Head(); ?>
     <style type="text/css">
         .fp-loader {
             background: rgba(255, 255, 255, .5);
@@ -100,6 +99,7 @@ $contentsViews->add();
 
     </style>
     <?= $static->load("stylesheet.min.css"); ?>
+    <?= $social->getGoogleTagManagerScript_Head("GTM-P75P74L"); ?>
 </head>
 <body>
 <div id="wrapper">
@@ -152,7 +152,6 @@ $contentsViews->add();
         }
     </script>
 <?php } ?>
-<?= $social->getGoogleTagManagerScript_Body(); ?>
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
@@ -229,5 +228,6 @@ $contentsViews->add();
     buildWave(50, 55);
 
 </script>
+<?= $social->getGoogleTagManagerScript_Body("GTM-P75P74L"); ?>
 </body>
 </html>
