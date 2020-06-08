@@ -20,12 +20,10 @@ require_once("../../../src/properties/index.php");
 
 $ct_main = get_request("ct_main");
 $author = new Accounts(1);/* ==================== LOAD SERIES AND EPISODES VARIABLES */;
-
 $series = new Series();
 $serie_url = get_request("serie_url");
 $season_short_key = get_request("season_short_key");
 $episode = get_request("episode");
-
 $title = "Página Inicial";
 $description = "Aprenda sobre marketing, negócios e direito digital com conteúdo escrito e organizado de forma prática e inteligente";
 $cover_image = "";
@@ -53,8 +51,6 @@ if ($ct_main === "view-serie") {
     $description = $series->getSeasonDescription();
     $cover_image = "";
     $keywords = $extracted . "leonardo scapinello séries, marketing digital, aprenda sobre negócios, escola de negócios, escola de marketing, consultoria de marketing";
-
-
 } elseif ($ct_main === "view-episode") {
     if (!notempty($serie_url) || !notempty($season_short_key) || !notempty($episode)) {
         header("location: " . SERVER_ADDRESS . "series");
@@ -65,28 +61,28 @@ if ($ct_main === "view-serie") {
         header("location: " . SERVER_ADDRESS . "series");
         die;
     }
-
     $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDate());
-
-
     $contents = new Contents(true);
     $contents->loadById($series->getIdContent());
     $contentNote = new ContentsNotes();
     $content_edited = $contentNote->getContent($contents->getIdContent());
-
     $image = $static->loadBlog($contents->getCoverImage());
     if (!notempty($image)) {
         $image = $static->loadSeries($contents->getCoverImage(), $series->getShortKey());
     }
-
     $title = $contents->getTitle() . " - " . $series->getSerieName();
     $description = $series->getSeasonDescription();
     $cover_image = "";
     $keywords = $contents->getKeywords() . ", leonardo scapinello séries, marketing digital, aprenda sobre negócios, escola de negócios, escola de marketing, consultoria de marketing";
-
-
 }
 
+
+// INITIALIZE SOCIAL METRIC
+$social->googleAnalytics();
+$social->facebook();
+$social->linkedIn();
+$social->activeCampaign();
+$social->mailChimp();
 ?>
 <html>
 <head>
@@ -123,7 +119,7 @@ if ($ct_main === "view-serie") {
     <meta name="application-name" content="<?= $title ?>"/>
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
-    <?= $social->getGoogleTagManagerScript_Head("GTM-WJ4HVVL"); ?>
+    <?= $social->getHeadTags(); ?>
     <style type="text/css">
         .fp-loader {
             background: rgba(255, 255, 255, .5);
@@ -177,7 +173,7 @@ if ($ct_main === "view-serie") {
     ?>
 </div>
 
-<?= $social->getGoogleTagManagerScript_Body("GTM-WJ4HVVL"); ?>
+<?= $social->getBodyTags(); ?>
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>

@@ -1,6 +1,13 @@
 <?php require_once("../../src/properties/index.php");
 $landing = new Landing();
 $license = new AccountsLicense();
+
+// INITIALIZE SOCIAL METRIC
+$social->googleAnalytics();
+$social->facebook();
+$social->linkedIn();
+$social->activeCampaign();
+$social->mailChimp();
 ?>
 <html>
 <head>
@@ -37,7 +44,7 @@ $license = new AccountsLicense();
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
     <?= $static->load("gilroy/Gilroy.ttf"); ?>
     <link href="<?= LAUNCH_ADDRESS ?>stylesheet/ls.default.css" type="text/css" rel="stylesheet">
-    <?= $social->getGoogleTagManagerScript_Head("GTM-TX3K7QK"); ?>
+    <?= $social->getHeadTags(); ?>
     <?= $static->load("aos.css") ?>
     <?= $static->load("container.css") ?>
     <?= $landing->loadGlobalAsset("ls.default.css") ?>
@@ -108,7 +115,7 @@ $license = new AccountsLicense();
     </div>
 </div>
 
-
+<?= $social->getBodyTags(); ?>
 <?= $static->load("owl.carousel.css"); ?>
 <?= $static->load("owl.theme.default.css"); ?>
 <?= $static->load("fontawesome.all.min.css"); ?>
@@ -119,7 +126,6 @@ $license = new AccountsLicense();
 <?= $static->load("ScrollMagic.min.js"); ?>
 <?= $static->load("skrollr.min.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
-<?= $social->getGoogleTagManagerScript_Body("GTM-TX3K7QK"); ?>
 <?php /*$social->getFacebookTrack_Body(); ?>
 <?= //$social->getMailChimpStatic_Body();*/ ?>
 <script type="text/javascript">

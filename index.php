@@ -30,6 +30,13 @@ $content_private_level = $contents->getPrivateLevel();
 $contentsViews = new ContentsViews();
 $contentsViews->add();
 
+// INITIALIZE SOCIAL METRIC
+$social->googleAnalytics();
+$social->facebook();
+$social->linkedIn();
+$social->activeCampaign();
+$social->mailChimp();
+
 ?>
 <html>
 <head>
@@ -99,7 +106,7 @@ $contentsViews->add();
 
     </style>
     <?= $static->load("stylesheet.min.css"); ?>
-    <?= $social->getGoogleTagManagerScript_Head("GTM-P75P74L"); ?>
+    <?= $social->getHeadTags(); ?>
 </head>
 <body>
 <div id="wrapper">
@@ -141,6 +148,7 @@ $contentsViews->add();
 <!--
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
 -->
+<?= $social->getBodyTags() ?>
 <?php if (notempty($contents->getSemanticUrl())) { ?>
     <script type="text/javascript">
         function getSemanticURL() {
@@ -153,7 +161,7 @@ $contentsViews->add();
     </script>
 <?php } ?>
 <?= $static->load("jquery.min.js"); ?>
-<?= $static->load("owl.carousel.min.js"); ?>
+<?= $static->load("owl.carousel.min.jMins"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
 <?= $static->load("infinite-scroll.pkgd.min.js"); ?>
 <?= $static->load("leonardoscapinello.js"); ?>
@@ -228,6 +236,5 @@ $contentsViews->add();
     buildWave(50, 55);
 
 </script>
-<?= $social->getGoogleTagManagerScript_Body("GTM-P75P74L"); ?>
 </body>
 </html>
