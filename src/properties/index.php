@@ -6,10 +6,10 @@ function main_url(){
     return sprintf(
         "%s://%s%s",
         isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-        $_SERVER['SERVER_NAME'],
-        $_SERVER['REQUEST_URI']
+        $_SERVER['SERVER_NAME']
     );
 }
+
 
 //ini_set('display_errors', 1);
 //ini_set('error_log', "error_log");
@@ -31,9 +31,9 @@ define("FINISH_REGISTER_URL", SERVER_ADDRESS . "cadastro/concluir");
 define("STATIC_URL", SERVER_ADDRESS . "public/");
 define("LAUNCH_ADDRESS", SERVER_ADDRESS . "launch/");
 define("PROFILE_ADDRESS", SERVER_ADDRESS . "perfil");
-define("PAGE_TITLE", "Leonardo Scapinello");
+define("PAGE_TITLE", "LG Go");
 define("PAGE_TITLE_SERIES", "LS Séries");
-define("VERSION", "1.0.0.0");
+define("VERSION", "2.1.31.0");
 
 
 define("MONTHLY_SUB", "https://pay.hotmart.com/O27570351G?off=0mfqr1y5&checkoutMode=10");
@@ -89,8 +89,6 @@ require DIRNAME . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require DIRNAME . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-
 $static = new StaticCompiler();
 $social = new SocialAnalytics();
 $contents = new Contents();
@@ -105,11 +103,7 @@ $blogIntelligence = new BlogIntelligence();
 $numeric = new Numeric();
 $browser = new BrowserDetection();
 
-
-
 //DISABLED BECAUSE GOING DO PRODUCTION
-
-
 
 $next = get_request("next");
 if (not_empty($next)) {
