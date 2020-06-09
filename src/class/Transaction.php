@@ -1,6 +1,6 @@
 <?php
 
-class Hotmart
+class Transaction
 {
     private $account_key = "XmLbUih3CrBbqyIUkd2ediGPSMuWTq10438961";
 
@@ -13,7 +13,8 @@ class Hotmart
     private $xcod;
     private $payment_type;
     private $payment_engine;
-    private $status;
+    private $status_external;
+    private $status_internal;
     private $prod;
     private $prod_name;
     private $producer_name;
@@ -47,6 +48,9 @@ class Hotmart
     private $sck;
     private $insert_time;
     private $is_active;
+    private $is_processed;
+    private $processed_time;
+    private $source;
 
     private $postback;
 
@@ -56,14 +60,15 @@ class Hotmart
             $this->postback = $postback;
             foreach ($postback as $key => $value) {
                 if ($key === "productOfferPaymentMode") $key = "offer_payment_mode";
-                if (property_exists('Hotmart', $key)) {
+                if ($key === "status") $key = "status_external";
+                if (property_exists('Transaction', $key)) {
                     $this->{$key} = $value;
                 }
             }
         }
     }
 
-    private function insert()
+    public function insert()
     {
         try {
             $date = new Date();
@@ -71,8 +76,9 @@ class Hotmart
             $token = new Token();
             $this->id_account = null;
             $transaction_serial = $token::v4() . "-" . $token::v4();
+
             $database = new Database();
-            $database->query("INSERT INTO transactions (id_account, transaction_serial, callback_type, hottok, currency, `transaction`, xcod, payment_type, payment_engine, status, prod, prod_name, producer_name, producer_document, producer_legal_nature, transaction_ext, purchase_date, confirmation_purchase_date, currency_code_from, currency_code_from_, original_offer_price, offer_payment_mode, warranty_date, receiver_type, aff_cms_rate_currency, aff_cms_rate_commission, aff_cms_rate_conversion, installments_number, cms_marketplace, cms_vendor, off, price, full_price, has_co_production, email, `name`, first_name, last_name, phone_checkout_local_code, phone_checkout_number, sck, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $database->query("INSERT INTO transactions (id_account, transaction_serial, callback_type, hottok, currency, `transaction`, xcod, payment_type, payment_engine, status_external, prod, prod_name, producer_name, producer_document, producer_legal_nature, transaction_ext, purchase_date, confirmation_purchase_date, currency_code_from, currency_code_from_, original_offer_price, offer_payment_mode, warranty_date, receiver_type, aff_cms_rate_currency, aff_cms_rate_commission, aff_cms_rate_conversion, installments_number, cms_marketplace, cms_vendor, off, price, full_price, has_co_production, email, `name`, first_name, last_name, phone_checkout_local_code, phone_checkout_number, sck, is_active, status_internal, source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $database->bind(1, $this->id_account);
             $database->bind(2, $transaction_serial);
             $database->bind(3, $this->callback_type);
@@ -82,7 +88,7 @@ class Hotmart
             $database->bind(7, $this->xcod);
             $database->bind(8, $this->payment_type);
             $database->bind(9, $this->payment_engine);
-            $database->bind(10, $this->status);
+            $database->bind(10, $this->status_external);
             $database->bind(11, $this->prod);
             $database->bind(12, $this->prod_name);
             $database->bind(13, $this->producer_name);
@@ -115,66 +121,24 @@ class Hotmart
             $database->bind(40, $this->phone_checkout_number);
             $database->bind(41, $this->sck);
             $database->bind(42, "Y");
+            $database->bind(43, $this->status_internal);
+            $database->bind(44, $this->source);
             $database->execute();
             return true;
         } catch (Exception $exception) {
-            error_log($exception);
+            echo ($exception);
         }
         return false;
     }
 
-    public function purchase()
+    public function setStatusInternal($status_internal)
     {
-        global $account;
-        global $license;
-        $register_id = 0;
-        try {
-            $token = new Token();
-            $purchase_notification = new PurchaseNotifications();
-            $this->insert();
-            if (notempty($this->email)) {
-                $id_account = $account->getIdAccountByEmailOrUsername($this->email);
-                if ($id_account <= 0) $id_account = -1; // SET DO -1 BECAUSE 0 GET SESSION USER
-                $accountTransaction = new Accounts($id_account);
-                if ($accountTransaction->userExists()) {
-                    $register_id = $accountTransaction->getIdAccount();
-                    $purchase_notification->activateLicenseToUser($accountTransaction->getEmail(), $accountTransaction->getFullName());
-                } else {
-                    $password = $token::tokenAlphanumeric(8);
-                    $register_id = $account->register($this->email, $this->first_name, $this->last_name, $password, $this->phone_checkout_number);
-                    if ($register_id) $purchase_notification->newAccount($accountTransaction->getEmail(), $accountTransaction->getFullName(), $password);
-                }
-            }
-            if (notempty($register_id) && $register_id > 0) {
-                $license->setUserLicense(2, $register_id);
-            }
-        } catch (Exception $exception) {
-            error_log($exception);
-        }
+        $this->status_internal = $status_internal;
     }
 
-    public function cancelledPurchase()
+    public function setSource($source)
     {
-        global $account;
-        global $license;
-        $register_id = 0;
-        try {
-            $purchase_notification = new PurchaseNotifications();
-            $this->insert();
-            if (notempty($this->email)) {
-                $id_account = $account->getIdAccountByEmailOrUsername($this->email);
-                $accountTransaction = new Accounts($id_account);
-                if ($accountTransaction->userExists()) {
-                    $register_id = $accountTransaction->getIdAccount();
-                    $purchase_notification->confirmPurchaseCancelled($accountTransaction->getEmail(), $accountTransaction->getFullName());
-                }
-            }
-            if (notempty($register_id) && $register_id > 0) {
-                $license->setUserLicense(1, $register_id);
-            }
-        } catch (Exception $exception) {
-            error_log($exception);
-        }
+        $this->source = $source;
     }
 
 

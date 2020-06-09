@@ -1,6 +1,6 @@
 <?php
 
-class Scheduler
+class SchedulerNotifications
 {
     private $id_notification;
     private $notification_serial;

@@ -135,6 +135,7 @@ class EmailNotification
                         $database->bind(7, $text->base64_encode($content));
                         $database->bind(8, $text->base64_encode($content_unformatted));
                         $database->execute();
+                        return true;
                     }
                 }
             }
@@ -142,6 +143,7 @@ class EmailNotification
         } catch (Exception $exception) {
             error_log($exception);
         }
+        return false;
     }
 
     public function submit()

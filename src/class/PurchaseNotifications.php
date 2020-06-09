@@ -21,10 +21,11 @@ class PurchaseNotifications
             $email->paragraph("Você terá acesso ao conteúdo escrito (no blog) e também acesso livre a todas as series, incluindo as do passado. Alguns e-books são disponibilizados gratuitamente em sua assinatura. <b>Sim!</b> Muitas vezes você poderá baixar os e-books do portal sem custo algum, saindo à frente!");
             $email->heading("Surgiu uma dúvida, e agora?");
             $email->paragraph("Você pode enviar sua dúvida em nossas centrais de ajuda dentro do próprio portal, no grupo do Telegram ou enviar um e-mail para o suporte em: suporte@leonardoscapinello.com");
-            $email->save();
+            return $email->save();
         } catch (Exception $exception) {
             error_log($exception);
         }
+        return false;
     }
 
     public function activateLicenseToUser($username, $name)

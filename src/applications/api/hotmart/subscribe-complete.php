@@ -1,4 +1,6 @@
 <?php
 $postback_sample = $_REQUEST;
-$hotmart = new Hotmart($postback_sample);
-$hotmart->purchase();
+$transaction = new Transaction($postback_sample);
+$transaction->setSource("hotmart");
+$transaction->setStatusInternal("payment_approved");
+$transaction->insert();
