@@ -28,8 +28,8 @@ define("PAGE_TITLE_SERIES", "LS Séries");
 define("VERSION", "1.0.0.0");
 
 
-define("MONTHLY_SUB", "https://pay.hotmart.com/O27570351G?off=0mfqr1y5");
-define("YEARLY_SUB", "https://pay.hotmart.com/O27570351G?off=iwa2cq2g");
+define("MONTHLY_SUB", "https://pay.hotmart.com/O27570351G?off=0mfqr1y5&checkoutMode=10");
+define("YEARLY_SUB", "https://pay.hotmart.com/O27570351G?off=iwa2cq2g&checkoutMode=10");
 
 
 require_once(DIRNAME . "../vendor/autoload.php");
