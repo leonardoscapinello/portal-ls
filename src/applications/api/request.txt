@@ -4,4 +4,40 @@ Array
     [component] => subscribe-complete
     [a] => sd
     [oauth] => 13ea09f8-08af-4cb8-bfc9-a6c905d1b37c
+    [callback_type] => 1
+    [hottok] => yCN6tCNPXoKGimUk3eEKRPOE9jSWTr3123520¤cy=BRL
+    [transaction] => HP16015479281022
+    [xcod] => 
+    [payment_type] => credit_card
+    [payment_engine] => hotmart
+    [status] => completed
+    [prod] => 00000
+    [prod_name] => Produto test postback2
+    [producer_name] => Producer Test Name
+    [producer_document] => 12345678965
+    [producer_legal_nature] => Pessoa Física
+    [transaction_ext] => HP16015479281022
+    [purchase_date] => 2017-11-27T11:49:04Z
+    [confirmation_purchase_date] => 2017-11-27T11:49:06Z¤cy_code_from=BRL¤cy_code_from_=BRL
+    [original_offer_price] => 1500
+    [productOfferPaymentMode] => pagamento_unico
+    [warranty_date] => 2017-12-27T00:00:00Z
+    [receiver_type] => SELLER
+    [aff_cms_rate_currency] => BRL
+    [aff_cms_rate_commission] => 1000
+    [aff_cms_rate_conversion] => 1000
+    [installments_number] => 12
+    [cms_marketplace] => 149.5
+    [cms_vendor] => 1350.5
+    [off] => test
+    [price] => 1500
+    [full_price] => 1500
+    [has_co_production] => 0
+    [email] => testeComprador271101postman15@example.com
+    [name] => Teste Comprador
+    [first_name] => Teste
+    [last_name] => Comprador
+    [phone_checkout_local_code] => 999999999
+    [phone_checkout_number] => 0
+    [sck] => 
 )

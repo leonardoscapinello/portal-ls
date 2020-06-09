@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('error_log', "error_log");
 require_once("../../properties/index.php");
 
 $path = get_request("path");
