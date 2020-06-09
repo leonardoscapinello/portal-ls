@@ -128,34 +128,24 @@ class Hotmart
         global $account;
         global $license;
         $register_id = 0;
-        echo "cheguei aqui";
-        var_dump($this);
         try {
             $token = new Token();
             $purchase_notification = new PurchaseNotifications();
             $this->insert();
-            echo "cheguei aqui 2";
-
             if (notempty($this->email)) {
-                echo "cheguei aqui 3";
-
                 $id_account = $account->getIdAccountByEmailOrUsername($this->email);
                 if ($id_account <= 0) $id_account = -1; // SET DO -1 BECAUSE 0 GET SESSION USER
                 $accountTransaction = new Accounts($id_account);
-                if ($accountTransaction->userExists()) {            echo "cheguei aqui 4";
-
+                if ($accountTransaction->userExists()) {
                     $register_id = $accountTransaction->getIdAccount();
                     $purchase_notification->activateLicenseToUser($accountTransaction->getEmail(), $accountTransaction->getFullName());
                 } else {
                     $password = $token::tokenAlphanumeric(8);
-                    echo "cheguei aqui 5";
-
                     $register_id = $account->register($this->email, $this->first_name, $this->last_name, $password, $this->phone_checkout_number);
                     if ($register_id) $purchase_notification->newAccount($accountTransaction->getEmail(), $accountTransaction->getFullName(), $password);
                 }
             }
             if (notempty($register_id) && $register_id > 0) {
-                echo "cheguei aqui 6";
                 $license->setUserLicense(2, $register_id);
             }
         } catch (Exception $exception) {
