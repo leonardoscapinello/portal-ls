@@ -4,7 +4,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 function main_url(){
     return sprintf(
-        "%s://%s%s",
+        "%s://%s",
         isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
         $_SERVER['SERVER_NAME']
     );
