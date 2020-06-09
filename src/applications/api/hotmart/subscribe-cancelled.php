@@ -5,6 +5,6 @@ $transaction->setSource("hotmart");
 $transaction->setStatusInternal("order_cancelled");
 $success = $transaction->insert();
 if(!$success){
-    header('HTTP/1.0 500 Not Found');
+    header('HTTP/1.0 500 Internal Server Error');
     die;
 }

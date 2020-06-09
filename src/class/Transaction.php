@@ -76,7 +76,6 @@ class Transaction
             $token = new Token();
             $this->id_account = null;
             $transaction_serial = $token::v4() . "-" . $token::v4();
-
             $database = new Database();
             $database->query("INSERT INTO transactions (id_account, transaction_serial, callback_type, hottok, currency, `transaction`, xcod, payment_type, payment_engine, status_external, prod, prod_name, producer_name, producer_document, producer_legal_nature, transaction_ext, purchase_date, confirmation_purchase_date, currency_code_from, currency_code_from_, original_offer_price, offer_payment_mode, warranty_date, receiver_type, aff_cms_rate_currency, aff_cms_rate_commission, aff_cms_rate_conversion, installments_number, cms_marketplace, cms_vendor, off, price, full_price, has_co_production, email, `name`, first_name, last_name, phone_checkout_local_code, phone_checkout_number, sck, is_active, status_internal, source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $database->bind(1, $this->id_account);
@@ -126,7 +125,7 @@ class Transaction
             $database->execute();
             return true;
         } catch (Exception $exception) {
-            echo ($exception);
+            echo($exception);
         }
         return false;
     }
