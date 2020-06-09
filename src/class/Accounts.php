@@ -145,7 +145,7 @@ class Accounts
         return false;
     }
 
-    public function update($id_account, $first_name, $last_name, $phone, $password, $username, $id_license = "id_license")
+    public function update($id_account, $first_name, $last_name, $phone, $password, $username)
     {
         global $text;
         try {
@@ -158,9 +158,8 @@ class Accounts
             if (strlen($first_name) < 2) return -2;
             if (strlen($last_name) < 2) return -3;
             if (strlen($phone) < 6) return -4;
-            $database->query("UPDATE accounts SET first_name = ?, last_name = ?, phone_number = ?, username = ?, email = ?, id_license = " . $id_license . " WHERE id_account = ?");
+            $database->query("UPDATE accounts SET first_name = ?, last_name = ?, phone_number = ?, username = ?, email = ?, is_sync = 'N' WHERE id_account = ?");
             $database->bind(1, $first_name);
-
             $database->bind(2, $last_name);
             $database->bind(3, $phone);
             $database->bind(4, $username);

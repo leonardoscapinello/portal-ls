@@ -29,9 +29,10 @@
     "ext-pdo": "*",
     "ext-iconv": "*",
     "neitanod/forceutf8": "~2.0",
-    "leafo/lessphp":  "*",
+    "leafo/lessphp": "*",
     "rosell-dk/webp-convert": "^2.3",
-    "ext-dom": "*"
+    "ext-dom": "*",
+    "activecampaign/api-php": "1.0.0"
   },
   "config": {
     "vendor-dir": "src/vendor/"

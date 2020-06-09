@@ -2,18 +2,26 @@
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
-ini_set('display_errors', 1);
-ini_set('error_log', "error_log");
+function main_url(){
+    return sprintf(
+        "%s://%s%s",
+        isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+        $_SERVER['SERVER_NAME'],
+        $_SERVER['REQUEST_URI']
+    );
+}
+
+//ini_set('display_errors', 1);
+//ini_set('error_log', "error_log");
 
 $server = $_SERVER['SERVER_NAME'];
 if ($server === "localhost") {
     $server = "http://localhost/lscapinello";
 } else {
-    $server = "https://" . $server;
+    $server = main_url();
 }
 
 define("DIRNAME", dirname(__FILE__) . "/");
-define("DEPLOY_SERVER", "https://leonardoscapinello.com/");
 define("SERVER_ADDRESS", $server . "/");
 define("BLOG_ADDRESS", SERVER_ADDRESS . "blog/");
 define("LOGIN_URL", SERVER_ADDRESS . "login");
@@ -56,6 +64,9 @@ require_once(DIRNAME . "/../class/Accounts.php");
 require_once(DIRNAME . "/../class/AccountSession.php");
 require_once(DIRNAME . "/../class/AccountsLicense.php");
 require_once(DIRNAME . "/../class/AccountsPreferences.php");
+require_once(DIRNAME . "/../class/AccountsExternalSync.php");
+require_once(DIRNAME . "/../class/Accounts_MailChimp.php");
+require_once(DIRNAME . "/../class/Accounts_ActiveCampaign.php");
 require_once(DIRNAME . "/../class/Security.php");
 require_once(DIRNAME . "/../class/SocialAnalytics.php");
 require_once(DIRNAME . "/../class/StaticCompiler.php");
@@ -68,7 +79,7 @@ require_once(DIRNAME . "/../class/EmailNotification.php");
 require_once(DIRNAME . "/../class/Landing.php");
 require_once(DIRNAME . "/../class/ContentsViews.php");
 require_once(DIRNAME . "/../class/BrowserDetection.php");
-require_once(DIRNAME . "/../class/ExternalServiceList.php");
+require_once(DIRNAME . "/../class/Accounts_MailChimp.php");
 require_once(DIRNAME . "/../class/Transaction.php");
 require_once(DIRNAME . "/../class/PurchaseNotifications.php");
 require_once(DIRNAME . "/../class/SchedulerNotifications.php");

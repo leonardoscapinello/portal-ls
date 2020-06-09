@@ -1,10 +1,12 @@
 <?php
 
-class ExternalServiceList
+class Accounts_MailChimp
 {
 
-    private $api_key = "aea22dac4a82736cca0a81ce8acca224-us10";
-    private $list_id = "244ff91191";
+    //  private $api_key = "aea22dac4a82736cca0a81ce8acca224-us10"; // LEONARDOSCAPINELLO OLD API KEY
+    private $api_key = "2dcdd594c0d40c501708c3b5785b5ce4-us10";
+    // private $list_id = "244ff91191"; // LEONARDOSCAPINELLO OLD API KEY
+    private $list_id = "2ee977cab2";
     private $status = "subscribed";
 
     private $email;
@@ -12,31 +14,19 @@ class ExternalServiceList
     private $last_name;
     private $phone;
 
-    public function setEmail($email)
+    public function __construct($email_address, $first_name, $last_name, $phone = null)
     {
-        $this->email = $email;
+        try {
+            $this->email = $email_address;
+            $this->first_name = $first_name;
+            $this->last_name = $last_name;
+            $this->phone = $phone;
+            return $this->subscribe();
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return false;
     }
-
-    public function setFirstName($first_name)
-    {
-        $this->first_name = $first_name;
-    }
-
-    public function setLastName($last_name)
-    {
-        $this->last_name = $last_name;
-    }
-
-    public function setStatus(string $status)
-    {
-        $this->status = $status;
-    }
-
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-    }
-
 
     private function getDataCenterURL($member_id)
     {
@@ -44,10 +34,10 @@ class ExternalServiceList
         return 'https://' . $data_center . '.api.mailchimp.com/3.0/lists/' . $this->list_id . '/members/' . $member_id;
     }
 
-    public function subscribe()
+
+    private function subscribe()
     {
         try {
-
             $member_id = md5(strtolower($this->email));
             $data_url = $this->getDataCenterURL($member_id);
 
@@ -60,11 +50,7 @@ class ExternalServiceList
                     'LNAME' => $this->last_name,
                     'PHONE' => $this->phone
                 ],
-
-
             ]);
-
-
             $ch = curl_init($data_url);
             curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $this->api_key);
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -76,13 +62,33 @@ class ExternalServiceList
             $result = curl_exec($ch);
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
-
-            return $httpCode;
-
-
+            $result_json = json_decode($result);
+            if (200 === $httpCode) {
+                return true;
+            }
+            if (400 === $httpCode) {
+                $this->inactiveByFake($result_json->detail);
+                return "400-fake-detection";
+            }
         } catch (Exception $exception) {
             error_log($exception);
         }
+        return false;
+    }
+
+    private function inactiveByFake($detail)
+    {
+        try {
+            $database = new Database();
+            $database->query("UPDATE accounts SET is_active = 'N', sync_error = ? WHERE email = ?");
+            $database->bind(1, $detail);
+            $database->bind(2, $this->email);
+            $database->execute();
+            return true;
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return false;
     }
 
 }

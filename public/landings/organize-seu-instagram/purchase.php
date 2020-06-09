@@ -1,5 +1,5 @@
 <?php
-$external = new ExternalServiceList();
+$external = new AccountsMailChimp();
 
 $first_name = get_request("first_name");
 $last_name = get_request("last_name");
@@ -7,14 +7,7 @@ $email_address = get_request("email");
 $phone = get_request("phone");
 
 if (notempty($first_name) && notempty($last_name) && notempty($email_address) && notempty($phone)) {
-    $external->setEmail($email_address);
-    $external->setFirstName($first_name);
-    $external->setLastName($last_name);
-    $external->setPhone($phone);
-    $external->subscribe();
-
     $custom_file_name = $url->friendly("planilha-para-instagram-de-" . $first_name);
-
     $reg = $account->register($email_address, $first_name, $last_name);
     if (!$reg) {
         header("location: ../organize-seu-instagram");
