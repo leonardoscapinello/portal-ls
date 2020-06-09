@@ -10,6 +10,7 @@ class Transaction
     private $hottok;
     private $currency;
     private $transaction;
+    private $subscription_id;
     private $xcod;
     private $payment_type;
     private $payment_engine;
@@ -62,6 +63,7 @@ class Transaction
                 if ($key === "productOfferPaymentMode") $key = "offer_payment_mode";
                 if ($key === "status") $key = "status_external";
                 if ($key === "userEmail") $key = "email";
+                if ($key === "subscriptionId") $key = "subscription_id";
                 if (property_exists('Transaction', $key)) {
                     $this->{$key} = $value;
                 }
@@ -78,7 +80,7 @@ class Transaction
             $this->id_account = null;
             $transaction_serial = $token::v4() . "-" . $token::v4();
             $database = new Database();
-            $database->query("INSERT INTO transactions (id_account, transaction_serial, callback_type, hottok, currency, `transaction`, xcod, payment_type, payment_engine, status_external, prod, prod_name, producer_name, producer_document, producer_legal_nature, transaction_ext, purchase_date, confirmation_purchase_date, currency_code_from, currency_code_from_, original_offer_price, offer_payment_mode, warranty_date, receiver_type, aff_cms_rate_currency, aff_cms_rate_commission, aff_cms_rate_conversion, installments_number, cms_marketplace, cms_vendor, off, price, full_price, has_co_production, email, `name`, first_name, last_name, phone_checkout_local_code, phone_checkout_number, sck, is_active, status_internal, source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $database->query("INSERT INTO transactions (id_account, transaction_serial, callback_type, hottok, currency, `transaction`, xcod, payment_type, payment_engine, status_external, prod, prod_name, producer_name, producer_document, producer_legal_nature, transaction_ext, purchase_date, confirmation_purchase_date, currency_code_from, currency_code_from_, original_offer_price, offer_payment_mode, warranty_date, receiver_type, aff_cms_rate_currency, aff_cms_rate_commission, aff_cms_rate_conversion, installments_number, cms_marketplace, cms_vendor, off, price, full_price, has_co_production, email, `name`, first_name, last_name, phone_checkout_local_code, phone_checkout_number, sck, is_active, status_internal, source, subscription_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $database->bind(1, $this->id_account);
             $database->bind(2, $transaction_serial);
             $database->bind(3, $this->callback_type);
@@ -123,6 +125,7 @@ class Transaction
             $database->bind(42, "Y");
             $database->bind(43, $this->status_internal);
             $database->bind(44, $this->source);
+            $database->bind(45, $this->subscription_id);
             $database->execute();
             return true;
         } catch (Exception $exception) {
