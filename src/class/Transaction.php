@@ -61,6 +61,7 @@ class Transaction
             foreach ($postback as $key => $value) {
                 if ($key === "productOfferPaymentMode") $key = "offer_payment_mode";
                 if ($key === "status") $key = "status_external";
+                if ($key === "userEmail") $key = "email";
                 if (property_exists('Transaction', $key)) {
                     $this->{$key} = $value;
                 }
