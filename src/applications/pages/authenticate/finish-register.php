@@ -1,6 +1,8 @@
 <?php
 $action = get_request("action");
 $id_user = get_request("u");
+$token = get_request("auth");
+
 
 $username = "";
 $phone = "";
@@ -11,30 +13,60 @@ $last_name = "";
 if (not_empty($id_user)) {
 
     $id_user = $text->base64_decode($id_user);
-    $tmp_acc = new Accounts($id_user);
-    if ($tmp_acc->isActive()) {
-        $url->setCustomUrl(LOGIN_URL);
-        header("location: " . $url->addQueryString(array("u" => $text->base64_encode($id_user), "next" => $next)));
-        die;
-    }
+    $id_account = $account->validateIdAccountBasedOnUniqueKey($id_user);
 
-    if ($action === "finish") {
-        $first_name = get_request("first_name");
-        $last_name = get_request("last_name");
-        $phone = get_request("phone");
-        $username = get_request("username");
-        $password = get_request("password");
-        $finished = $tmp_acc->update($id_user, $first_name, $last_name, $phone, $password, $username);
-        if ($finished) {
+    if (notempty($id_account)) {
+        $tmp_acc = new Accounts($id_account);
+        $base64_email = $text->base64_encode($tmp_acc->getEmail());
+
+        // SE O USUÁRIO NÃO ESTIVER ATIVO, E TAMBÉM NÃO OUVER O TOKEN DE AUTORIZAÇÃO, ENVIA E REDIRECIONA PARA A PÁGINA DE CONTINUAÇÃO POR E-MAIL
+        if ($tmp_acc->userExists() && !$tmp_acc->isActive() && $token !== md5($tmp_acc->getIdAccount())) {
+
+            $auth_token = strtoupper(substr(md5($base64_email), 0, 6));
+            if (notempty($base64_email)) {
+                $email = new EmailNotification();
+                $email->subject("Conclua seu cadastro agora mesmo.");
+                $email->contact($tmp_acc->getFirstName(), $tmp_acc->getEmail());
+                $email->paragraph("Tudo bem?");
+                $email->paragraph("Vi que você tentou fazer login mas não havia concluido seu cadastro ainda, fique tranquilo, falta muito pouco para você acessar o conteúdo gratuito do site.");
+                $email->paragraph("Apenas para garantir sua segurança, clique no botão abaixo e te levaremos ao formulário onde você continuará seu cadastro.");
+                $email->button("Continuar Cadastro", FINISH_REGISTER_URL . "?u=" . $base64_email . "&auth=" . $auth_token);
+                $email->paragraph("Caso necessário, seu código de continuação do cadastro é: <b>" . $auth_token . "</b>");
+                $email->paragraph("Se o problema persistir, entre em contato com nosso suporte: suporte@lsgo.me");
+                $email->paragraph("Até logo,");
+                $email->paragraph("Leonardo.");
+                $email->save();
+                header("location: " . REGISTER_URL . "/email?u=" . $base64_email);
+                die;
+            }
+
+        }
+
+
+        if ($tmp_acc->isActive()) {
             $url->setCustomUrl(LOGIN_URL);
-            header("location: " . $url->addQueryString(array("u" => $id_user, "next" => $next)));
+            header("location: " . $url->addQueryString(array("u" => $base64_email, "next" => $next)));
             die;
         }
-    } else {
-        $first_name = $tmp_acc->getFirstName();
-        $last_name = $tmp_acc->getLastName();
-        $phone = $tmp_acc->getPhoneNumber();
-        $username = $tmp_acc->getEmail();
+        if ($action === "finish") {
+            $first_name = get_request("first_name");
+            $last_name = get_request("last_name");
+            $phone = get_request("phone");
+            $username = get_request("username");
+            $password = get_request("password");
+            $finished = $tmp_acc->update($tmp_acc->getIdAccount(), $first_name, $last_name, $phone, $password, $username);
+            if ($finished) {
+                echo "aqui";
+                $url->setCustomUrl(LOGIN_URL);
+                header("location: " . $url->addQueryString(array("u" => $base64_email, "next" => $next)));
+                die;
+            }
+        } else {
+            $first_name = $tmp_acc->getFirstName();
+            $last_name = $tmp_acc->getLastName();
+            $phone = $tmp_acc->getPhoneNumber();
+            $username = $tmp_acc->getEmail();
+        }
     }
 
 } else {
@@ -57,13 +89,14 @@ if (not_empty($id_user)) {
                             Falta pouco para você ter uma conta aqui no portal e poder acessar conteúdos exclusivos.
                         </h5>
                     </div>
-                    <form action="" method="GET">
+                    <form action="" method="POST">
                         <div class="form">
 
                             <input type="hidden" name="action" value="finish">
                             <input type="hidden" name="username" value="<?= $username ?>">
                             <input type="hidden" name="next" value="<?= $next ?>">
                             <input type="hidden" name="u" value="<?= $id_user ?>">
+                            <input type="hidden" name="auth" value="<?= $token ?>">
 
 
                             <div class="input-d">

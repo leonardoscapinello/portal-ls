@@ -1,39 +1,42 @@
 <?php
 $action = get_request("action");
 $id_user = get_request("u");
-$username = "";
-$message = "Sua conta, do seu jeito. Aprenda no seu tempo, sobre <span class=\"text pink\"> marketing, direito digital, tráfego e muito mais</span>.";
-$email_get = get_request("e");
 $email = get_request("username");
 $password = get_request("password");
 
-if (not_empty($email) && not_empty($password)) {
+$username = "";
+$message = "Sua conta, do seu jeito. Aprenda no seu tempo, sobre <span class=\"text pink\"> marketing, direito digital, tráfego e muito mais</span>.";
+
+if (notempty($id_user)) {
+    $username = $id_user;
+}
+
+if (notempty($email) && !notempty($password)) {
+    $username = $text->base64_decode($email);
+    $id_account = $account->validateIdAccountBasedOnUniqueKey($username);
+    if (notempty($id_account)) {
+        $tmp_acc = new Accounts($id_account);
+        if (!$tmp_acc->isActive()) {
+            $url->setCustomUrl(FINISH_REGISTER_URL);
+            header("location: " . $url->addQueryString(array("u" => $text->base64_encode($id_account), "next" => $next)));
+            die;
+        }
+    }
+
+} elseif (notempty($email) && notempty($password)) {
     $session->setUsername($email);
     $session->setPassword($password);
     $c = $session->createSession();
     $next = $text->base64_decode($next);
     if (!notempty($next)) $next = SERVER_ADDRESS;
-
-
     if ($c) {
         header("location: " . $next);
         die;
     } else {
         $url->removeQueryString(array("attempt"));
-        header("location: " . $url->addQueryString(array("attempt" => "1", "e" => $text->base64_encode($email))));
+        header("location: " . $url->addQueryString(array("attempt" => "1", "u" => $text->base64_encode($email))));
         die;
     }
-}
-
-if (not_empty($id_user)) {
-    $id_user = $text->base64_decode($id_user);
-    $tmp_acc = new Accounts($id_user);
-    if (!$tmp_acc->isActive()) {
-        $url->setCustomUrl(FINISH_REGISTER_URL);
-        header("location: " . $url->addQueryString(array("u" => $text->base64_encode($id_user), "next" => $next)));
-        die;
-    }
-    $username = $tmp_acc->getEmail();
 }
 
 if (get_request("attempt") === "1") {
@@ -41,12 +44,6 @@ if (get_request("attempt") === "1") {
 } else if (get_request("attempt") === "2") {
     $message = "Verifiquei aqui, que você <span class=\"text pink\">já tem cadastro</span> com esse e-mail. Agora é só Fazer Login.";
 }
-
-
-if (!notempty($email_get) && notempty($email)) {
-    $email_get = $email;
-}
-$email_get = $text->base64_decode($email_get);
 
 
 ?>
@@ -67,15 +64,23 @@ $email_get = $text->base64_decode($email_get);
                             <div class="input-d">
                                 <label>E-mail</label>
                                 <input type="email" name="username" id="username"
-                                       value="<?= not_empty($username) ? $username : $email_get ?>">
+                                       value="<?= $username ?>">
                             </div>
-                            <div class="input-d">
-                                <label>Senha</label>
-                                <input type="password" name="password" id="password">
-                            </div>
-                            <div class="input-d text right" style="text-align: right;margin-top: 10px">
-                                <button class="dark">Fazer Login</button>
-                            </div>
+                            <?php if (notempty($username)) { ?>
+                                <div class="input-d">
+                                    <label>Senha</label>
+                                    <input type="password" name="password" id="password">
+                                </div>
+                            <?php } ?>
+                            <?php if (notempty($username)) { ?>
+                                <div class="input-d text right" style="text-align: right;margin-top: 10px">
+                                    <button class="dark">Fazer Login</button>
+                                </div>
+                            <?php } else { ?>
+                                <div class="input-d text right" style="text-align: right;margin-top: 10px">
+                                    <button class="dark">Continuar para senha</button>
+                                </div>
+                            <?php } ?>
                             <div class="input-d" style="text-align: center;margin-top: 30px">
                                 <a href="<?= REGISTER_URL ?>" style="margin-right: 30px;font-weight: 700;">Cadastre-se
                                     Grátis</a>

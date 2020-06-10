@@ -8,7 +8,7 @@ $password = get_request("password");
 
 $message = "Crie sua conta gratuita e acesse conteúdo de seu interesse quando e onde você quiser.";
 if (get_request("attempt") === base64_encode("0")) {
-    header("location: " . LOGIN_URL . "?e=" . $text->base64_encode($username) . "&attempt=2");
+    header("location: " . LOGIN_URL . "?u=" . $text->base64_encode($username) . "&attempt=2");
 }
 
 

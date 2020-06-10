@@ -196,6 +196,22 @@ class Accounts
         return 0;
     }
 
+    public function validateIdAccountBasedOnUniqueKey($key)
+    {
+        try {
+            $database = new Database();
+            $database->query("SELECT id_account FROM accounts WHERE username = ? OR email = ? OR id_account = ?");
+            $database->bind(1, $key);
+            $database->bind(2, $key);
+            $database->bind(3, $key);
+            $r = $database->resultset();
+            if ($r) return $r[0]['id_account'];
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+        return 0;
+    }
+
 
     public function isCustomer()
     {
