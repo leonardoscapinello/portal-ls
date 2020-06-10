@@ -35,9 +35,9 @@ if (stripos($user_agent, 'Safari') !== false) {
         WebPConvert::serveConverted($source, $destination, [
             'fail' => 'original',
             'fail-when-fail-fails' => 'throw',
-            'reconvert' => false,         // if true, existing (cached) image will be discarded
-            'serve-original' => false,    // if true, the original image will be served rather than the converted
-            'show-report' => false,       // if true, a report will be output rather than the raw image
+            //'reconvert' => false,         // if true, existing (cached) image will be discarded
+            //'serve-original' => false,    // if true, the original image will be served rather than the converted
+            //'show-report' => false,       // if true, a report will be output rather than the raw image
             'serve-image' => [
                 'headers' => [
                     'cache-control' => true,
