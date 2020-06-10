@@ -1,6 +1,4 @@
 <?php
-$external = new AccountsMailChimp();
-
 $first_name = get_request("first_name");
 $last_name = get_request("last_name");
 $email_address = get_request("email");
