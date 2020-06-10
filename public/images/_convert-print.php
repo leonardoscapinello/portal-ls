@@ -33,19 +33,25 @@ if (stripos($user_agent, 'Safari') !== false) {
 
     try {
         WebPConvert::serveConverted($source, $destination, [
-            'fail' => 'original',     // If failure, serve the original image (source). Other options include 'throw', '404' and 'report'
-            //'show-report' => true,  // Generates a report instead of serving an image
-
+            'fail' => 'original',
+            'fail-when-fail-fails' => 'throw',
+            'reconvert' => false,         // if true, existing (cached) image will be discarded
+            'serve-original' => false,    // if true, the original image will be served rather than the converted
+            'show-report' => false,       // if true, a report will be output rather than the raw image
             'serve-image' => [
                 'headers' => [
                     'cache-control' => true,
-                    'vary-accept' => true,
+                    'content-length' => true,
+                    'content-type' => true,
+                    'expires' => false,
+                    'last-modified' => true,
+                    'vary-accept' => false
                 ],
-                'cache-control-header' => 'max-age=2',
+                'cache-control-header' => 'public, max-age=31536000',
             ],
-
+            'redirect-to-self-instead-of-serving' => false,
             'convert' => [
-                // all convert option can be entered here (ie "quality")
+                'quality' => 'auto',
             ],
         ]);
     } catch (Exception $exception) {

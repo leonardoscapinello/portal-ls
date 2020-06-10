@@ -15,7 +15,7 @@ $phone = "";
 $first_name = "";
 $last_name = "";
 
-
+$error_id = 0;
 if (not_empty($id_user)) {
 
     $id_user = $text->base64_decode($id_user);
@@ -60,9 +60,10 @@ if (not_empty($id_user)) {
             $username = get_request("username");
             $password = get_request("password");
             $finished = $tmp_acc->update($tmp_acc->getIdAccount(), $first_name, $last_name, $phone, $password, $username);
-            if ($finished) {
+            $error_id = $finished;
+            if ($finished > 0) {
                 $url->setCustomUrl(LOGIN_URL);
-                header("location: " . $url->addQueryString(array("u" => $base64_email, "next" => $next)));
+                header("location: " . $url->addQueryString(array("u" => $base64_email, "next" => $next, "auto" => "Y")));
                 die;
             }
         } else {
@@ -89,9 +90,18 @@ if (not_empty($id_user)) {
                 <div class="login-box">
                     <div class="heading">
                         <h3>Conclua seu cadastro agora mesmo.</h3>
-                        <h5>
-                            Falta pouco para você ter uma conta aqui no portal e poder acessar conteúdos exclusivos.
-                        </h5>
+                        <?php if ($error_id === -1) { ?>
+                            <h5>Há um <span class="text pink">problema com seu e-mail</span>, por favor, entre em contato com o suporte.</h5>
+                        <?php } elseif ($error_id === -2) { ?>
+                            <h5>Por favor, preencha seu <span class="text pink">nome corretamente</span>.</h5>
+                        <?php } elseif ($error_id === -3) { ?>
+                            <h5>Por favor, preencha seu <span class="text pink">sobrenome corretamente.</span></h5>
+                        <?php } elseif ($error_id === -4) { ?>
+                            <h5>Por favor, preencha seu <span class="text pink">telefone corretamente.</span></h5>
+                        <?php } else { ?>
+                            <h5>Falta pouco para você ter uma conta aqui no portal e poder acessar conteúdos
+                                exclusivos.</h5>
+                        <?php } ?>
                     </div>
                     <form action="" method="POST">
                         <div class="form">
@@ -106,16 +116,17 @@ if (not_empty($id_user)) {
                             <div class="input-d">
                                 <label>Nome</label>
                                 <input type="text" name="first_name" id="first_name" value="<?= $first_name ?>"
-                                       required>
+                                       minlength="1"  required>
                             </div>
                             <div class="input-d">
                                 <label>Sobrenome</label>
-                                <input type="text" name="last_name" id="last_name" minlength="8" value="<?= $last_name ?>" required>
+                                <input type="text" name="last_name" id="last_name" minlength="1"
+                                       value="<?= $last_name ?>" required>
                             </div>
 
                             <div class="input-d">
                                 <label>Seu WhatsApp</label>
-                                <input type="tel" name="phone" id="phone" class="phone_with_ddd" value="<?= $phone ?>"
+                                <input type="tel" name="phone" id="phone" class="phone_with_ddd" minlength="11" value="<?= $phone ?>"
                                        required>
                             </div>
                             <div class="input-d">

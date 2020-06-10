@@ -37,7 +37,6 @@ $social->linkedIn();
 $social->activeCampaign();
 $social->mailChimp();
 
-
 ?>
 <html>
 <head>
@@ -74,35 +73,90 @@ $social->mailChimp();
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
     <style type="text/css">
-        .fp-loader {
-            background: rgba(255, 255, 255, .5);
+        .loader {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: calc(50% - 25px);
+            left: calc(50% - 25px);
+            vertical-align: middle;
+            transform: translate(-50%, -50%);
+            background: #FFFFFF;
+        }
+
+
+        .loader,
+        .loader:before,
+        .loader:after {
+            animation: 1s infinite ease-in-out;
+        }
+
+        .loader:before,
+        .loader:after {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+
+        /* Loader 9 & 10 */
+
+        .loader-9 {
+            background-color: white;
+            animation: loader9 0.4s infinite linear;
+        }
+
+        .loader-9:before {
+            content: '';
+            width: 80%;
+            height: 80%;
+            background-color: white;
+            top: 20%;
+            left: 20%;
+            box-shadow: 5px -3px 0 rgba(44, 195, 107, 1),
+            5px 5px 0 rgba(44, 195, 107, 0.5),
+            -3px 5px 0 rgba(44, 195, 107, 0.3),
+            -5px -5px 0 rgba(44, 195, 107, 0.1);
+        }
+
+        .loader-9:after {
+            content: '';
+            border: 3px solid white;
+            background: #FFFFFF;
+            z-index: 2;
+            top: -3px;
+            left: -3px;
+        }
+
+        @keyframes loader9 {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .ld-container {
             position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
             z-index: 9999;
         }
 
-        .fp-loader .loader-center {
-            background: #FFFFFF;
-            border-radius: 5px;
+        .ld-container img {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: calc(50%);
+            left: calc(50%);
             transform: translate(-50%, -50%);
-            text-align: center;
-            padding: 10px 30px;
-            -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
-            -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
-            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
-        }
-
-        .fp-loader .loader-center p {
-            font-family: 'Arial', sans-serif !important;
-            text-transform: lowercase;
-            font-size: 14px;
-            margin-top: 5px;
+            width: 35px;
         }
 
     </style>
@@ -111,6 +165,11 @@ $social->mailChimp();
 </head>
 <body>
 <div id="wrapper">
+
+    <div class="ld-container">
+        <div class="loader loader-9"></div>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAABSElEQVRYhe3Wu0olQRDG8Z/iDREXAxPByEAEAxEFAx9iwcAH2NRYBBMTUSNjn8FAMTYzEDRQBGGDDTYQAxfBSLzghYEWegfPgRlaj2D/oWBquqvqo2uqGZlMJpPJfG96sYxzPOIl2FLdU+lIdJwD2MdkyvbUEbeJ8cj/ia3UwtQUN4XZyB/CXOQXLT3EQ/D/fqa4MsUptkf+PHYS5P0vaaocPQly1uYgmsTCxvAc+bfYwMhXEPcDe6V3L0Fw8e39QlcrxQ3i6B2Bb/YH060SV9CJBZw1EHiF/laJi5nAOq5Lexe/grg3inZfRnt3qxRKcZU04x8uovXuKsEpLuEV3Ifnu+APhymdKQ3C7wT1mlJua2w3IXC2wdVSaWI/uq0xqziuEpDql6kZJ1jDdtXAthrFRtHXYO0Jp2F9JAzDdY0amUwmk8k0Aq8NKmK71NtPuQAAAABJRU5ErkJggg==">
+    </div>
 
     <div class="fp-loader-dsb" style="display:none;">
         <div class="loader-center">
@@ -168,6 +227,14 @@ $social->mailChimp();
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $static->load("leonardoscapinello.scroll.js"); ?>
 <script type="text/javascript">
+
+    $(window).on("load", function () {
+        $(".ld-container").fadeOut(200);
+    });
+
+    $(window).bind("beforeunload", function () {
+        $(".ld-container").fadeIn(200);
+    });
 
     const path = document.querySelector('#wave');
     const animation = document.querySelector('#moveTheWave');

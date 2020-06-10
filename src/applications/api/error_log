@@ -15,3 +15,12 @@
 [09-Jun-2020 17:15:12 America/Sao_Paulo] PHP   5. Accounts_MailChimp->__construct() C:\wamp64\www\lscapinello\src\class\AccountsExternalSync.php:34
 [09-Jun-2020 17:15:12 America/Sao_Paulo] PHP   6. Accounts_MailChimp->subscribe() C:\wamp64\www\lscapinello\src\class\Accounts_MailChimp.php:22
 [09-Jun-2020 17:15:47 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected 'if' (T_IF), expecting ';' or ',' in C:\wamp64\www\lscapinello\src\class\Accounts_MailChimp.php on line 69
+[10-Jun-2020 15:01:24 America/Sao_Paulo] Algorithmia\AlgoException: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) in C:\wamp64\www\lscapinello\src\vendor\algorithmia\algorithmia\src\Algorithmia\HttpClient.php:133
+Stack trace:
+#0 C:\wamp64\www\lscapinello\src\vendor\algorithmia\algorithmia\src\Algorithmia\Client.php(162): Algorithmia\HttpClient->post('https://api.alg...', 'UM DIA ME ENSIN...', 'application/jso...', false)
+#1 C:\wamp64\www\lscapinello\src\vendor\algorithmia\algorithmia\src\Algorithmia\Algorithm.php(40): Algorithmia\Client->doAlgoPipe('cindyxiaoxiaoli...', 'UM DIA ME ENSIN...')
+#2 C:\wamp64\www\lscapinello\src\class\BlogIntelligence.php(63): Algorithmia\Algorithm->pipe('UM DIA ME ENSIN...')
+#3 C:\wamp64\www\lscapinello\src\class\BlogIntelligence.php(21): BlogIntelligence->summarizer('<h3>Um dia me e...')
+#4 C:\wamp64\www\lscapinello\src\properties\index.php(103): BlogIntelligence->__construct()
+#5 C:\wamp64\www\lscapinello\src\applications\api\middleware.php(4): require_once('C:\\wamp64\\www\\l...')
+#6 {main}

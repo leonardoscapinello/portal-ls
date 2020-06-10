@@ -2,7 +2,8 @@
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
-function main_url(){
+function main_url()
+{
     return sprintf(
         "%s://%s",
         isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
@@ -108,6 +109,13 @@ $browser = new BrowserDetection();
 $next = get_request("next");
 if (not_empty($next)) {
     $next = $text->base64_encode($next);
+}
+
+if ($session->isLogged()) {
+    if (!notempty($account->getIdAccount())) {
+        header("location: " . LOGOUT_URL);
+        die;
+    }
 }
 
 

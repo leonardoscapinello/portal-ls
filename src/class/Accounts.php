@@ -156,10 +156,10 @@ class Accounts
 
             $database = new Database();
             $phone = preg_replace("/[^0-9]/", "", $phone);
-            if (strlen($username) < 6) return -1;
-            if (strlen($first_name) < 2) return -2;
-            if (strlen($last_name) < 2) return -3;
-            if (strlen($phone) < 6) return -4;
+            if (strlen($username) <= 6) return -1;
+            if (strlen($first_name) <= 1) return -2;
+            if (strlen($last_name) <= 1) return -3;
+            if (strlen($phone) < 11) return -4;
             $database->query("UPDATE accounts SET first_name = ?, last_name = ?, phone_number = ?, username = ?, email = ?, is_sync = 'N' WHERE id_account = ?");
             $database->bind(1, $first_name);
             $database->bind(2, $last_name);
