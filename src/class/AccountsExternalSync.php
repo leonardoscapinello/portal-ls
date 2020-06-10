@@ -33,14 +33,16 @@ class AccountsExternalSync
                 $account->getLastName(),
                 $account->getPhoneNumber()
             );
-            $activeCampaign = new Accounts_ActiveCampaign(
-                $account->getEmail(),
-                $account->getFirstName(),
-                $account->getLastName(),
-                $account->getPhoneNumber()
-            );
-            if ($mailChimp && $activeCampaign) {
-                $this->processed();
+            if("400-fake-detection" !== $mailChimp) {
+                $activeCampaign = new Accounts_ActiveCampaign(
+                    $account->getEmail(),
+                    $account->getFirstName(),
+                    $account->getLastName(),
+                    $account->getPhoneNumber()
+                );
+                if ($mailChimp && $activeCampaign) {
+                    $this->processed();
+                }
             }
 
         } catch (Exception $exception) {
