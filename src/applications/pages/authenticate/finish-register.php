@@ -110,7 +110,7 @@ if (not_empty($id_user)) {
                             </div>
                             <div class="input-d">
                                 <label>Sobrenome</label>
-                                <input type="text" name="last_name" id="last_name" value="<?= $last_name ?>" required>
+                                <input type="text" name="last_name" id="last_name" minlength="8" value="<?= $last_name ?>" required>
                             </div>
 
                             <div class="input-d">
@@ -120,7 +120,7 @@ if (not_empty($id_user)) {
                             </div>
                             <div class="input-d">
                                 <label>Senha</label>
-                                <input type="password" name="password" id="password" value="" required>
+                                <input type="password" name="password" id="password" value="" minlength="8" required>
                             </div>
                             <div class="input-d text right" style="text-align: right;margin-top: 10px">
                                 <button class="dark">Concluir meu Cadastro</button>

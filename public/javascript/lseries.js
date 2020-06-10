@@ -241,16 +241,19 @@ function elementContainsSelection(el) {
 
 function saveContent2User() {
     let serie_ctn = $("#serie_ctn");
-    let serialized = {
-        hash: serie_ctn.attr("data-content"),
-        content: btoa(serie_ctn.html())
-    };
-    $.ajax({
-        url: "../../updateContent",
-        type: "POST",
-        data: serialized,
-        cache: false
-    });
+    let html_c = serie_ctn.html();
+    if (html_c !== null && html_c !== undefined) {
+        let serialized = {
+            hash: serie_ctn.attr("data-content"),
+            content: btoa(unescape(encodeURIComponent(html_c)))
+        };
+        $.ajax({
+            url: "../../updateContent",
+            type: "POST",
+            data: serialized,
+            cache: false
+        });
+    }
 }
 
 $(document).on("click", ".ajax-download", function (e) {
