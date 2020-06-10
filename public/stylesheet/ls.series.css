@@ -65,11 +65,18 @@ h6 {
   font-weight: 800;
 }
 p {
-  line-height: 30px;
+  line-height: 35px;
 }
 a {
   text-decoration: none;
   color: #ed145b;
+}
+#serie_ctn h3 {
+  margin: 0 0 45px 0;
+  font-size: 1.6em;
+}
+#serie_ctn h3:not(:first-child) {
+  margin: 45px 0;
 }
 .mobile {
   display: none;
@@ -597,6 +604,17 @@ img {
     line-height: 32px;
     font-weight: 800;
   }
+  #serie_ctn {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  #serie_ctn h3 {
+    margin: 0 0 35px 0;
+    font-size: 1.4em;
+  }
+  #serie_ctn h3:not(:first-child) {
+    margin: 35px 0;
+  }
   p {
     line-height: 25px;
     margin: 6px 0;
@@ -1049,8 +1067,7 @@ img {
   font-family: inherit;
 }
 .content-serie-text-section p {
-  margin: 20px 0;
-  opacity: .1;
+  margin: 30px 0;
   transition: all .4s;
   opacity: 1;
 }
