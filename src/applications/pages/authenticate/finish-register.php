@@ -56,7 +56,6 @@ if (not_empty($id_user)) {
             $password = get_request("password");
             $finished = $tmp_acc->update($tmp_acc->getIdAccount(), $first_name, $last_name, $phone, $password, $username);
             if ($finished) {
-                echo "aqui";
                 $url->setCustomUrl(LOGIN_URL);
                 header("location: " . $url->addQueryString(array("u" => $base64_email, "next" => $next)));
                 die;
