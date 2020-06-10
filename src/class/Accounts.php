@@ -126,13 +126,13 @@ class Accounts
                     $email->paragraph("Nos vemos no Portal LS!");
                     $email->save();
                 } else {
-                    $auth_token = strtoupper(substr(md5($text->base64_encode($email_address)), 0, 6));
+                    $auth_token = md5($id);
                     $email->subject("Quero te dar as boas-vindas pessoalmente.");
                     $email->contact($first_name, $email_address);
                     $email->paragraph("Olá, Leonardo aqui.");
                     $email->paragraph("Quero te dar as boas-vindas ao portal <b>LS</b>.");
                     $email->paragraph("Pelo que vi aqui, ainda está faltando <b>algumas informações para você finalizar seu cadastro.</b> Mas fique tranquilo, são informações básicas e em menos de 2 minutos você já pode acessar sua conta.");
-                    $email->button("Concluir meu cadastro.", FINISH_REGISTER_URL . "?u=" . base64_encode($email_address) . "&auth=" . $auth_token);
+                    $email->button("Concluir meu cadastro.", FINISH_REGISTER_URL . "?u=" . base64_encode($email_address) . "&auth=" . $auth_token . "&req=" . base64_encode("email"));
                     $email->paragraph("Quero aproveitar a oportunidade para te lembrar: <b>Publicamos conteúdo novo toda semana</b> para que você tenha sempre em mãos, informação de qualidade e relevante para melhorar seu desempenho no mercado digital.");
                     $email->paragraph("Preparamos tudo para que você possa acessar de forma simples e rápida, sem enrolação e dificuldade.");
                     $email->paragraph("Nesse momento é muito importante que você conclua seu cadastro, combinado?");

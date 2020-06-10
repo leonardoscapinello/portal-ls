@@ -1,7 +1,13 @@
 <?php
+/*
+ *  AUTH TOKEN IS THE KEY SENT TO EMAIL AND MEANS 6 FIRST CHARACTERS AS: strtoupper(substr(md5($base64_email), 0, 6));
+ *  VALIDATION TOKEN IS THE FULL MD5 OF ID ACCOUNT
+ */
+
 $action = get_request("action");
 $id_user = get_request("u");
 $token = get_request("auth");
+$custom_source_request = get_request("req");
 
 
 $username = "";
@@ -21,7 +27,6 @@ if (not_empty($id_user)) {
 
         // SE O USUÁRIO NÃO ESTIVER ATIVO, E TAMBÉM NÃO OUVER O TOKEN DE AUTORIZAÇÃO, ENVIA E REDIRECIONA PARA A PÁGINA DE CONTINUAÇÃO POR E-MAIL
         if ($tmp_acc->userExists() && !$tmp_acc->isActive() && $token !== md5($tmp_acc->getIdAccount())) {
-
             $auth_token = strtoupper(substr(md5($base64_email), 0, 6));
             if (notempty($base64_email)) {
                 $email = new EmailNotification();
