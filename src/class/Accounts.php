@@ -17,7 +17,7 @@ class Accounts
     private $is_active;
     private $is_premium;
 
-    private $is_active_default = "Y";
+    private $is_active_default = "N";
     private $is_customer = "Y";
     private $user_exists = false;
     private $register_notifications = true;

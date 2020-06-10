@@ -10,7 +10,7 @@ class AccountsExternalSync
     {
         try {
             $database = new Database();
-            $database->query("SELECT id_account FROM accounts WHERE is_active = 'Y' AND is_sync = 'N'");
+            $database->query("SELECT id_account FROM accounts WHERE is_sync = 'N'");
             $result = $database->resultset();
             for ($i = 0; $i < count($result); $i++) {
                 $this->id_account = $result[$i]['id_account'];
