@@ -144,7 +144,7 @@
                     </ul>
                     <p>O usuário poderá exercer os seus direitos por meio de comunicação escrita enviada ao site com o
                         assunto
-                        "RGDP-https://leonardoscapinello.com", especificando:
+                        "RGDP-https://lsgo.me", especificando:
                     </p>
                     <ul>
                         <li>Nome completo ou razão social, número do CPF (Cadastro de Pessoas Físicas, da Receita

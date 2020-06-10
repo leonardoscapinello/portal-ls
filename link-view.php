@@ -57,7 +57,7 @@ $links_list = array(
     <meta name="coverage" content="Worldwide">
     <meta name="distribution" content="Global"/>
     <meta name="rating" content="General"/>
-    <meta name="author" content="Leonardo Scapinello, leonardo@leonardoscapinello.com">
+    <meta name="author" content="Leonardo Scapinello, portal@lsgo.me">
     <meta name="url" content="<?= $url->getActualURL() ?>">
     <meta name="identifier-URL" content="<?= $url->getActualURL() ?>">
     <meta name="og:title" content="Núvem de Links - <?= PAGE_TITLE ?>"/>

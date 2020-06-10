@@ -269,7 +269,7 @@ class Contents
         $url = urlencode($this->createShortUrl());
         $text = urlencode($this->getTitle());
         $summary = urlencode($this->getTitle());
-        return "https://www.linkedin.com/shareArticle/?mini=true&url=" . $url . "&title=" . $text . "&summary=" . $summary . "&source=leonardoscapinello.com";
+        return "https://www.linkedin.com/shareArticle/?mini=true&url=" . $url . "&title=" . $text . "&summary=" . $summary . "&source=lsgo.me";
     }
 
 

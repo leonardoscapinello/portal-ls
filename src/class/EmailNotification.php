@@ -191,7 +191,7 @@ class EmailNotification
         $s = str_replace(" ", ".", $s);
         $s = str_replace("@", ".", $s);
         $s = strtolower($s);
-        return $s . "@leonardoscapinello.com";
+        return $s . "@lsgo.me";
     }
 
 
