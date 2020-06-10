@@ -17,8 +17,8 @@ class Accounts
     private $is_active;
     private $is_premium;
 
-    private $is_active_default = "N";
-    private $is_customer = "N";
+    private $is_active_default = "Y";
+    private $is_customer = "Y";
     private $user_exists = false;
     private $register_notifications = true;
 
@@ -101,13 +101,14 @@ class Accounts
             $r = $database->resultset();
             if (count($r) > 0) return $r[0]['id_account'];
 
-            $database->query("INSERT INTO accounts (username, email, first_name, last_name, phone_number, is_active, id_license) VALUES (?,?,?,?,?,?,1)");
+            $database->query("INSERT INTO accounts (username, email, first_name, last_name, phone_number, is_active, id_license, is_customer) VALUES (?,?,?,?,?,?,1,?)");
             $database->bind(1, $email_address);
             $database->bind(2, $email_address);
             $database->bind(3, $first_name);
             $database->bind(4, $last_name);
             $database->bind(5, $phone);
             $database->bind(6, $this->is_active_default);
+            $database->bind(7, $this->is_customer);
             $database->execute();
             $id = $database->lastInsertId();
 
