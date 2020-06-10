@@ -31,7 +31,7 @@ define("FINISH_REGISTER_URL", SERVER_ADDRESS . "cadastro/concluir");
 define("STATIC_URL", SERVER_ADDRESS . "public/");
 define("LAUNCH_ADDRESS", SERVER_ADDRESS . "launch/");
 define("PROFILE_ADDRESS", SERVER_ADDRESS . "perfil");
-define("PAGE_TITLE", "LG Go");
+define("PAGE_TITLE", "LS");
 define("PAGE_TITLE_SERIES", "LS Séries");
 define("VERSION", "2.1.31.0");
 
