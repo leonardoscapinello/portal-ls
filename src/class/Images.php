@@ -61,13 +61,11 @@ class Images
 
     function getWidth()
     {
-
         return imagesx($this->image);
     }
 
     function getHeight()
     {
-
         return imagesy($this->image);
     }
 
@@ -95,13 +93,12 @@ class Images
 
     function resize($width, $height)
     {
-
         if ($this->image_type === IMAGETYPE_WEBP) {
             imagealphablending($this->image, false);
             imagesavealpha($this->image, true);
             $new_image = imagecreatetruecolor($width, $height);
             imagefill($new_image, 0, 0, 0x7fff0000);
-        } elseif ($this->image_type === IMAGETYPE_GIF) {
+        } elseif ($this->image_type === IMAGETYPE_PNG) {
             $new_image = imagecreatetruecolor($width, $height);
             imagecolortransparent($new_image, imagecolorallocate($new_image, 0, 0, 0));
             imagealphablending($new_image, false);
@@ -109,7 +106,6 @@ class Images
         } else {
             $new_image = imagecreatetruecolor($width, $height);
         }
-
         imagecopyresampled($new_image, $this->image, 0, 0, 0, 0, $width, $height, $this->getWidth(), $this->getHeight());
         $this->image = $new_image;
     }

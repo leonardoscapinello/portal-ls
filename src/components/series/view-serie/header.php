@@ -21,7 +21,7 @@ $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDa
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-sm-12">
                                     <div class="tpmgr serie-brand">
-                                        <img src="<?= $static->loadSeries($series->getSeasonBrand(), $series->getShortKey(), 250); ?>">
+                                        <img src="<?= $static->loadSeries($series->getSeasonBrand(), $series->getShortKey()); ?>">
                                     </div>
                                     <ul class="presentation-season-info">
                                         <li>Temporada <?= $series->getSeasonLevel() ?></li>

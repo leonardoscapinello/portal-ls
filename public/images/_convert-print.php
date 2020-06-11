@@ -29,24 +29,18 @@ if (file_exists($source) && is_file($source)) {
         $width = $nwidth;
     }
 
+    $browser_allowed = ("Chrome" === $browser->getName() || "Firefox" === $browser->getName());
+    $image_type_allowed = ($images->image_type === IMAGETYPE_JPEG);
 
-    if ("Chrome" === $browser->getName() || "Firefox" === $browser->getName()) {
+    if ($browser_allowed) {
         $images->load($source);
-        $images->resizeToWidth($width);
+        if ($width !== $nwidth) $images->resizeToWidth($width);
         $images->header(IMAGETYPE_WEBP);
         $images->output(IMAGETYPE_WEBP);
     } else {
         $images->load($source);
-        //* NEEDED BECAUSE PNG RESIZE PUT BLACK BACKGROUND ON TRANSPARENT IMAGE
-        if ($images->image_type !== IMAGETYPE_PNG) {
-            $images->resizeToWidth($width);
-            $images->header();
-            $images->output();
-        } else {
-            $images->header();
-            echo file_get_contents($source);
-        }
+        $images->header();
+        echo file_get_contents($source);
     }
-
 
 }
