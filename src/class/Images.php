@@ -19,7 +19,7 @@ class Images
         }
     }
 
-    function save($filename, $image_type = null, $compression = 95, $permissions = null)
+    function save($filename, $image_type = null, $compression = 75, $permissions = null)
     {
 
         $save_path = "_converted/" . $filename;
