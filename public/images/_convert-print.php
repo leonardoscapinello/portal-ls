@@ -30,7 +30,7 @@ if (file_exists($source) && is_file($source)) {
     }
 
 
-    if ("Chrome" !== $browser->getName() || "Firefox" === $browser->getName()) {
+    if ("Chrome" === $browser->getName() || "Firefox" === $browser->getName()) {
         $images->load($source);
         $images->resizeToWidth($width);
         $images->header(IMAGETYPE_WEBP);
