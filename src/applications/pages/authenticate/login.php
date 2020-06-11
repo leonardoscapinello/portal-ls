@@ -90,7 +90,7 @@ if (get_request("attempt") === "1") {
                 </div>
             </div>
             <div class="col-xl-7 col-lg-7 col-sm-12">
-                <img src="<?= $static->load("login-image.png"); ?>"/>
+                <img src="<?= $static->image("login-image.png", 400); ?>"/>
             </div>
         </div>
     </div>

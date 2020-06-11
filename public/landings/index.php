@@ -152,7 +152,7 @@ $social->mailChimp();
                     <div class="row no-gutters">
                         <div class="col-xl-1 col-lg-1 col-sm-12">
                             <div class="premium-brand">
-                                <img src="<?= $static->load("leonardo-scapinello-white-background.svg"); ?>">
+                                <img src="<?= $static->image("leonardo-scapinello-white-background.svg"); ?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-sm-12">
@@ -172,7 +172,7 @@ $social->mailChimp();
 
         <a href="<?= SERVER_ADDRESS ?>?utm_source=<?= $landing->getSemanticUrl() ?>&utm_medium=popup-ls">
             <div class="popup-ls">
-                <img src="<?= $static->load("leonardo-scapinello-white-background.svg"); ?>">
+                <img src="<?= $static->image("leonardo-scapinello-white-background.svg"); ?>">
             </div>
         </a>
 

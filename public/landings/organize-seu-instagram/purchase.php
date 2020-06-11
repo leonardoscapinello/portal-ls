@@ -24,7 +24,7 @@ if (notempty($first_name) && notempty($last_name) && notempty($email_address) &&
             <div class="col-xl-6 col-lg-6 col-sm-12">
 
                 <div class="company">
-                    <img src="<?= $static->load("leonardo-scapinello-white-background.svg") ?>"/>
+                    <img src="<?= $static->image("leonardo-scapinello-white-background.svg") ?>"/>
                 </div>
 
                 <form method="POST" action="<?= $landing->getPurchaseUrl() ?>">

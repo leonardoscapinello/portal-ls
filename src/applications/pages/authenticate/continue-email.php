@@ -65,7 +65,7 @@ if (notempty($username)) {
                 </form>
             </div>
             <div class="col-xl-7 col-lg-7 col-sm-12">
-                <img src="<?= $static->load("technology.png"); ?>"/>
+                <img src="<?= $static->image("technology.png", 400); ?>"/>
             </div>
             <div class="offset-1"></div>
         </div>

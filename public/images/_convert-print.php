@@ -1,60 +1,37 @@
 <?php
 
+define("DIRNAME", dirname(__FILE__) . "/");
 
 require '../../src/class/Text.php';
+require '../../src/class/BrowserDetection.php';
+require '../../src/class/Images.php';
 require '../../src/functions/get_request.php';
 require '../../src/functions/notempty.php';
 require '../../src/vendor/autoload.php';
 
-use WebPConvert\WebPConvert;
-
+$images = new Images();
 $src = get_request("src", true);
+$width = get_request("width");
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-
 if (!notempty($src)) die;
 
 $source = __DIR__ . "/" . $src;
-$destination = __DIR__ . "/webp/" . $src . '.webp';
 
-if (stripos($user_agent, 'Safari') !== false) {
+if (file_exists($source) && is_file($source)) {
 
-    if (file_exists($source)) {
-        $size = getimagesize($source);
-        $fp = fopen($source, 'rb');
-        if ($size && $fp) {
-            header('Content-Type: ' . $size['mime']);
-            header('Content-Length: ' . filesize($source));
-            fpassthru($fp);
-            exit;
-        }
+    $browser = new BrowserDetection();
+
+    if ("Safari" !== $browser->getName() && "Internet Explorer" !== $browser->getName()) {
+        $images->load($source);
+        if (notempty($width)) $images->resizeToWidth($width);
+        $images->header(IMAGETYPE_WEBP);
+        $images->output(IMAGETYPE_WEBP);
+    } else {
+        $images->load($source);
+        if (notempty($width)) $images->resizeToWidth($width);
+        $images->header();
+        $images->output();
     }
 
-} else {
 
-    try {
-        WebPConvert::serveConverted($source, $destination, [
-            'fail' => 'original',
-            'fail-when-fail-fails' => 'throw',
-            //'reconvert' => false,         // if true, existing (cached) image will be discarded
-            //'serve-original' => false,    // if true, the original image will be served rather than the converted
-            //'show-report' => false,       // if true, a report will be output rather than the raw image
-            'serve-image' => [
-                'headers' => [
-                    'cache-control' => true,
-                    'content-length' => true,
-                    'content-type' => true,
-                    'expires' => false,
-                    'last-modified' => true,
-                    'vary-accept' => false
-                ],
-                'cache-control-header' => 'public, max-age=31536000',
-            ],
-            'redirect-to-self-instead-of-serving' => false,
-            'convert' => [
-                'quality' => 'auto',
-            ],
-        ]);
-    } catch (Exception $exception) {
-        echo $exception->getMessage();
-    }
 }

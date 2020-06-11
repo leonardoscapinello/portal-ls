@@ -48,7 +48,7 @@ $list = $contents->getContentsList("ct.id_category = " . $category['id_category'
 
             </div>
             <div class="col-xl-5 col-lg-5 col-sm-12">
-                <img src="<?= $static->load("search.png") ?>">
+                <img src="<?= $static->image("search.png", 400) ?>">
             </div>
         </div>
     </div>

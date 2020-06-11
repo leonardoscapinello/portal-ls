@@ -141,7 +141,7 @@ $links_list = array(
         }
 
         .personal-image {
-            background: url('<?=$static->load("leonardoscapinello-small-linkview.png")?>');
+            background: url('<?=$static->image("leonardoscapinello-small-linkview.png", 191)?>');
             width: 191px;
             height: 158px;
             position: absolute;
@@ -294,7 +294,7 @@ $links_list = array(
                     <div class="header">
                         <a href="<?= SERVER_ADDRESS ?>">
                             <div class="company">
-                                <img src="<?= $static->load("leonardo-scapinello-white-background.svg") ?>"/>
+                                <img src="<?= $static->image("leonardo-scapinello-white-background.svg") ?>"/>
                             </div>
                         </a>
                         <div class="personal-image"></div>

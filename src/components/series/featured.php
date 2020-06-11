@@ -21,7 +21,7 @@ $list = $series->getAllSeries();
                                 <div class="serie-widget-sml">
                                     <a href="<?= $series->createUrl($list[$i]['serie_url'], $list[$i]['short_key'], $list[$i]['season_title']) ?>">
                                         <figure>
-                                            <img src="<?= $static->loadSeries($list[$i]['season_cover'], $list[$i]['short_key']) ?>"
+                                            <img src="<?= $static->loadSeries($list[$i]['season_cover'], $list[$i]['short_key'], 237) ?>"
                                                  alt="<?= $list[$i]['serie_name'] ?>">
                                         </figure>
                                     </a>

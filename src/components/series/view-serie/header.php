@@ -4,7 +4,7 @@ $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDa
 <header>
     <div class="collection-list-wrapper-8 w-dyn-list serie-header-view">
         <div class="w-dyn-items">
-            <div style="background-image:url(<?= $static->loadSeries($series->getSeasonBg(), $series->getShortKey()); ?>);background-color:#000;"
+            <div style="background-image:url(<?= $static->loadSeries($series->getSeasonBg(), $series->getShortKey(), 1400); ?>);background-color:#000;"
                  class="mp-header-container w-dyn-item">
                 <div class="black-overlay-gradient"></div>
                 <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar-blur w-nav">
@@ -17,11 +17,11 @@ $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDa
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-sm-12 desktop">
                                     <div class="mbrand medium"
-                                         style="background-image:url('<?= $static->loadSeries($series->getSeasonCover(), $series->getShortKey()); ?>')"></div>
+                                         style="background-image:url('<?= $static->loadSeries($series->getSeasonCover(), $series->getShortKey(), 320); ?>')"></div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-sm-12">
                                     <div class="tpmgr serie-brand">
-                                        <img src="<?= $static->loadSeries($series->getSeasonBrand(), $series->getShortKey()); ?>">
+                                        <img src="<?= $static->loadSeries($series->getSeasonBrand(), $series->getShortKey(), 250); ?>">
                                     </div>
                                     <ul class="presentation-season-info">
                                         <li>Temporada <?= $series->getSeasonLevel() ?></li>
@@ -34,7 +34,7 @@ $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDa
                                         <?php if ($days_to_launch > 0) { ?>
                                             <a class="btn serie-view"><i class="far fa-bell"></i> Avise-me quando lançar</a>
                                         <?php } elseif (!$session->isLogged()) { ?>
-                                            <a href="<?= LOGIN_URL ?>?next=<?=$url->getActualURLAsNext()?>"
+                                            <a href="<?= LOGIN_URL ?>?next=<?= $url->getActualURLAsNext() ?>"
                                                class="btn serie-view">
                                                 <i class="far fa-user"></i>
                                                 Faça Login para Continuar

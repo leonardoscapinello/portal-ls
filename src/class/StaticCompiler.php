@@ -8,6 +8,8 @@ class StaticCompiler
     private $output_path;
     private $date_reason = "dmYHis";
 
+    private $image_width;
+
     public function add($location)
     {
         if (file_exists($location)) {
@@ -18,6 +20,11 @@ class StaticCompiler
     public function replace($search, $replace)
     {
         array_push($this->replaces, array($search, $replace));
+    }
+
+    public function customImageWidth(int $width)
+    {
+        $this->image_width = $width;
     }
 
     /*
@@ -50,11 +57,15 @@ class StaticCompiler
                 $file_tag = "<link href=\"%s\" rel=\"stylesheet\" rel=\"preload\" as=\"style\" media=\"none\" onload=\"if(media!='all')media='all'\"/>";
             } else if ($ext === "js") {
                 $file_folder = "javascript";
-                $file_tag = "<script src=\"%s?v=".VERSION."\" type=\"text/javascript\"></script>";
+                $file_tag = "<script src=\"%s?v=" . VERSION . "\" type=\"text/javascript\"></script>";
             } else {
                 $initial = $initial . "../";
                 if ($ext === "png" || $ext === "jpg") {
-                    $file_folder = "images/display?src=";
+                    if (notempty($this->image_width)) {
+                        $file_folder = "images/display?width=" . $this->image_width . "&src=";
+                    } else {
+                        $file_folder = "images/display?src=";
+                    }
                 } else {
                     $file_folder = "public/images/";
                 }
@@ -66,6 +77,35 @@ class StaticCompiler
             $file_load = sprintf($file_tag, $file);
 
             return $file_load;
+
+        } catch (Exception $exception) {
+            error_log($exception);
+        }
+    }
+
+
+    public function image($file, $width = null)
+    {
+        try {
+            $path_parts = pathinfo($file);
+            $ext = isset($path_parts['extension']) ? $path_parts['extension'] : "png";
+            $base = $path_parts['basename'];
+            $additional_folder = $path_parts['dirname'];
+            $initial = STATIC_URL . "../";
+
+            if ($ext === "png" || $ext === "jpg") {
+                if (notempty($width)) {
+                    $file_folder = "images/display?width=" . $width. "&src=";
+                } else {
+                    $file_folder = "images/display?src=";
+                }
+            } else {
+                $file_folder = "public/images/";
+            }
+            $file_tag = "%s";
+            $additional_folder = ($additional_folder === "" || $additional_folder === ".") ? null : $additional_folder . "/";
+            $file = $initial . $file_folder . "/" . $additional_folder . $base;
+            return sprintf($file_tag, $file);
 
         } catch (Exception $exception) {
             error_log($exception);
@@ -85,15 +125,15 @@ class StaticCompiler
         return $css;
     }
 
-    public function loadBlog($file)
+    public function loadBlog($file, $width = null)
     {
         $path_parts = pathinfo($file);
-        return $this->load("/blog/" . $path_parts['basename']);
+        return $this->image("/blog/" . $path_parts['basename'], $width);
     }
 
-    public function loadSeries($file, $short_key)
+    public function loadSeries($file, $short_key, $width = null)
     {
-        return $this->load("../series/" . $short_key . "/" . $file);
+        return $this->image("../series/" . $short_key . "/" . $file, $width);
     }
 
     public function setOutputPath($path)

@@ -152,7 +152,7 @@ if ($updated) {
 
             </div>
             <div class="col-xl-6 col-lg-6 col-sm-12">
-                <img src="<?= $static->load("customize-experience.png") ?>"/>
+                <img src="<?= $static->image("customize-experience.png", 400) ?>"/>
             </div>
         </div>
     </form>

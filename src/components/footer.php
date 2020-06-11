@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-2 col-lg-2 col-sm-12">
-                        <img src="<?= $static->load("leonardo-scapinello-white-background.svg"); ?>" width="38"
+                        <img src="<?= $static->image("leonardo-scapinello-white-background.svg"); ?>" width="38"
                              height="38" alt="" class="mp-image-logo">
                     </div>
                     <div class="offset-3"></div>

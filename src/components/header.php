@@ -15,9 +15,9 @@
 <?php if ($contents->getContentType() === "blog") { ?>
     <a href="<?= SERVER_ADDRESS ?>series/notes/3E3HQW?utm_source=blog&utm_medium=blog_top_banner">
         <div class="series-banner"
-             style="background-image:url('<?= $static->load("../series/3E3HQW/banners/topbanner-bg.png") ?>')">
+             style="background-image:url('<?= $static->image("../series/3E3HQW/banners/topbanner-bg.png") ?>')">
             <div class="banner-block">
-                <img src="<?= $static->load("../series/3E3HQW/banners/topbanner.png") ?>" alt="Notes">
+                <img src="<?= $static->image("../series/3E3HQW/banners/topbanner.png") ?>" alt="Notes">
             </div>
         </div>
     </a>

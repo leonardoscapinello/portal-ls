@@ -1,6 +1,6 @@
 <div class="mp-main-menu">
     <a href="<?= SERVER_ADDRESS ?>" aria-current="page" class="mp-logo w-nav-brand w--current">
-        <img src="<?= $static->load("leonardo-scapinello-white-background.svg"); ?>" width="38"
+        <img src="<?= $static->image("leonardo-scapinello-white-background.svg"); ?>" width="38"
              height="38" alt="" class="mp-image-logo">
     </a>
     <a href="#" class="w--current show-nm nav-bars">

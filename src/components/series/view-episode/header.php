@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-sm-12">
                                     <div class="tpmgr serie-brand">
-                                        <img src="<?= $static->loadSeries($series->getSeasonBrand(), $series->getShortKey()); ?>">
+                                        <img src="<?= $static->loadSeries($series->getSeasonBrand(), $series->getShortKey(), 250); ?>">
                                     </div>
                                     <ul class="presentation-season-info">
                                         <li>Temporada <?= $series->fixSeasonLevel($series->getSeasonLevel()) ?></li>

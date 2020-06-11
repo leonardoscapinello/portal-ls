@@ -66,9 +66,10 @@ if ($ct_main === "view-serie") {
     $contents->loadById($series->getIdContent());
     $contentNote = new ContentsNotes();
     $content_edited = $contentNote->getContent($contents->getIdContent());
-    $image = $static->loadBlog($contents->getCoverImage());
+
+    $image = $static->loadBlog($contents->getCoverImage(),700);
     if (!notempty($image)) {
-        $image = $static->loadSeries($contents->getCoverImage(), $series->getShortKey());
+        $image = $static->loadSeries($contents->getCoverImage(), $series->getShortKey(), 700);
     }
     $title = $contents->getTitle() . " - " . $series->getSerieName();
     $description = $series->getSeasonDescription();

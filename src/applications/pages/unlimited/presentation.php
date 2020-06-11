@@ -12,7 +12,7 @@
                 <a href="<?=MONTHLY_SUB?>" class="btn dark" style="margin: 5px 0 35px 0;">Assine Agora</a>
             </div>
             <div class="col-xl-7 col-lg-7 col-sm-12">
-                <img src="<?= $static->load("macbook-com-conteudo-do-portal.png"); ?>"/>
+                <img src="<?= $static->image("macbook-com-conteudo-do-portal.png", 760); ?>"/>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                 <a href="<?=MONTHLY_SUB?>" class="btn dark" style="margin: 5px 0 35px 0;">Assine Agora</a>
             </div>
             <div class="col-xl-7 col-lg-7 col-sm-12">
-                <img src="<?= $static->load("livros-assinatura.png"); ?>"/>
+                <img src="<?= $static->image("livros-assinatura.png", 760); ?>"/>
             </div>
         </div>
     </div>

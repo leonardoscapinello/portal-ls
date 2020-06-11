@@ -6,7 +6,7 @@ $featured->loadRandomSerie();
 <header>
     <div class="collection-list-wrapper-8 w-dyn-list">
         <div class="w-dyn-items">
-            <div style="background-image:url(<?= $static->loadSeries($featured->getSeasonBg(), $featured->getShortKey()) ?>);background-color:#000"
+            <div style="background-image:url(<?= $static->loadSeries($featured->getSeasonBg(), $featured->getShortKey(),1400) ?>);background-color:#000"
                  class="mp-header-container w-dyn-item">
                 <div class="black-overlay-gradient"></div>
                 <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar-blur w-nav">
@@ -19,7 +19,7 @@ $featured->loadRandomSerie();
                             TEMPORADA <?=$featured->fixSeasonLevel($featured->getSeasonLevel())?>
                         </div>
                         <div class="product-image mp-white">
-                            <img src="<?= $static->loadSeries($featured->getSeasonBrand(), $featured->getShortKey()) ?>"
+                            <img src="<?= $static->loadSeries($featured->getSeasonBrand(), $featured->getShortKey(), 250) ?>"
                                  alt="Série: <?=$featured->getSeasonTitle()?>"/>
                         </div>
                         <div class="mp-hero-description">

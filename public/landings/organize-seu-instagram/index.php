@@ -4,7 +4,7 @@
             <div class="col-xl-5 col-lg-5 col-sm-12">
 
                 <div class="company">
-                    <img src="<?= $static->load("leonardo-scapinello-white-background.svg") ?>"/>
+                    <img src="<?= $static->image("leonardo-scapinello-white-background.svg") ?>"/>
                 </div>
 
                 <div class="title-superior" data-0="opacity:1;" data-150="opacity:.3;">
