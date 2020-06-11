@@ -3,9 +3,14 @@ $action = get_request("action");
 $id_user = get_request("u");
 $email = get_request("username");
 $password = get_request("password");
+$content_fire = get_request("content_fire");
+
+$next = $text->base64_decode($next);
 
 $username = "";
 $message = "Sua conta, do seu jeito. Aprenda no seu tempo, sobre <span class=\"text pink\"> marketing, direito digital, tráfego e muito mais</span>.";
+if ($content_fire === "download") $message = "Esse conteúdo é <span class=\"text pink\">reservado para assinantes</span>, entre com sua conta para continuar.";
+if ($content_fire === "serie_episode") $message = "Acessar esse episódio é <span class=\"text pink\">exclusivo para membros</span>, entre com sua conta para continuar.";
 
 if (notempty($id_user)) {
     $username = $id_user;
@@ -14,6 +19,12 @@ if (notempty($id_user)) {
 if (notempty($email) && !notempty($password)) {
     $username = $text->base64_decode($email);
     $id_account = $account->validateIdAccountBasedOnUniqueKey($username);
+
+    if ($id_account < 1) {
+        header("location: " . REGISTER_URL . "?username=" . $text->base64_encode($username) . "&content_fire=account_not_found_after_login_attempt&next=" . $text->base64_encode($next));
+        die;
+    }
+
     if (notempty($id_account)) {
         $tmp_acc = new Accounts($id_account);
         if (!$tmp_acc->isActive()) {
@@ -27,8 +38,8 @@ if (notempty($email) && !notempty($password)) {
     $session->setUsername($email);
     $session->setPassword($password);
     $c = $session->createSession();
-    $next = $text->base64_decode($next);
     if (!notempty($next)) $next = SERVER_ADDRESS;
+
     if ($c) {
         header("location: " . $next);
         die;
@@ -54,10 +65,12 @@ if (get_request("attempt") === "1") {
             <div class="col-xl-4 col-lg-4 col-sm-12">
                 <div class="login-box">
                     <div class="heading">
-                        <h3>Acesse seu conteúdo</h3>
-                        <h5>
-                            <?= $message ?>
-                        </h5>
+                        <?php if ($content_fire === "download") { ?>
+                            <h3>Seu download já está pronto.</h3>
+                        <?php } else { ?>
+                            <h3>Acesse seu conteúdo</h3>
+                        <?php } ?>
+                        <h5><?= $message ?></h5>
                     </div>
                     <form action="<?= $url->removeQueryString(array("attempt", "e")) ?>" method="POST">
                         <div class="form">
@@ -82,7 +95,7 @@ if (get_request("attempt") === "1") {
                                 </div>
                             <?php } ?>
                             <div class="input-d" style="text-align: center;margin-top: 30px">
-                                <a href="<?= REGISTER_URL ?>" style="margin-right: 30px;font-weight: 700;">Cadastre-se
+                                <a href="<?= REGISTER_URL ?>?next=<?= $text->base64_encode($next) ?>" style="margin-right: 30px;font-weight: 700;">Cadastre-se
                                     Grátis</a>
                             </div>
                         </div>

@@ -5,8 +5,13 @@ $last_name = get_request("last_name");
 $phone = get_request("phone");
 $username = get_request("username");
 $password = get_request("password");
+$content_fire = get_request("content_fire");
+
+if (notempty($username)) $username = $text->base64_decode($username);
 
 $message = "Crie sua conta gratuita e acesse conteúdo de seu interesse quando e onde você quiser.";
+if ($content_fire === "account_not_found_after_login_attempt") $message = "Vi que você tentou entrar, mas não achei seu cadastro por aqui. <span class=\"text pink\">Vamos finaliza-lo agora?</span>";
+
 if (get_request("attempt") === base64_encode("0")) {
     header("location: " . LOGIN_URL . "?u=" . $text->base64_encode($username) . "&attempt=2");
 }
@@ -15,10 +20,10 @@ if (get_request("attempt") === base64_encode("0")) {
 if (get_request("action") === "register") {
     $r = $account->register($username, $first_name, $last_name, $password, $phone);
     if ($r > 0) {
-        header("location: " . LOGIN_URL . "?u=" . $text->base64_encode($r));
+        header("location: " . LOGIN_URL . "?u=" . $text->base64_encode($r) . "&next=" . $text->base64_encode($next));
         die;
     } else {
-        header("location: " . REGISTER_URL . "?attempt=" . $text->base64_encode($r));
+        header("location: " . REGISTER_URL . "?attempt=" . $text->base64_encode($r). "&next=" . $text->base64_encode($next));
         die;
     }
 }
@@ -32,9 +37,13 @@ if (get_request("action") === "register") {
                 <div class="col-xl-4 col-lg-4 col-sm-12">
                     <div class="login-box">
                         <div class="heading">
-                            <h3>Essa é sua melhor decisão, aprender!</h3>
+                            <?php if ($content_fire === "account_not_found_after_login_attempt") { ?>
+                                <h3>Parece que ainda não nos conhecemos.</h3>
+                            <?php } else { ?>
+                                <h3>Essa é sua melhor decisão, aprender!</h3>
+                            <?php } ?>
                             <h5>
-                                <?=$message?>
+                                <?= $message ?>
                             </h5>
                         </div>
                         <div class="form">
@@ -64,7 +73,8 @@ if (get_request("action") === "register") {
                                 <button class="dark">Criar uma Conta Grátis</button>
                             </div>
                             <div class="input-d" style="text-align: center;margin-top: 30px">
-                                <a href="<?= LOGIN_URL ?>" style="margin-right: 30px;font-weight: 700;">Já tenho uma
+                                <a href="<?= LOGIN_URL ?>?next=<?= $text->base64_encode($next) ?>"
+                                   style="margin-right: 30px;font-weight: 700;">Já tenho uma
                                     conta.
                                     Fazer Login.</a>
                             </div>

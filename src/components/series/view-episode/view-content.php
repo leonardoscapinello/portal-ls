@@ -1,6 +1,3 @@
-<?php
-
-?>
 <div class="section white-bg">
     <div class="container">
         <div class="row">
@@ -22,9 +19,8 @@
             <div class="col-xl-3 col-lg-3 col-sm-12">
                 <div class="serie-sidebar-box">
                     <h4>Leve com você</h4>
-                    <a href="../../download/<?= $account->getIdAccount() . "-" . md5($contents->getIdContent()) ?>"
-                       data-name="<?= $url->friendly($contents->getTitle()) ?>.pdf"
-                       class="btn serie-view ajax-download"
+                    <a href="<?=SERVER_ADDRESS?>series/download/<?= md5($contents->getIdContent()) ?>"
+                       class="btn serie-view"
                        target="_blank"
                        style="display: block;"><i
                                 class="far fa-download"></i> Baixar em

@@ -1,5 +1,16 @@
 <?php
 
+if (!$session->isLogged()) {
+    header("location: " . LOGIN_URL . "?next=" . $url->getActualURLAsNext() . "&content_fire=serie_episode");
+    die;
+}
+
+if (!$license->userCanAccessByKey($series->getPermissionKey())) {
+    header("location: " . SERVER_ADDRESS . "assinatura?content_fire=serie_episode_view");
+    die;
+}
+
+
 require_once(DIRNAME . "../components/series/view-episode/header.php");
 require_once(DIRNAME . "../components/series/view-episode/view-content.php");
 ?>

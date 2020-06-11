@@ -22,7 +22,7 @@ RewriteRule ^blog/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/$    ./index.php?ctb
 RewriteRule ^series$                                                                            ./src/applications/series/index.php?ct_main=index&serie_url=index [L,NC,QSA]
 RewriteRule ^series/updateContent$                                                              ./src/applications/series/update-content.php [L,NC,QSA]
 RewriteRule ^series/print/([a-zA-Z0-9-z\-\_]+)$                                                 ./src/applications/series/print.php?hash=$1 [L,NC,QSA]
-RewriteRule ^series/download/([0-9]+)-([a-zA-Z0-9-z\-\_]+)$                                     ./public/documents/force-download.php?id_account=$1&hash=$2 [L,NC,QSA]
+RewriteRule ^series/download/([a-zA-Z0-9-z\-\_]+)$                                     ./public/documents/force-download.php?hash=$1 [L,NC,QSA]
 RewriteRule ^series/static/(.*)$                                                                ./src/applications/series/static/$1 [L,NC,QSA]
 RewriteRule ^series/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$                                  ./src/applications/series/index.php?ct_main=view-serie&serie_url=$1&season_short_key=$2 [L,NC,QSA]
 RewriteRule ^series/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/([0-9]+)-([a-zA-Z0-9-z\-\_]+)$    ./src/applications/series/index.php?ct_main=view-episode&serie_url=$1&season_short_key=$2&episode=$3&content_title=$4 [L,NC,QSA]
