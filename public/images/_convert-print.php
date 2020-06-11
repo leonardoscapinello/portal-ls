@@ -23,6 +23,18 @@ $source = __DIR__ . "/" . $src;
 if (file_exists($source) && is_file($source)) {
 
     $browser = new BrowserDetection();
+
+
+    $browser_allowed = ($browser->getName() === "Chrome" || $browser->getName() === "Firefox" || $browser->getName() === "Opera");
+    $is_mobile = $browser->isMobile();
+
+    if (!$browser_allowed || $is_mobile) {
+        $images->load($source);
+        $images->header();
+        $images->output();
+    }
+
+
     list($nwidth, $nheight) = getimagesize($source);
 
     if (!notempty($width)) {
