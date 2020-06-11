@@ -1,7 +1,7 @@
 <?php
 header('Pragma: public');
 header('Cache-Control: max-age=86400');
-header('Expires: '. gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));
+header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));
 
 define("DIRNAME", dirname(__FILE__) . "/");
 
@@ -23,17 +23,29 @@ $source = __DIR__ . "/" . $src;
 if (file_exists($source) && is_file($source)) {
 
     $browser = new BrowserDetection();
+    list($nwidth, $nheight) = getimagesize($source);
 
-    if ("Chrome" === $browser->getName() || "Firefox" === $browser->getName()) {
+    if (!notempty($width)) {
+        $width = $nwidth;
+    }
+
+
+    if ("Chrome" !== $browser->getName() || "Firefox" === $browser->getName()) {
         $images->load($source);
-        if (notempty($width)) $images->resizeToWidth($width);
+        $images->resizeToWidth($width);
         $images->header(IMAGETYPE_WEBP);
         $images->output(IMAGETYPE_WEBP);
     } else {
         $images->load($source);
-        if (notempty($width)) $images->resizeToWidth($width);
-        $images->header();
-        $images->output();
+        //* NEEDED BECAUSE PNG RESIZE PUT BLACK BACKGROUND ON TRANSPARENT IMAGE
+        if ($images->image_type !== IMAGETYPE_PNG) {
+            $images->resizeToWidth($width);
+            $images->header();
+            $images->output();
+        } else {
+            $images->header();
+            echo file_get_contents($source);
+        }
     }
 
 

@@ -9,11 +9,11 @@ class Images
     {
         $image_info = getimagesize($filename);
         $this->image_type = $image_info[2];
-        if ($this->image_type == IMAGETYPE_JPEG) {
+        if ($this->image_type === IMAGETYPE_JPEG) {
             $this->image = imagecreatefromjpeg($filename);
-        } elseif ($this->image_type == IMAGETYPE_GIF) {
+        } elseif ($this->image_type === IMAGETYPE_GIF) {
             $this->image = imagecreatefromgif($filename);
-        } elseif ($this->image_type == IMAGETYPE_PNG) {
+        } elseif ($this->image_type === IMAGETYPE_PNG) {
             $this->image = imagecreatefrompng($filename);
         }
     }
@@ -21,46 +21,40 @@ class Images
     function save($filename, $image_type = IMAGETYPE_JPEG, $compression = 95, $permissions = null)
     {
 
-        if ($image_type == IMAGETYPE_JPEG) {
+        if ($image_type === IMAGETYPE_JPEG) {
             imagejpeg($this->image, $filename, $compression);
-        } elseif ($image_type == IMAGETYPE_GIF) {
-
+        } elseif ($image_type === IMAGETYPE_GIF) {
             imagegif($this->image, $filename);
-        } elseif ($image_type == IMAGETYPE_PNG) {
-
+        } elseif ($image_type === IMAGETYPE_PNG) {
             imagepng($this->image, $filename);
         }
         if ($permissions != null) {
-
             chmod($filename, $permissions);
         }
     }
 
     function output($image_type = IMAGETYPE_JPEG)
     {
-        if ($image_type == IMAGETYPE_JPEG) {
+        if ($image_type === IMAGETYPE_JPEG) {
             imagejpeg($this->image);
-        } elseif ($image_type == IMAGETYPE_GIF) {
+        } elseif ($image_type === IMAGETYPE_GIF) {
             imagegif($this->image);
-        } elseif ($image_type == IMAGETYPE_PNG) {
-            imagealphablending($this->image, false);
-            imagesavealpha($this->image, true);
-            imagefill($this->image, 0, 0, 0x7fff0000);
+        } elseif ($image_type === IMAGETYPE_PNG) {
             imagepng($this->image);
-        } elseif ($image_type == IMAGETYPE_WEBP) {
+        } elseif ($image_type === IMAGETYPE_WEBP) {
             imagewebp($this->image);
         }
     }
 
     function header($image_type = IMAGETYPE_JPEG)
     {
-        if ($image_type == IMAGETYPE_JPEG) {
+        if ($image_type === IMAGETYPE_JPEG) {
             header("Content-type:image/jpeg");
-        } elseif ($image_type == IMAGETYPE_GIF) {
+        } elseif ($image_type === IMAGETYPE_GIF) {
             header("Content-type:image/gif");
-        } elseif ($image_type == IMAGETYPE_PNG) {
+        } elseif ($image_type === IMAGETYPE_PNG) {
             header("Content-type:image/png");
-        } elseif ($image_type == IMAGETYPE_WEBP) {
+        } elseif ($image_type === IMAGETYPE_WEBP) {
             header("Content-type:image/webp");
         }
     }
@@ -101,10 +95,21 @@ class Images
 
     function resize($width, $height)
     {
-        imagealphablending($this->image, false);
-        imagesavealpha($this->image, true);
-        $new_image = imagecreatetruecolor($width, $height);
-        imagefill($new_image, 0, 0, 0x7fff0000);
+
+        if ($this->image_type === IMAGETYPE_WEBP) {
+            imagealphablending($this->image, false);
+            imagesavealpha($this->image, true);
+            $new_image = imagecreatetruecolor($width, $height);
+            imagefill($new_image, 0, 0, 0x7fff0000);
+        } elseif ($this->image_type === IMAGETYPE_GIF) {
+            $new_image = imagecreatetruecolor($width, $height);
+            imagecolortransparent($new_image, imagecolorallocate($new_image, 0, 0, 0));
+            imagealphablending($new_image, false);
+            imagesavealpha($new_image, true);
+        } else {
+            $new_image = imagecreatetruecolor($width, $height);
+        }
+
         imagecopyresampled($new_image, $this->image, 0, 0, 0, 0, $width, $height, $this->getWidth(), $this->getHeight());
         $this->image = $new_image;
     }
