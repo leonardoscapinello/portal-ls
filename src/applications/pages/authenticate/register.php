@@ -1,11 +1,16 @@
 <?php
-
 $first_name = get_request("first_name");
 $last_name = get_request("last_name");
 $phone = get_request("phone");
 $username = get_request("username");
 $password = get_request("password");
 $content_fire = get_request("content_fire");
+
+if($session->isLogged()){
+    header("location:" . PROFILE_ADDRESS);
+    die;
+}
+
 
 if (notempty($username)) $username = $text->base64_decode($username);
 

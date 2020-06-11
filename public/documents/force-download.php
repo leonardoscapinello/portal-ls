@@ -5,6 +5,7 @@ $allow = true;
 
 $f = get_request("f");
 $hash = get_request("hash");
+$content_fire = get_request("content_fire");
 
 
 // EXTERNAL DOWNLOAD
@@ -19,6 +20,7 @@ if (notempty($f)) {
 
     if (!$session->isLogged()) {
         header("location: " . LOGIN_URL . "?content_fire=download&next=" . $url->getActualURLAsNext());
+        die;
     }
 
     $contentsPrint = new ContentsPrint();
@@ -51,4 +53,10 @@ if (notempty($f)) {
         readfile($filename);
         exit;
     }
+}
+
+
+if ($content_fire === "home") {
+    header("location: " . SERVER_ADDRESS);
+    die;
 }

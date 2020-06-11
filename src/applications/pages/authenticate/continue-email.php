@@ -3,6 +3,11 @@ if (!function_exists('notempty')) {
     include("../../../properties/index.php");
 }
 
+if($session->isLogged()){
+    header("location:" . PROFILE_ADDRESS);
+    die;
+}
+
 $username = get_request("u");
 $auth = get_request("auth");
 $email = get_request("email");

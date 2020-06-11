@@ -7,6 +7,12 @@ $content_fire = get_request("content_fire");
 
 $next = $text->base64_decode($next);
 
+if($session->isLogged()){
+    header("location:" . PROFILE_ADDRESS);
+    die;
+}
+
+
 $username = "";
 $message = "Sua conta, do seu jeito. Aprenda no seu tempo, sobre <span class=\"text pink\"> marketing, direito digital, tráfego e muito mais</span>.";
 if ($content_fire === "download") $message = "Esse conteúdo é <span class=\"text pink\">reservado para assinantes</span>, entre com sua conta para continuar.";
@@ -41,8 +47,13 @@ if (notempty($email) && !notempty($password)) {
     if (!notempty($next)) $next = SERVER_ADDRESS;
 
     if ($c) {
-        header("location: " . $next);
-        die;
+        if ($content_fire === "download") {
+            header("location: " . $next . "&content_fire=home");
+            die;
+        } else {
+            header("location: " . $next);
+            die;
+        }
     } else {
         $url->removeQueryString(array("attempt"));
         header("location: " . $url->addQueryString(array("attempt" => "1", "u" => $text->base64_encode($email))));
@@ -95,7 +106,8 @@ if (get_request("attempt") === "1") {
                                 </div>
                             <?php } ?>
                             <div class="input-d" style="text-align: center;margin-top: 30px">
-                                <a href="<?= REGISTER_URL ?>?next=<?= $text->base64_encode($next) ?>" style="margin-right: 30px;font-weight: 700;">Cadastre-se
+                                <a href="<?= REGISTER_URL ?>?next=<?= $text->base64_encode($next) ?>"
+                                   style="margin-right: 30px;font-weight: 700;">Cadastre-se
                                     Grátis</a>
                             </div>
                         </div>

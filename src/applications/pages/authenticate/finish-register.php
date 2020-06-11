@@ -9,6 +9,11 @@ $id_user = get_request("u");
 $token = get_request("auth");
 $custom_source_request = get_request("req");
 
+if($session->isLogged()){
+    header("location:" . PROFILE_ADDRESS);
+    die;
+}
+
 
 $username = "";
 $phone = "";
