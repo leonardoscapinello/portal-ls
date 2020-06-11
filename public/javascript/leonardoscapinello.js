@@ -21,7 +21,7 @@ $('.blog-carousel').owlCarousel({
 });
 
 let unique_item_size = 257;
-let wd = window.outerWidth;
+let wd = (window.outerWidth > 1400) ? 1400 : window.outerWidth;
 let items_count = (wd / unique_item_size);
 
 $('.series-carousel').owlCarousel({
