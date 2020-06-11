@@ -82,7 +82,7 @@ if (get_request("action") === "register") {
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 col-sm-12">
-                    <img src="<?= $static->load("customize-experience.png"); ?>"/>
+                    <img src="<?= $static->image("customize-experience.png"); ?>"/>
                 </div>
                 <div class="offset-1"></div>
             </div>

@@ -14,9 +14,9 @@
 
 <?php if ($contents->getContentType() === "blog") { ?>
     <div class="series-banner"
-         style="background-image:url('<?= $static->load("../series/notes-20200528/banners/topbanner-bg.png") ?>')">
+         style="background-image:url('<?= $static->image("../series/notes-20200528/banners/topbanner-bg.png") ?>')">
         <div class="banner-block">
-            <img src="<?= $static->load("../series/notes-20200528/banners/topbanner.png") ?>" alt="Notes">
+            <img src="<?= $static->image("../series/notes-20200528/banners/topbanner.png") ?>" alt="Notes">
         </div>
     </div>
 <?php } ?>

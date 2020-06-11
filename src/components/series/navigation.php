@@ -1,6 +1,6 @@
 <div class="mp-main-menu">
     <a href="<?= SERVER_ADDRESS ?>series" aria-current="page" class="mp-logo w-nav-brand w--current">
-        <img src="<?= $static->load("ls-series-white.svg"); ?>" width="84"
+        <img src="<?= $static->image("ls-series-white.svg"); ?>" width="84"
              height="38" alt="" class="mp-image-logo">
     </a>
     <a href="#" class="w--current show-nm nav-bars">

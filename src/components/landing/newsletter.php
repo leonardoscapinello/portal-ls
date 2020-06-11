@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="offset-1"></div>
                     <div class="col-xl-4 col-lg-4 col-sm-12">
-                        <img src="<?= $static->load("search.png", 425) ?>"/>
+                        <img src="<?= $static->image("search.png", 425) ?>"/>
                     </div>
                     <div class="offset-1"></div>
                     <div class="col-xl-6 col-lg-6 col-sm-12">
