@@ -617,6 +617,7 @@ img {
   }
   p {
     line-height: 25px;
+    font-size: 1.3em;
     margin: 6px 0;
   }
   .text.featured-title {
@@ -1291,5 +1292,9 @@ img {
   .mp-header-container.no-hh {
     background-position: center center !important;
     background-size: cover !important;
+  }
+  .content-serie-text-section p {
+    font-size: 1.1em;
+    line-height: 36px;
   }
 }
