@@ -125,6 +125,7 @@ ob_start();
             transform: translate(-50%, 0);
             box-sizing: border-box;
             text-align: center;
+            font-size: 48pt;
         }
 
         .page .cover .author-name {
@@ -224,8 +225,8 @@ ob_start();
         }
 
         h1 {
-            font-size: 32pt;
-            line-height: 35pt;
+            font-size: 44pt !important;
+            line-height: 50pt;
             font-weight: 800;
         }
 
@@ -280,7 +281,7 @@ for ($i = 0; $i < count($paragraphs); $i++) { ?>
 </body>
 </html>
 <?php
-
+/*
 $html = ob_get_clean();
 $html = preg_replace('/>\s+</', "><", $html);
 
@@ -301,6 +302,6 @@ if (!file_put_contents(DIRNAME . "../../public/documents/" . $filename . ".pdf",
     http_response_code(200);
 }
 
-
+*/
 ?>
 
