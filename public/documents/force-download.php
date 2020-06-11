@@ -30,29 +30,31 @@ if (get_request("f") !== null) {
         $composite = $account->getFullName() . $account->getIdAccount() . "-" . $contents->getTitle();
         $filename = $url->friendly($composite);
 
+        $render = false;
         if (true || !$contentsPrint->PDFExists($filename)) {
-            $contentsPrint->render($hash, $account->getIdAccount(), $filename);
+            $render = $contentsPrint->render($hash, $account->getIdAccount(), $filename);
         }
+        if ($render) {
+            $just_filename = $filename;
+            $filename = DIRNAME . "../../public/documents/" . $filename . ".pdf";
 
-        $just_filename = $filename;
-        $filename = DIRNAME . "../../public/documents/" . $filename . ".pdf";
-
-        if ($contentsPrint->PDFExists($just_filename)) {
-            if ($allow) {
-                header('Content-Description: File Transfer');
-                header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename=' . basename($filename));
-                // header("Content-Encoding: gzip");
-                header('Expires: 0');
-                header('Cache-Control: must-revalidate');
-                header('Pragma: public');
-                header("Content-Length: " . filesize($filename));
-                header('Content-Transfer-Encoding: binary');
-                header('Connection: Keep-Alive');
-                header('Expires: 0');
-                header('Cache-Control: must-revalidate, post-check=1, pre-check=1');
-                ob_get_clean();
-                readfile($filename);
+            if ($contentsPrint->PDFExists($just_filename)) {
+                if ($allow) {
+                    header('Content-Description: File Transfer');
+                    header('Content-Type: application/octet-stream');
+                    header('Content-Disposition: attachment; filename=' . basename($filename));
+                    // header("Content-Encoding: gzip");
+                    header('Expires: 0');
+                    header('Cache-Control: must-revalidate');
+                    header('Pragma: public');
+                    header("Content-Length: " . filesize($filename));
+                    header('Content-Transfer-Encoding: binary');
+                    header('Connection: Keep-Alive');
+                    header('Expires: 0');
+                    header('Cache-Control: must-revalidate, post-check=1, pre-check=1');
+                    ob_get_clean();
+                    readfile($filename);
+                }
             }
         }
     } else {

@@ -90,18 +90,21 @@ class ContentsPrint
 
             if (!notempty($filename)) $filename = $account->getIdAccount() . "-" . $hash_content;
 
-            $url = SERVER_ADDRESS . "series/print/" . $hash_content . "?id_account=" . $id_account . "&filename=" . $filename;
+            $url = SERVER_ADDRESS . "series/print/" . $hash_content . "?filename=" . $filename;
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
             curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             $output = curl_exec($ch);
             $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
+            if ($httpcode === 200) return true;
         } catch (Exception $exception) {
             error_log($exception);
         }
+        return false;
     }
 
     public function PDFExists($filename)
