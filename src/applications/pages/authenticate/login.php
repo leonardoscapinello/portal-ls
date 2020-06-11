@@ -7,11 +7,10 @@ $content_fire = get_request("content_fire");
 
 $next = $text->base64_decode($next);
 
-if($session->isLogged()){
+if ($session->isLogged()) {
     header("location:" . PROFILE_ADDRESS);
     die;
 }
-
 
 $username = "";
 $message = "Sua conta, do seu jeito. Aprenda no seu tempo, sobre <span class=\"text pink\"> marketing, direito digital, tráfego e muito mais</span>.";
@@ -48,7 +47,8 @@ if (notempty($email) && !notempty($password)) {
 
     if ($c) {
         if ($content_fire === "download") {
-            header("location: " . $next . "&content_fire=home");
+            $url->setCustomUrl($text->base64_decode($next));
+            header("location: " . $url->addQueryString(array("content_fire" => "home")));
             die;
         } else {
             header("location: " . $next);
