@@ -34,7 +34,7 @@ define("LAUNCH_ADDRESS", SERVER_ADDRESS . "launch/");
 define("PROFILE_ADDRESS", SERVER_ADDRESS . "perfil");
 define("PAGE_TITLE", "LS");
 define("PAGE_TITLE_SERIES", "LS Séries");
-define("VERSION", "2.1.45.0");
+define("VERSION", "3.0");
 
 
 define("MONTHLY_SUB", "https://pay.hotmart.com/O27570351G?off=0mfqr1y5&checkoutMode=10");
