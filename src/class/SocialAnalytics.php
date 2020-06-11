@@ -196,11 +196,13 @@ class SocialAnalytics
 
     public function getBodyTags()
     {
+        if ($_SERVER['SERVER_NAME'] === "localhost") return null;
         return $this->body_tags;
     }
 
     public function getHeadTags()
     {
+        if ($_SERVER['SERVER_NAME'] === "localhost") return null;
         return $this->head_tags;
     }
 

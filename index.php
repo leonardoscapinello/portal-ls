@@ -223,7 +223,10 @@ $social->mailChimp();
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
-<?= $static->load("infinite-scroll.pkgd.min.js"); ?>
+<?php
+if ($contents->getContentType() === "blog") {
+    echo $static->load("infinite-scroll.pkgd.min.js");
+} ?>
 <?= $static->load("leonardoscapinello.js"); ?>
 <?= $static->load("leonardoscapinello.scroll.js"); ?>
 <script type="text/javascript">
