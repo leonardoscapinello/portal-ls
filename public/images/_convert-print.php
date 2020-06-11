@@ -50,11 +50,14 @@ if (file_exists($source) && is_file($source)) {
         header('Pragma: public');
         header('Cache-Control: max-age=31536000');
         header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000));
-        header($header);
+
+
 
         if (!$browser_allowed) {
+            header($header);
             echo file_get_contents($converted_filename_path);
         } else {
+            header("Content-Type: image/webp");
             $images->output(IMAGETYPE_WEBP);
         }
 
