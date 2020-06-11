@@ -281,7 +281,7 @@ for ($i = 0; $i < count($paragraphs); $i++) { ?>
 </body>
 </html>
 <?php
-/*
+
 $html = ob_get_clean();
 $html = preg_replace('/>\s+</', "><", $html);
 
@@ -302,6 +302,5 @@ if (!file_put_contents(DIRNAME . "../../public/documents/" . $filename . ".pdf",
     http_response_code(200);
 }
 
-*/
 ?>
 
