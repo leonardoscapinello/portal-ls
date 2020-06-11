@@ -69,6 +69,8 @@ class Images
             return("Content-type:image/png");
         } elseif ($image_type === IMAGETYPE_WEBP) {
             return("Content-type:image/webp");
+        }else{
+            return("Content-type:image/webp");
         }
     }
 

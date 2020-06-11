@@ -4,7 +4,7 @@ $days_to_launch = $date->getDaysOfDifference(date("Y-m-d"), $series->getLaunchDa
 <header>
     <div class="collection-list-wrapper-8 w-dyn-list serie-header-view">
         <div class="w-dyn-items">
-            <div style="background-image:url(<?= $static->loadSeries($series->getSeasonBg(), $series->getShortKey(), 1400); ?>);background-color:#000;"
+            <div style="background-image:url(<?= $static->loadSeries($series->getSeasonBg(), $series->getShortKey(), 960); ?>);background-color:#000;"
                  class="mp-header-container w-dyn-item">
                 <div class="black-overlay-gradient"></div>
                 <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar-blur w-nav">

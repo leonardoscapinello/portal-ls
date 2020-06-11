@@ -1,23 +1,23 @@
 <?php
 require_once("./src/properties/index.php");
 
-$less = new lessc;
-$less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/stylesheet.css");
-$static->add(DIRNAME . "../../public/stylesheet/reset.css");
-$static->add(DIRNAME . "../../public/stylesheet/container.css");
-$static->add(DIRNAME . "../../public/stylesheet/stylesheet.css");
-$static->add(DIRNAME . "../../public/stylesheet/tooltip.css");
-$static->add(DIRNAME . "../../public/stylesheet/bootoast.css");
-$static->add(DIRNAME . "../../public/stylesheet/owl.carousel.css");
-$static->add(DIRNAME . "../../public/stylesheet/owl.theme.default.css");
-$static->add(DIRNAME . "../../public/stylesheet/switch.css");
-$static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
-$static->add(DIRNAME . "../../public/fonts/imperial/imperial.css");
-$static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
-$static->setOutputPath(DIRNAME . "../../public/stylesheet/");
-$static->replace("../images/", SERVER_ADDRESS . "public/images/");
-$static->replace("../fonts/", SERVER_ADDRESS . "public/fonts/");
-$static->minifyStyleSheet("stylesheet");
+// $less = new lessc;
+// $less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/stylesheet.css");
+// $static->add(DIRNAME . "../../public/stylesheet/reset.css");
+// $static->add(DIRNAME . "../../public/stylesheet/container.css");
+// $static->add(DIRNAME . "../../public/stylesheet/stylesheet.css");
+// $static->add(DIRNAME . "../../public/stylesheet/tooltip.css");
+// $static->add(DIRNAME . "../../public/stylesheet/bootoast.css");
+// $static->add(DIRNAME . "../../public/stylesheet/owl.carousel.css");
+// $static->add(DIRNAME . "../../public/stylesheet/owl.theme.default.css");
+// $static->add(DIRNAME . "../../public/stylesheet/switch.css");
+// $static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
+// $static->add(DIRNAME . "../../public/fonts/imperial/imperial.css");
+// $static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
+// $static->setOutputPath(DIRNAME . "../../public/stylesheet/");
+// $static->replace("../images/", SERVER_ADDRESS . "public/images/");
+// $static->replace("../fonts/", SERVER_ADDRESS . "public/fonts/");
+// $static->minifyStyleSheet("stylesheet");
 
 $category_url = $contents->getCategoryUrl();
 $semantic_url = $contents->getSemanticRequest();
