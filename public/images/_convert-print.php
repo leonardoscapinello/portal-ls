@@ -25,7 +25,7 @@ if (file_exists($source) && is_file($source)) {
     $browser = new BrowserDetection();
 
 
-    $browser_allowed = ($browser->getName() === "Chrome" || $browser->getName() === "Firefox" || $browser->getName() === "Opera");
+    $browser_allowed = (isset($_SERVER['HTTP_ACCEPT']) && preg_match('#[\s,;]image/webp[\s,;]#', $_SERVER['HTTP_ACCEPT']));
     $is_mobile = $browser->isMobile();
 
 
