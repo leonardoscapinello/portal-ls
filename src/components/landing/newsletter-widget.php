@@ -5,6 +5,7 @@ $username = get_request("username");
     <div class="newsletter-widget">
         <div class="input-d">
             <input type="hidden" name="next" id="next" value="<?= $text->base64_encode($url->getActualURL()) ?>"/>
+			<label for="username"></label>
             <input type="email" name="username" id="username" placeholder="seunome@email.com" value="<?= $username ?>"/>
             <div style="text-align: right;margin-top: 10px">
                 <button class="dark">cadastrar grátis <i class="far fa-arrow-right"></i></button>

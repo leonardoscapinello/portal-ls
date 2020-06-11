@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5 col-lg-5 col-sm-12">
-                        <img src="<?= $static->image("meditation-online.png", 425) ?>"/>
+                        <img src="<?= $static->image("meditation-online.png", 425) ?>" alt="Ícone Meditação"/>
                     </div>
                     <div class="offset-1"></div>
                     <div class="col-xl-6 col-lg-6 col-sm-12">

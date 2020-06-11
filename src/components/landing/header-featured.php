@@ -1,7 +1,7 @@
 <header>
     <div class="collection-list-wrapper-8 w-dyn-list">
         <div class="w-dyn-items">
-            <div style="background-image:url(<?= $static->image("featured-20200501.png"); ?>);background-color:#ACBCCC"
+            <div style="background-image:url(<?= $static->image("featured-20200501.png", 1400); ?>);background-color:#ACBCCC"
                  class="mp-header-container w-dyn-item">
                 <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar-blur w-nav">
                     <?php require_once(DIRNAME . "../components/navigation.php"); ?>
