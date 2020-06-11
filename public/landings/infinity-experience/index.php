@@ -28,7 +28,7 @@
                 </h2>
                 <p class="text white double" data-0="opacity:1;" data-150="opacity:.3;">
                     Descubra como revolucionar seu atendimento com técnicas simples e rápidas que te permite vender
-                    várias vezes à mesma pessoa.
+                    várias vezes a mesma pessoa.
                 </p>
                 <button class="btn btn-primary btn-lg btn-block" data-0="opacity:1;"
                         data-150="opacity:.3;" style="display: none;">Garantir o
