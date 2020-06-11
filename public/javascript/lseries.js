@@ -259,30 +259,19 @@ function saveContent2User() {
 $(document).on("click", ".ajax-download", function (e) {
     e.preventDefault();
     let th = $(this);
-    let cl = th.attr("data-download");
-    let nm = th.attr("data-name");
     let old_tx = th.html();
-    $(this).html(`<i class="fas fa-spinner fa-pulse"></i> Preparando`);
-    $.ajax({
-        url: cl,
-        type: "GET",
-        cache: false,
-        xhrFields: {
-            responseType: 'blob'
-        },
-        success: function (data) {
-            th.html(old_tx);
-            var a = document.createElement('a');
-            var url = window.URL.createObjectURL(data);
-            a.href = url;
-            a.download = nm;
-            document.body.append(a);
-            a.click();
-            a.remove();
-            window.URL.revokeObjectURL(url);
-        },
-        error: function (data) {
-            th.html(`<i class="fas fa-times"></i> Indisponível`);
+    th.html(`<i class="fas fa-spinner fa-pulse"></i> Preparando`);
+    let ifr = $('<iframe/>', {
+        id: "document_downloader_main",
+        src: th.attr("href"),
+        style: 'display:none;',
+        onload: function () {
+            window.setTimeout(function(){
+                th.html(old_tx);
+            },1000);
         }
     });
+    $('body').append(ifr);
+
 });
+

@@ -20,11 +20,12 @@
                 <div class="serie-sidebar-box">
                     <h4>Leve com você</h4>
                     <a href="<?=SERVER_ADDRESS?>series/download/<?= md5($contents->getIdContent()) ?>"
-                       class="btn serie-view"
+                       class="btn serie-view ajax-download"
                        target="_blank"
                        style="display: block;"><i
                                 class="far fa-download"></i> Baixar em
                         PDF</a>
+                    <iframe src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="repodown" name="repodown" style="display: none"></iframe>
                 </div>
                 <div class="serie-sidebar-box">
 
