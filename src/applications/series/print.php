@@ -20,6 +20,7 @@ $contents->loadByHash($hash);
 $content_edited = $contentsNotes->getContent($contents->getIdContent(), $id_account);
 if (notempty($content_edited)) {
     $ctn = $text->base64_decode($content_edited);
+    $ctn = utf8_decode($ctn);
 } else {
     $ctn = ($contents->getContentHtml());
 }
@@ -68,10 +69,18 @@ ob_start();
             background: #FFFFFF;
         }
 
+        .page .header {
+            box-sizing: border-box;
+            background: #FFFFFF;
+            height: 70px;
+            display: block;
+            overflow: hidden;
+        }
+
         .page .content {
             box-sizing: border-box;
             background: #FFFFFF;
-            height: 1062px;
+            height: 992px;
             display: block;
             overflow: hidden;
         }
@@ -153,12 +162,25 @@ ob_start();
             display: block;
             font-size: 12pt;
             line-height: 26px;
-            padding: 30px 1cm;
+            padding: 22px 1cm;
             text-align: justify;
         }
 
-        .page .content p:first-child {
-            padding-top: 70px;
+        .page .content h1,
+        .page .content h2,
+        .page .content h3,
+        .page .content h4,
+        .page .content h5,
+        .page .content h6{
+            font-family: Merriweather, 'Times New Roman', serif;
+            display: block;
+            padding: 15px 1cm;
+            text-align: justify;
+        }
+
+        .page .content h3{
+            font-size: 15pt;
+            line-height: 35px;
         }
 
         .footer {
@@ -240,6 +262,7 @@ $page = 2;
 $paragraphs = $contentsPrint->preparePages($ctn);
 for ($i = 0; $i < count($paragraphs); $i++) { ?>
     <div class="page">
+        <div class="header"></div>
         <div class="content">
             <?= $paragraphs[$i] ?>
         </div>
