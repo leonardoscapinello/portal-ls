@@ -1,18 +1,18 @@
 <?php
 require_once("../../../src/properties/index.php");
-//$less = new lessc;
-//$less->compileFile(DIRNAME . "../../public/less/series.less", DIRNAME . "../../public/stylesheet/ls.series.css");
-//$static->add(DIRNAME . "../../public/stylesheet/reset.css");
-//$static->add(DIRNAME . "../../public/stylesheet/container.css");
-//$static->add(DIRNAME . "../../public/stylesheet/ls.series.css");
-//$static->add(DIRNAME . "../../public/stylesheet/owl.carousel.css");
-//$static->add(DIRNAME . "../../public/stylesheet/owl.theme.default.css");
-//$static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
-//$static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
-//$static->setOutputPath(DIRNAME . "../../public/stylesheet/");
+$less = new lessc;
+$less->compileFile(DIRNAME . "../../public/less/series.less", DIRNAME . "../../public/stylesheet/ls.series.css");
+$static->add(DIRNAME . "../../public/stylesheet/reset.css");
+$static->add(DIRNAME . "../../public/stylesheet/container.css");
+$static->add(DIRNAME . "../../public/stylesheet/ls.series.css");
+$static->add(DIRNAME . "../../public/stylesheet/owl.carousel.css");
+$static->add(DIRNAME . "../../public/stylesheet/owl.theme.default.css");
+$static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
+$static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
+$static->setOutputPath(DIRNAME . "../../public/stylesheet/");
 //$static->replace("../images/", "../../public/images/");
 //$static->replace("../fonts/", "../../public/fonts/");
-//$static->minifyStyleSheet("ls.series");
+$static->minifyStyleSheet("ls.series");
 
 $ct_main = get_request("ct_main");
 $author = new Accounts(1);/* ==================== LOAD SERIES AND EPISODES VARIABLES */;
@@ -206,7 +206,6 @@ $social->mailChimp();
 
     </style>
 
-    <?= $static->load("ls.series.min.css") ?>
     <?php /* $social->getGoogleAnalyticsScript_Head(); ?>
     <?= $social->getFacebookPixel_Head("webiste");*/ ?>
 </head>
@@ -228,6 +227,7 @@ $social->mailChimp();
     require_once(DIRNAME . "../components/footer.php");
     ?>
 </div>
+<?= $static->printCSS("ls.series.min.css") ?>
 <?= $social->getBodyTags(); ?>
 <?= $static->load("jquery.min.js"); ?>
 <?= $static->load("owl.carousel.min.js"); ?>
