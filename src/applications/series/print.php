@@ -1,5 +1,6 @@
 <?php
 require_once("../../properties/index.php");
+
 ob_end_clean();
 define("DOMPDF_FONT_HEIGHT_RATIO", 0.75);
 
@@ -9,7 +10,7 @@ $cover = "static/document-cover-portal-ls-compressed.jpg";
 $id_account = get_request("id_account");
 $filename = get_request("filename");
 $hash = get_request("hash");
-if ($hash === null) {
+if ($hash === null || $filename === null) {
     die("Unable to print");
 }
 $contents = new Contents();
@@ -20,7 +21,7 @@ $content_edited = $contentsNotes->getContent($contents->getIdContent(), $id_acco
 if (notempty($content_edited)) {
     $ctn = $text->base64_decode($content_edited);
 } else {
-    $ctn = $contents->getContentHtml();
+    $ctn = ($contents->getContentHtml());
 }
 $author = new Accounts($contents->getIdAuthor());
 ob_start();
@@ -276,6 +277,7 @@ if (!file_put_contents(DIRNAME . "../../public/documents/" . $filename . ".pdf",
 } else {
     http_response_code(200);
 }
+
 
 ?>
 

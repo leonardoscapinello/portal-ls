@@ -207,6 +207,7 @@ class Contents
     {
         global $text;
         $value = $text->utf8($value);
+        $value = htmlentities($value);
         $value = html_entity_decode($value);
         return $value;
     }
