@@ -95,9 +95,9 @@ class StaticCompiler
 
             if ($ext === "png" || $ext === "jpg") {
                 if (notempty($width)) {
-                    $file_folder = "images/display?width=" . $width. "&src=";
+                    $file_folder = "images/display?render=render.lsgo.me-".VERSION."&width=" . $width. "&src=";
                 } else {
-                    $file_folder = "images/display?src=";
+                    $file_folder = "images/display?render=render.lsgo.me-".VERSION."&src=";
                 }
             } else {
                 $file_folder = "public/images/";
