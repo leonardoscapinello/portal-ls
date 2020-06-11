@@ -26,7 +26,7 @@ $list = $contents->getContentsList("ct.id_category = " . $category['id_category'
 												<img src="<?= $static->loadBlog($list[$i]['cover_image']) ?>"
                                                  alt="<?= $list[$i]['title'] ?>"
                                                  style="-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;">
-												 </picture>
+											</picture>
                                         </figure>
                                     </div>
                                     <div class="col-xl-8 col-lg-8 col-sm-12">

@@ -62,13 +62,13 @@ class Images
             $image_type = $this->image_type;
         }
         if ($image_type === IMAGETYPE_JPEG) {
-            header("Content-type:image/jpeg");
+            return ("Content-type:image/jpeg");
         } elseif ($image_type === IMAGETYPE_GIF) {
-            header("Content-type:image/gif");
+            return("Content-type:image/gif");
         } elseif ($image_type === IMAGETYPE_PNG) {
-            header("Content-type:image/png");
+            return("Content-type:image/png");
         } elseif ($image_type === IMAGETYPE_WEBP) {
-            header("Content-type:image/webp");
+            return("Content-type:image/webp");
         }
     }
 

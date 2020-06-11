@@ -48,8 +48,9 @@ if (file_exists($source) && is_file($source)) {
     if (file_exists($converted_filename_path) && is_file($converted_filename_path)) {
 
         $images->load($converted_filename_path);
-        $images->header();
-        if (!$browser_allowed || $is_mobile) {
+        $header = $images->header();
+        header($header);
+        if (!$browser_allowed) {
             echo file_get_contents($converted_filename_path);
         } else {
             $images->output(IMAGETYPE_WEBP);
