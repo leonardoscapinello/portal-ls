@@ -31,7 +31,7 @@ if (get_request("f") !== null) {
         $filename = $url->friendly($composite);
 
         if (true || !$contentsPrint->PDFExists($filename)) {
-            $contentsPrint->render($hash, $id_account, $filename);
+            $contentsPrint->render($hash, $account->getIdAccount(), $filename);
         }
 
         $just_filename = $filename;
