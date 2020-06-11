@@ -16,7 +16,7 @@ if (get_request("f") !== null) {
 
     if (!$session->isLogged()) {
         header("location: " . LOGIN_URL . "?next=" . $url->getActualURLAsNext() . "&content_fire=download");
-        die;
+        die("Permission denied");
     }
     if ($license->userCanAccessByKey("SERIES_CONTENT_DOWNLOAD_PDF")) {
 
@@ -25,7 +25,7 @@ if (get_request("f") !== null) {
         $contents = new Contents();
         $contents->loadByHash($hash);
         if ($contents->getContentType() !== "serie") {
-            die;
+            die("Unable to render a content that's not a serie episode");
         }
         $composite = $account->getFullName() . $account->getIdAccount() . "-" . $contents->getTitle();
         $filename = $url->friendly($composite);
