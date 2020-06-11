@@ -1,7 +1,4 @@
 <?php
-header('Pragma: public');
-header('Cache-Control: max-age=86400');
-header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));
 
 define("DIRNAME", dirname(__FILE__) . "/");
 
@@ -49,12 +46,20 @@ if (file_exists($source) && is_file($source)) {
 
         $images->load($converted_filename_path);
         $header = $images->header();
+
+        header('Pragma: public');
+        header('Cache-Control: max-age=31536000');
+        header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000));
         header($header);
+
         if (!$browser_allowed) {
             echo file_get_contents($converted_filename_path);
         } else {
             $images->output(IMAGETYPE_WEBP);
         }
+
+
+
     }
 
 

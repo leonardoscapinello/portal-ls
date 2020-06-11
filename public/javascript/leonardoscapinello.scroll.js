@@ -1,8 +1,5 @@
 let nextURL;
-function r(f) {
-    /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
-}
-r(function () {
+if (infiniteScroll && typeof infiniteScroll === 'function') {
     function updateNextURL(doc) {
         nextURL = $(doc).find(".pagination__next").attr('href');
     }
@@ -48,4 +45,4 @@ r(function () {
         }
         lastScrollTop = st;
     });
-});
+}

@@ -10,8 +10,8 @@ require_once("../../../src/properties/index.php");
 //$static->add(DIRNAME . "../../public/fonts/gilroy/Gilroy.css");
 //$static->add(DIRNAME . "../../public/stylesheet/fontawesome.all.min.css");
 //$static->setOutputPath(DIRNAME . "../../public/stylesheet/");
-// $static->replace("../images/", SERVER_ADDRESS . "public/images/");
-// $static->replace("../fonts/", SERVER_ADDRESS . "public/fonts/");
+// $static->replace("../images/", DEPLOY_SERVER . "public/images/");
+// $static->replace("../fonts/", DEPLOY_SERVER . "public/fonts/");
 //$static->minifyStyleSheet("ls.series");
 
 $ct_main = get_request("ct_main");
@@ -81,6 +81,7 @@ $social->linkedIn();
 $social->activeCampaign();
 $social->mailChimp();
 ?>
+<!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">

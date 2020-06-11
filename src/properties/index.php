@@ -23,6 +23,7 @@ if ($server === "localhost") {
 }
 
 define("DIRNAME", dirname(__FILE__) . "/");
+define("DEPLOY_SERVER", "https://lsgo.me/");
 define("SERVER_ADDRESS", $server . "/");
 define("BLOG_ADDRESS", SERVER_ADDRESS . "blog/");
 define("LOGIN_URL", SERVER_ADDRESS . "login");

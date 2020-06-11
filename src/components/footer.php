@@ -24,9 +24,10 @@
                                 <div class="heading">Redes Sociais</div>
                                 <ul>
                                     <li><a target="_blank" href="#">Blog</a></li>
-                                    <li><a target="_blank"
+                                    <li><a rel="noopener" target="_blank"
                                            href="https://instagram.com/oleonardoscapinello">Instagram</a></li>
-                                    <li><a target="_blank" href="https://facebook.com/oleonardoscapinello">Facebook</a>
+                                    <li><a rel="noopener" target="_blank"
+                                           href="https://facebook.com/oleonardoscapinello">Facebook</a>
                                     </li>
                                 </ul>
                             </div>
