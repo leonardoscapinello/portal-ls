@@ -45,7 +45,13 @@ class Landing
         if ($path_parts['extension'] === "ttf") return "<link href=\"" . $base_path . "fonts/" . $path_parts['dirname'] . "/" . $path_parts['filename'] . ".css\" type=\"text/css\" rel=\"stylesheet\" />";
         if ($path_parts['extension'] === "js") return "<script src=\"" . $base_path . "javascript/" . $path_parts['basename'] . "?v=12\" type=\"text/javascript\"></script>";
         if ($path_parts['extension'] === "mp4") return $base_path . "media/" . $path_parts['basename'];
-        return $base_path . "images/" . $path_parts['basename'];
+        return $this->image("../landings/" . $this->getInternalPath() . "/images/" . $path_parts['basename']);
+    }
+
+    private function image($file)
+    {
+        global $static;
+        return $static->image($file);
     }
 
     public function loadGlobalAsset($file)

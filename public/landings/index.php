@@ -45,8 +45,8 @@ $social->mailChimp();
     <?= $static->load("gilroy/Gilroy.ttf"); ?>
     <link href="<?= LAUNCH_ADDRESS ?>stylesheet/ls.default.css" type="text/css" rel="stylesheet">
     <?= $social->getHeadTags(); ?>
-    <?= $static->load("aos.css") ?>
-    <?= $static->load("container.css") ?>
+    <?= $static->printCSS("aos.css") ?>
+    <?= $static->printCSS("container.css") ?>
     <?= $landing->loadGlobalAsset("ls.default.css") ?>
     <?= $landing->loadAsset("skin.css") ?>
     <?php /*$social->getGoogleAnalyticsScript_Head(); ?>
@@ -206,16 +206,11 @@ $social->mailChimp();
 </div>
 
 <?= $social->getBodyTags(); ?>
-<?= $static->load("owl.carousel.css"); ?>
-<?= $static->load("owl.theme.default.css"); ?>
 <?= $static->load("fontawesome.all.min.css"); ?>
 <?= $static->load("jquery.min.js"); ?>
-<?= $static->load("owl.carousel.min.js"); ?>
 <?= $static->load("jquery.mask.min.js"); ?>
-<?= $static->load("infinite-scroll.pkgd.min.js"); ?>
 <?= $static->load("ScrollMagic.min.js"); ?>
 <?= $static->load("skrollr.min.js"); ?>
-<?= $static->load("leonardoscapinello.js"); ?>
 <?php /*$social->getFacebookTrack_Body(); ?>
 <?= //$social->getMailChimpStatic_Body();*/ ?>
 <script type="text/javascript">
