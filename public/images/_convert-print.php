@@ -24,7 +24,7 @@ if (file_exists($source) && is_file($source)) {
 
     $browser = new BrowserDetection();
 
-    if ("Chrome" !== $browser->getName() || "Firefox" !== $browser->getName()) {
+    if ("Chrome" === $browser->getName() || "Firefox" === $browser->getName()) {
         $images->load($source);
         if (notempty($width)) $images->resizeToWidth($width);
         $images->header(IMAGETYPE_WEBP);
