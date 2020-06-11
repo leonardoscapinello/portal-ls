@@ -28,12 +28,6 @@ if (file_exists($source) && is_file($source)) {
     $browser_allowed = ($browser->getName() === "Chrome" || $browser->getName() === "Firefox" || $browser->getName() === "Opera");
     $is_mobile = $browser->isMobile();
 
-    if (!$browser_allowed || $is_mobile) {
-        $images->load($source);
-        $images->header();
-        $images->output();
-    }
-
 
     list($nwidth, $nheight) = getimagesize($source);
 
@@ -52,9 +46,14 @@ if (file_exists($source) && is_file($source)) {
         $images->save($converted_filename);
     }
     if (file_exists($converted_filename_path) && is_file($converted_filename_path)) {
+
         $images->load($converted_filename_path);
         $images->header();
-        $images->output(IMAGETYPE_WEBP);
+        if (!$browser_allowed || $is_mobile) {
+            $images->output();
+        } else {
+            $images->output(IMAGETYPE_WEBP);
+        }
     }
 
 
