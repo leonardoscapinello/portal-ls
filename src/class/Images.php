@@ -9,6 +9,7 @@ class Images
     {
         $image_info = getimagesize($filename);
         $this->image_type = $image_info[2];
+
         if ($this->image_type === IMAGETYPE_JPEG) {
             $this->image = imagecreatefromjpeg($filename);
         } elseif ($this->image_type === IMAGETYPE_GIF) {
@@ -18,23 +19,32 @@ class Images
         }
     }
 
-    function save($filename, $image_type = IMAGETYPE_JPEG, $compression = 95, $permissions = null)
+    function save($filename, $image_type = null, $compression = 95, $permissions = null)
     {
 
+        $save_path = "_converted/" . $filename;
+        if (!notempty($image_type)) {
+            $image_type = $this->image_type;
+        }
+
         if ($image_type === IMAGETYPE_JPEG) {
-            imagejpeg($this->image, $filename, $compression);
+            imagejpeg($this->image, $save_path, $compression);
         } elseif ($image_type === IMAGETYPE_GIF) {
-            imagegif($this->image, $filename);
+            imagegif($this->image, $save_path);
         } elseif ($image_type === IMAGETYPE_PNG) {
-            imagepng($this->image, $filename);
+            imagepng($this->image, $save_path);
         }
         if ($permissions != null) {
-            chmod($filename, $permissions);
+            chmod($save_path, $permissions);
         }
     }
 
-    function output($image_type = IMAGETYPE_JPEG)
+    function output($image_type = null)
     {
+        if (!notempty($image_type)) {
+            $image_type = $this->image_type;
+        }
+
         if ($image_type === IMAGETYPE_JPEG) {
             imagejpeg($this->image);
         } elseif ($image_type === IMAGETYPE_GIF) {
@@ -46,8 +56,11 @@ class Images
         }
     }
 
-    function header($image_type = IMAGETYPE_JPEG)
+    function header($image_type = null)
     {
+        if (!notempty($image_type)) {
+            $image_type = $this->image_type;
+        }
         if ($image_type === IMAGETYPE_JPEG) {
             header("Content-type:image/jpeg");
         } elseif ($image_type === IMAGETYPE_GIF) {
@@ -98,11 +111,12 @@ class Images
             imagesavealpha($this->image, true);
             $new_image = imagecreatetruecolor($width, $height);
             imagefill($new_image, 0, 0, 0x7fff0000);
-        } elseif ($this->image_type === IMAGETYPE_PNG) {
+        } else if ($this->image_type === IMAGETYPE_PNG) {
             $new_image = imagecreatetruecolor($width, $height);
-            imagecolortransparent($new_image, imagecolorallocate($new_image, 0, 0, 0));
             imagealphablending($new_image, false);
             imagesavealpha($new_image, true);
+            $transparent = imagecolorallocatealpha($new_image, 255, 255, 255, 127);
+            imagefilledrectangle($new_image, 0, 0, $width, $height, $transparent);
         } else {
             $new_image = imagecreatetruecolor($width, $height);
         }

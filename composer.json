@@ -32,7 +32,8 @@
     "leafo/lessphp": "*",
     "rosell-dk/webp-convert": "^2.3",
     "ext-dom": "*",
-    "activecampaign/api-php": "1.0.0"
+    "activecampaign/api-php": "1.0.0",
+    "ext-imagick": "*"
   },
   "config": {
     "vendor-dir": "src/vendor/"

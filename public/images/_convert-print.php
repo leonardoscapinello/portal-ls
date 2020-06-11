@@ -29,18 +29,21 @@ if (file_exists($source) && is_file($source)) {
         $width = $nwidth;
     }
 
-    $browser_allowed = ("Chrome" === $browser->getName() || "Firefox" === $browser->getName());
-    $image_type_allowed = ($images->image_type === IMAGETYPE_JPEG);
+    $name = pathinfo($source);
+    $converted_filename = $name['filename'] . "-" . $width . "-" . md5($name['dirname']) . "." . $name['extension'];
+    $converted_filename_path = __DIR__ . "/_converted/" . $converted_filename;
 
-    if ($browser_allowed) {
+
+    if (!file_exists($converted_filename_path) || !is_file($converted_filename_path)) {
         $images->load($source);
-        if ($width !== $nwidth) $images->resizeToWidth($width);
-        $images->header(IMAGETYPE_WEBP);
-        $images->output(IMAGETYPE_WEBP);
-    } else {
-        $images->load($source);
-        $images->header();
-        echo file_get_contents($source);
+        $images->resizeToWidth($width);
+        $images->save($converted_filename);
     }
+    if (file_exists($converted_filename_path) && is_file($converted_filename_path)) {
+        $images->load($converted_filename_path);
+        $images->header();
+        $images->output(IMAGETYPE_WEBP);
+    }
+
 
 }
