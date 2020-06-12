@@ -171,11 +171,11 @@ $social->mailChimp();
 </head>
 <body class="<?= $license->isPremium() ? "premium" : "default" ?>">
 <div id="skrollr-body">
-    <div class="ld-container">
-        <div class="loader loader-9"></div>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAABSElEQVRYhe3Wu0olQRDG8Z/iDREXAxPByEAEAxEFAx9iwcAH2NRYBBMTUSNjn8FAMTYzEDRQBGGDDTYQAxfBSLzghYEWegfPgRlaj2D/oWBquqvqo2uqGZlMJpPJfG96sYxzPOIl2FLdU+lIdJwD2MdkyvbUEbeJ8cj/ia3UwtQUN4XZyB/CXOQXLT3EQ/D/fqa4MsUptkf+PHYS5P0vaaocPQly1uYgmsTCxvAc+bfYwMhXEPcDe6V3L0Fw8e39QlcrxQ3i6B2Bb/YH060SV9CJBZw1EHiF/laJi5nAOq5Lexe/grg3inZfRnt3qxRKcZU04x8uovXuKsEpLuEV3Ifnu+APhymdKQ3C7wT1mlJua2w3IXC2wdVSaWI/uq0xqziuEpDql6kZJ1jDdtXAthrFRtHXYO0Jp2F9JAzDdY0amUwmk8k0Aq8NKmK71NtPuQAAAABJRU5ErkJggg==">
-    </div>
     <div id="wrapper">
+        <div class="ld-container">
+            <div class="loader loader-9"></div>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAABSElEQVRYhe3Wu0olQRDG8Z/iDREXAxPByEAEAxEFAx9iwcAH2NRYBBMTUSNjn8FAMTYzEDRQBGGDDTYQAxfBSLzghYEWegfPgRlaj2D/oWBquqvqo2uqGZlMJpPJfG96sYxzPOIl2FLdU+lIdJwD2MdkyvbUEbeJ8cj/ia3UwtQUN4XZyB/CXOQXLT3EQ/D/fqa4MsUptkf+PHYS5P0vaaocPQly1uYgmsTCxvAc+bfYwMhXEPcDe6V3L0Fw8e39QlcrxQ3i6B2Bb/YH060SV9CJBZw1EHiF/laJi5nAOq5Lexe/grg3inZfRnt3qxRKcZU04x8uovXuKsEpLuEV3Ifnu+APhymdKQ3C7wT1mlJua2w3IXC2wdVSaWI/uq0xqziuEpDql6kZJ1jDdtXAthrFRtHXYO0Jp2F9JAzDdY0amUwmk8k0Aq8NKmK71NtPuQAAAABJRU5ErkJggg==">
+        </div>
         <?php if ($license->userCanAccessAllBooks()) { ?>
             <div class="premium-modal">
                 <div class="dialog">
