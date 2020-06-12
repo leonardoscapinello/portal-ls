@@ -11,6 +11,7 @@ if($session->isLogged()){
 $username = get_request("u");
 $auth = get_request("auth");
 $email = get_request("email");
+
 if (notempty($username)) {
     $username = $text->base64_decode($username);
     $id_account = $account->getIdAccountByEmailOrUsername($username);
