@@ -4,8 +4,34 @@
   margin: 0;
 }
 body {
+  --header-background: #000000;
+  --black-color: #000000;
+  --white-color: #FFFFFF;
+  --primary-color: #2cc36b;
+  --primary-color-negative: #FFFFFF;
+  --secondary-color: #ed145b;
+  --btn-header-background: #FFFFFF;
+  --btn-header-color: #000000;
+  --btn-primary-color: #ffffff;
+  --btn-primary-background: #000000;
+  --btn-secondary-color: #000000;
+  --btn-secondary-background: #ffffff;
   font-size: 16px;
   line-height: 18px;
+}
+body.premium {
+  --header-background: #041B2A;
+  --black-color: #000000;
+  --white-color: #FFFFFF;
+  --primary-color: #C49F5D;
+  --primary-color-negative: #FFFFFF;
+  --secondary-color: #C49F5D;
+  --btn-header-background: #FFFFFF;
+  --btn-header-color: #041B2A;
+  --btn-primary-color: #ffffff;
+  --btn-primary-background: #041B2A;
+  --btn-secondary-color: #000000;
+  --btn-secondary-background: #ffffff;
 }
 section {
   position: relative;
@@ -62,16 +88,16 @@ p {
 }
 a {
   text-decoration: none;
-  color: #ed145b;
+  color: var(--secondary-color);
 }
 .mobile {
   display: none;
 }
 .btn,
 button {
-  background: #ffffff;
+  background: var(--btn-primary-background);
   border-radius: 6px;
-  color: #000000;
+  color: var(--btn-primary-color);
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
@@ -86,18 +112,18 @@ button {
 }
 .btn.dark,
 button.dark {
-  color: #fff;
-  background: #000;
+  background: var(--btn-secondary-color);
+  color: var(--btn-secondary-background);
 }
 .btn.dark:hover,
 button.dark:hover {
-  background: #f1f2f4;
-  color: #000;
+  background: var(--btn-primary-color);
+  color: var(--btn-primary-background);
 }
 .btn.danger,
 button.danger {
   color: #fff;
-  background: #ED145B;
+  background: var(--secondary-color);
 }
 .btn.danger:hover,
 button.danger:hover {
@@ -136,15 +162,15 @@ button i {
 }
 .mp-header-container.negative--header,
 .mp-header-content.negative--header {
-  background: #000000;
+  background: var(--header-background);
 }
 .mp-header-container.negative--header .mp-menu-unlim,
 .mp-header-content.negative--header .mp-menu-unlim {
-  background: #2cc36b;
+  background: var(--primary-color);
 }
 .mp-header-container.negative--header .mp-menu-unlim:hover,
 .mp-header-content.negative--header .mp-menu-unlim:hover {
-  background: #FFFFFF;
+  background: var(--primary-color-negative);
 }
 .mp-header-container {
   display: flex;
@@ -394,15 +420,15 @@ button i {
 }
 .mp-header-button {
   padding: 16px 32px;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--btn-header-background);
+  color: var(--btn-header-color);
   font-size: 16px;
   transition: background, color .3s;
   border: none;
 }
 .mp-header-button:hover {
-  background: #000;
-  color: #FFFFFF;
+  background: var(--btn-header-color);
+  color: var(--btn-header-background);
 }
 .w-inline-block {
   max-width: 100%;
@@ -450,7 +476,7 @@ img {
   transition: all .3s;
 }
 .mp-menu-unlim:hover {
-  background: #2cc36b;
+  background: var(--primary-color);
 }
 .w-separator:before {
   content: "|";
@@ -471,10 +497,10 @@ h5.featured-title {
   color: #ffffff;
 }
 .text.pink {
-  color: #ed145b;
+  color: var(--secondary-color);
 }
 .text.green {
-  color: #2cc36b;
+  color: var(--primary-color);
 }
 .text.featured-title {
   line-height: 70px;
@@ -507,7 +533,7 @@ h5.featured-title {
   color: #FFF;
 }
 .section.green-bg {
-  background: #2cc36b;
+  background: var(--primary-color);
   color: #FFF;
 }
 .section.bottom-separator {
@@ -612,8 +638,8 @@ h5.featured-title {
   font-weight: 600;
 }
 .full-continue-btn-container button:hover {
-  color: #ed145b;
-  border-bottom: 1px #ed145b solid;
+  color: var(--secondary-color);
+  border-bottom: 1px var(--secondary-color) solid;
 }
 .full-continue-btn-container button:hover i {
   margin-left: 15px;
@@ -626,9 +652,9 @@ h5.featured-title {
   transition: margin .3s;
 }
 .mp-header-button {
-  background: #ffffff;
+  background: var(--btn-header-background);
   border-radius: 6px;
-  color: #000000;
+  color: var(--btn-header-color);
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
@@ -640,8 +666,8 @@ h5.featured-title {
   transition: all .4s;
 }
 .mp-header-button:hover {
-  background: #000;
-  color: #FFFFFF;
+  background: var(--btn-header-color);
+  color: var(--btn-header-background);
 }
 .input-d {
   display: block;
@@ -658,11 +684,12 @@ h5.featured-title {
 .input-d input[type="tel"] {
   line-height: 44px;
   display: block;
-  border: 2px #000 solid;
+  border: 2px var(--btn-primary-background) solid;
   font-size: 1.1em;
-  color: #000000;
+  color: var(--btn-primary-background);
   width: 100%;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 .footer .heading {
   font-weight: 800;
@@ -766,7 +793,7 @@ h5.featured-title {
   color: rgba(0,0,0,0.23);
 }
 .blog-premium-offer .price {
-  background: #2cc36b;
+  background: var(--primary-color);
   padding: 15px 20px;
   box-sizing: border-box;
   border-radius: 5px;
@@ -835,7 +862,7 @@ h5.featured-title {
   color: #FFF;
   text-align: center !important;
   height: 100%;
-  background: #2cc36b;
+  background: var(--primary-color);
   margin: 15px 0;
 }
 .pricing-widget.premium {
@@ -916,7 +943,7 @@ h5.featured-title {
   border: 3px #f1f2f4 solid;
 }
 .profile-btn-wd a.green {
-  background: #2cc36b;
+  background: var(--primary-color);
 }
 .profile-btn-wd a i {
   display: block;
@@ -930,9 +957,9 @@ h5.featured-title {
   font-weight: 900;
 }
 .profile-btn-wd a.active.green {
-  color: #2cc36b;
+  color: var(--primary-color);
   background: #f1f2f4 !important;
-  border-color: #2cc36b;
+  border-color: var(--primary-color);
 }
 .loader-container {
   width: 100%;
@@ -1053,7 +1080,7 @@ h5.featured-title {
 }
 .summary .summary-sticky ul li a:hover {
   text-decoration: underline;
-  color: #2cc36b;
+  color: var(--primary-color);
 }
 .summary .summary-sticky ul li:before {
   content: "";
@@ -1095,17 +1122,17 @@ h5.featured-title {
     font-weight: 800;
   }
   h4 {
-    font-size: 1.3em;
+    font-size: 1.4em;
     line-height: 32px;
     font-weight: 800;
   }
   h5 {
-    font-size: 1.0em;
+    font-size: 1.2em;
     line-height: 32px;
     font-weight: 800;
   }
   h6 {
-    font-size: .8em;
+    font-size: 1em;
     line-height: 32px;
     font-weight: 800;
   }
@@ -1485,4 +1512,7 @@ h5.featured-title {
   top: 0;
   left: 0;
   z-index: 333;
+}
+footer .section.black-bg {
+  background: var(--header-background);
 }
