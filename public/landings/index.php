@@ -137,9 +137,39 @@ $social->mailChimp();
             transform: translate(-50%, -50%);
             width: 35px;
         }
+
+        body.premium #wrapper .ld-container {
+            background: #0D1633 !important;
+        }
+
+        body.premium #wrapper .ld-container:after {
+            content: "PREMIUM";
+            color: rgba(195, 151, 63, 1);
+            position: absolute;
+            top: calc(50% + 50px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+
+        body.premium #wrapper .ld-container .loader-9:before {
+            width: 90%;
+            height: 90%;
+            top: 10%;
+            left: 10%;
+            box-shadow: 5px -3px 0 rgba(195, 151, 63, 1),
+            5px 5px 0 rgba(195, 151, 63, 0.5),
+            -3px 5px 0 rgba(195, 151, 63, 0.3),
+            -5px -5px 0 rgba(195, 151, 63, 0.1) !important;
+        }
+
     </style>
 </head>
-<body>
+<body class="<?= $license->isPremium() ? "premium" : "default" ?>">
 <div id="skrollr-body">
     <div class="ld-container">
         <div class="loader loader-9"></div>
