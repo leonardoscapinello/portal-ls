@@ -65,7 +65,7 @@ class AccountsLicense
 
     public function isPremium()
     {
-        return $this->userCanAccessByKey("PREMIUM_PRIVILEGES") === "Y" ? true : false;
+        return $this->userCanAccessByKey("PREMIUM_PRIVILEGES");
     }
 
     public function userCanAccessAllBooks()

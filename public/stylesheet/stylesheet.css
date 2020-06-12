@@ -20,17 +20,17 @@ body {
   line-height: 18px;
 }
 body.premium {
-  --header-background: #041B2A;
+  --header-background: #0D1633;
   --black-color: #000000;
   --white-color: #FFFFFF;
-  --primary-color: #C49F5D;
+  --primary-color: #C3973F;
   --primary-color-negative: #FFFFFF;
-  --secondary-color: #C49F5D;
+  --secondary-color: #C3973F;
   --btn-header-background: #FFFFFF;
-  --btn-header-color: #041B2A;
+  --btn-header-color: #0D1633;
   --btn-primary-color: #ffffff;
   --btn-primary-background: #041B2A;
-  --btn-secondary-color: #000000;
+  --btn-secondary-color: #0D1633;
   --btn-secondary-background: #ffffff;
 }
 section {
