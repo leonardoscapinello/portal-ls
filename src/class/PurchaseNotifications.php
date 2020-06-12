@@ -8,7 +8,7 @@ class PurchaseNotifications
         try {
             $email = new EmailNotification();
             $email->subject("Seja bem-vindo ao Portal LS");
-            $email->contact($username, $name);
+            $email->contact($name, $username);
             $email->paragraph("Seja muito bem-vindo, meu caro!");
             $email->paragraph("Sua <b>ASSINATURA COMPLETA</b> aqui no Portal LS já está disponível para você; isso significa que à partir de agora você pode acessar todo o conteúdo disponível desde o primeiro dia.");
             $email->paragraph("Parabéns pelo investimento, pode contar com todo o time LS como seu forte aliado.");
@@ -33,7 +33,7 @@ class PurchaseNotifications
         try {
             $email = new EmailNotification();
             $email->subject("Seja bem-vindo ao Portal LS");
-            $email->contact($username, $name);
+            $email->contact($name, $username);
             $email->paragraph("Seja muito bem-vindo, meu caro!");
             $email->paragraph("Sua <b>ASSINATURA COMPLETA</b> aqui no Portal LS já está disponível para você; isso significa que à partir de agora você pode acessar todo o conteúdo disponível desde o primeiro dia.");
             $email->paragraph("Parabéns pelo investimento, pode contar com todo o time LS como seu forte aliado.");
