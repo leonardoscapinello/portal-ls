@@ -33,7 +33,7 @@ class SchedulerTransactions
         $transactions = array();
         try {
             $database = new Database();
-            $database->query("SELECT id_transaction,transaction_serial, status_external, status_internal, email, first_name, last_name, phone_checkout_local_code, phone_checkout_number FROM transactions WHERE (is_processed = 'N' AND processed_time IS NULL) AND hottok = ?");
+            $database->query("SELECT id_transaction,transaction_serial, status_external, status_internal, email, first_name, last_name, phone_checkout_local_code, phone_checkout_number FROM transactions WHERE (is_processed = 'N' OR processed_time IS NULL) AND hottok = ?");
             $database->bind(1, $this->account_key);
             $result = $database->resultset();
             for ($i = 0; $i < count($result); $i++) {
