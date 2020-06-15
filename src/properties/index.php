@@ -25,6 +25,7 @@ if ($server === "localhost") {
 define("DIRNAME", dirname(__FILE__) . "/");
 define("DEPLOY_SERVER", "https://lsgo.me/");
 define("SERVER_ADDRESS", $server . "/");
+define("TELEGRAM_CHANNEL", "https://t.me/oleonardoscapinello");
 define("BLOG_ADDRESS", SERVER_ADDRESS . "blog/");
 define("LOGIN_URL", SERVER_ADDRESS . "login");
 define("REGISTER_URL", SERVER_ADDRESS . "cadastro");

@@ -29,29 +29,38 @@
             <div class="col-xl-4 col-lg-4 col-sm-12">
                 <form method="POST" action="<?= $landing->getPurchaseUrl() ?>">
                     <div class="form form-widget">
-
-                        <h3>Preencha abaixo para acessar a planilha grátis em instantes</h3>
-
-                        <div class="input-d">
-                            <label for="first_name">Nome </label>
-                            <input type="text" name="first_name" id="first_name" value="<?=$account->getFirstName()?>" placeholder="Primeiro Nome" required/>
-                        </div>
-                        <div class="input-d">
-                            <label for="last_name">Sobrenome</label>
-                            <input type="text" name="last_name" id="last_name" value="<?=$account->getLastName()?>" placeholder="Sobrenome" required/>
-                        </div>
-                        <div class="input-d">
-                            <label for="phone">WhatsApp</label>
-                            <input type="text" name="phone" id="phone" value="<?=$account->getPhoneNumber()?>" placeholder="WhatsApp" required/>
-                        </div>
-                        <div class="input-d">
-                            <label for="email">E-mail que receberá a planilha</label>
-                            <input type="text" name="email" id="email" value="<?=$account->getEmail()?>"
-                                   placeholder="E-mail onde enviaremos a planilha" required/>
-                        </div>
-                        <div class="input-d last-btn">
-                            <button class="dark">Acessar Grátis Agora</button>
-                        </div>
+                        <?php if (!$expired) { ?>
+                            <h3>Preencha abaixo para acessar a planilha grátis em instantes</h3>
+                            <div class="input-d">
+                                <label for="first_name">Nome </label>
+                                <input type="text" name="first_name" id="first_name"
+                                       value="<?= $account->getFirstName() ?>"
+                                       placeholder="Primeiro Nome" required/>
+                            </div>
+                            <div class="input-d">
+                                <label for="last_name">Sobrenome</label>
+                                <input type="text" name="last_name" id="last_name"
+                                       value="<?= $account->getLastName() ?>"
+                                       placeholder="Sobrenome" required/>
+                            </div>
+                            <div class="input-d">
+                                <label for="phone">WhatsApp</label>
+                                <input type="text" name="phone" id="phone" value="<?= $account->getPhoneNumber() ?>"
+                                       placeholder="WhatsApp" required/>
+                            </div>
+                            <div class="input-d">
+                                <label for="email">E-mail que receberá a planilha</label>
+                                <input type="text" name="email" id="email" value="<?= $account->getEmail() ?>"
+                                       placeholder="E-mail onde enviaremos a planilha" required/>
+                            </div>
+                            <div class="input-d last-btn">
+                                <button class="dark">Acessar Grátis Agora</button>
+                            </div>
+                        <?php } else { ?>
+                            <h3>Essa planilha não está mais disponível para download.</h3>
+                            <p>Agradecemos seu interesse nessa oferta, mas não está mais disponível. Faça parte do Canal
+                                no Telegram para receber em primeira mão quando essa oferta estiver disponível.</p>
+                        <?php } ?>
                     </div>
                 </form>
             </div>

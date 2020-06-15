@@ -53,7 +53,7 @@ if (notempty($first_name) && notempty($last_name) && notempty($email_address) &&
                         <p><b>É grátis.</b></p>
 
                         <div class="input-d last-btn">
-                            <a class="btn dark" href="https://t.me/oleonardoscapinello" target="_blank"><i
+                            <a class="btn dark" href="<?=TELEGRAM_CHANNEL?>" target="_blank"><i
                                         class="fab fa-telegram-plane"></i> Entrar no Grupo VIP</a>
                         </div>
                     </div>

@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+.fm-dialog-overlay, .fm-account-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99500;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: radial-gradient(at center center, rgba(0, 0, 0, 0.1) 0%, rgba(20, 20, 20, 0.5) 100%);
+}
+
+.fm-dialog {
+    position: fixed;
+    z-index: 99999;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px 0;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    background-clip: padding-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.05);
+    border-image: initial;
+    border-radius: 8px;
+}
+
+.nw-fm-dialog-title, .fm-dialog-title {
+    font-size: 17px;
+    line-height: 30px;
+    color: rgb(102, 102, 102);
+    text-align: center;
+    min-height: 38px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 20px 48px 0;
+    overflow: hidden;
+    font-weight: 700;
+}
+
+.fm-dialog-footer, .fm-move-bottom-block, .fm-share-bottom-block, .fm-notifications-bottom, .top-login-bott-gray-block, .fm-mega-dialog-bottom, .default-dialog-bottom {
+    height: 57px;
+    background-color: white;
+    box-sizing: border-box;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: relative;
+    padding: 12px 24px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fm-notification-body {
+    box-sizing: border-box;
+    padding: 26px 20px;
+}
+
+.fm-notifications-bottom.grey-bg {
+    background-color: rgb(250, 250, 250);
+}
+
+.default-white-button, .default-grey-button, .default-red-button, .default-green-button, .default-light-green-button, .default-orange-button {
+    display: block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    line-height: 32px;
+    color: rgb(51, 51, 51);
+    min-width: 102px;
+    height: 32px;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-radius: 4px;
+    padding: 0 15px;
+    transition: color 200ms ease-in-out 0s, box-shadow 200ms ease-in-out 0s, background-color 200ms ease-in-out 0s;
+    float: right;
+    margin: 0 5px;
+}
+
+.default-grey-button::before, .default-grey-button::after, .default-white-button:not(.light)::before, .default-white-button::after, .default-red-button::before, .default-red-button::after, .default-green-button::before, .default-light-green-button::before, .default-light-green-button::after, .default-orange-button::before, .default-orange-button::after {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px 0;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: inherit;
+}
+
+.default-grey-button::before, .default-grey-button::after, .default-white-button:not(.light)::before, .default-white-button::after, .default-red-button::before, .default-red-button::after, .default-green-button::before, .default-light-green-button::before, .default-light-green-button::after, .default-orange-button::before, .default-orange-button::after {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px 0;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: inherit;
+}
+
+
+.default-white-button::after {
+    box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px;
+}
+
+.default-green-button {
+    background-color: rgb(0, 191, 165);
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 0.5px 1px 0;
+}
+
+
+.fm-dialog.clear-bin-dialog, .fm-dialog.notification-dialog, .fm-dialog.warning-dialog-b, .fm-dialog.warning-dialog-a, .fm-dialog.confirmation-dialog, .fm-dialog.delete-contact {
+    width: 95%;
+    max-width: 500px;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+}
+
+
+.fm-notification-info p, .fm-notification-info h1, .fm-notification-info h2 {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 21px;
+    color: rgb(51, 51, 51);
+    padding: 0;
+    margin: 0;
+}
+
+
+.fm-notification-info h2 {
+    font-size: 14px;
+}
+
+.fm-notification-info p {
+
+    font-family:  'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgb(136, 136, 136);
+    padding: 9px 0 0;
+}
+
+.clear {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.checkboxOn, .checkboxOff {
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0;
+    float: left;
+    cursor: pointer;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    margin: 8px 11px 0 0;
+    border-radius: 3px;
+}
+
+.checkbox-block.top-pad {
+    padding-top: 1px;
+}
+
+
+.download-checkbox input.checkboxOn, .tips input.checkboxOn, .browsers input.checkboxOn, .affiliate-block.a-form input.checkboxOn, .fm-dialog input.checkboxOn, .download-checkbox input.checkboxOff, .tips input.checkboxOff, .browsers input.checkboxOff, .affiliate-block.a-form input.checkboxOff, .fm-dialog input.checkboxOff, .fm-account-blocks input.checkboxOff, .fm-account-blocks input.checkboxOn {
+    margin: 0;
+}
+
+
+.default-white-button:not(.tiny-button):not(.disabled):not(.no-hover):hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 0 0 4px;
+}
+
+.default-green-button:not(.tiny-button):not(.disabled):not(.no-hover):hover {
+    box-shadow: rgba(0, 191, 165, 0.3) 0 0 0 4px;
+}
+
+.fm-dialog-close, .btn-close-dialog, .export-links-warning-close {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    background-image: url(../public/images/dialog-sprite_v11.png);
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    opacity: 0.3;
+    z-index: 10;
+    background-position: -53px -4825px;
+    background-repeat: no-repeat;
+    transition: opacity 200ms ease-in-out 0s;
+}
+
+.fm-dialog-close {
+    opacity: 0.5;
+    right: 18px;
+    top: 18px;
+    background-position: -93px -4824px;
+}

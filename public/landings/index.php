@@ -8,6 +8,9 @@ $social->facebook();
 $social->linkedIn();
 $social->activeCampaign();
 $social->mailChimp();
+
+$expired = (date("Y-m-d H:i:s") > $landing->getExpireDate());
+
 ?>
 <html>
 <head>
@@ -168,10 +171,37 @@ $social->mailChimp();
         }
 
     </style>
+    <?= $static->printCSS("global.css") ?>
+
 </head>
 <body class="<?= $license->isPremium() ? "premium" : "default" ?>">
 <div id="skrollr-body">
     <div id="wrapper">
+
+        <?php if ($expired) { ?>
+            <div class="fm-dialog-overlay"></div>
+            <div class="fm-dialog confirmation-dialog" id="msgDialog">
+                <div class="fm-dialog-header">
+                    <div class="fm-dialog-title"><span>Oferta Encerrada</span></div>
+                    <div class="fm-dialog-close hidden"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="fm-notification-body">
+                    <div class="fm-notification-info">
+                        <p>Agradecemos seu interesse nessa oferta, mas não está mais disponível. Faça parte do <b>Canal
+                                no
+                                Telegram</b> para receber em primeira mão quando essa oferta estiver disponível.</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="fm-notifications-bottom grey-bg">
+                    <a href="<?= TELEGRAM_CHANNEL ?>" class="button default-green-button semi-big right confirm"><span>Entrar no Telegram</span></a>
+                    <a href="<?= SERVER_ADDRESS ?>" class="button default-white-button semi-big right cancel"><span>Fechar</span></a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <?php } ?>
+
         <div class="ld-container">
             <div class="loader loader-9"></div>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAABSElEQVRYhe3Wu0olQRDG8Z/iDREXAxPByEAEAxEFAx9iwcAH2NRYBBMTUSNjn8FAMTYzEDRQBGGDDTYQAxfBSLzghYEWegfPgRlaj2D/oWBquqvqo2uqGZlMJpPJfG96sYxzPOIl2FLdU+lIdJwD2MdkyvbUEbeJ8cj/ia3UwtQUN4XZyB/CXOQXLT3EQ/D/fqa4MsUptkf+PHYS5P0vaaocPQly1uYgmsTCxvAc+bfYwMhXEPcDe6V3L0Fw8e39QlcrxQ3i6B2Bb/YH060SV9CJBZw1EHiF/laJi5nAOq5Lexe/grg3inZfRnt3qxRKcZU04x8uovXuKsEpLuEV3Ifnu+APhymdKQ3C7wT1mlJua2w3IXC2wdVSaWI/uq0xqziuEpDql6kZJ1jDdtXAthrFRtHXYO0Jp2F9JAzDdY0amUwmk8k0Aq8NKmK71NtPuQAAAABJRU5ErkJggg==">
