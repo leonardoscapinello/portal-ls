@@ -43,7 +43,7 @@ $list = $series->getAllContentsBySeason();
                                     ?>
                                     <div class="season-widget-sml">
                                         <figure>
-                                            <img src="<?= $static->loadBlog($list[$i]['cover_image']) ?>"
+                                            <img src="<?= $static->loadBlog($list[$i]['cover_image'], 360) ?>"
                                                  alt="<?= $list[$i]['title'] ?>">
                                         </figure>
                                         <div class="episode_level">
