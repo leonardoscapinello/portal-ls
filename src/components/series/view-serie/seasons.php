@@ -69,7 +69,7 @@ $list = $series->getAllContentsBySeason();
                                                 <i class="far fa-star"></i> Assine Premium para Acessar
                                             </a>
                                         <?php } else { ?>
-                                            <a href="<?= $series->createContentURL($series->getSerieUrl(), $season_list[$i]['short_key'], $list[$i]['id_serie_season_content'], $list[$i]['title']) ?>"
+                                            <a href="<?= $series->createContentURL($series->getSerieUrl(), $list[$i]['short_key'], $list[$i]['id_serie_season_content'], $list[$i]['title']) ?>"
                                                class="btn serie-view" style="display: block;margin: 20px 0">
                                                 <i class="far fa-lock-open-alt"></i> Acessar Conteúdo
                                             </a>
