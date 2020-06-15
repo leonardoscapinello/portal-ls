@@ -22,7 +22,7 @@ if (file_exists($source) && is_file($source)) {
     $browser = new BrowserDetection();
 
 
-    $browser_allowed = (isset($_SERVER['HTTP_ACCEPT']) && preg_match('#[\s,;]image/webp[\s,;]#', $_SERVER['HTTP_ACCEPT']));
+    $browser_allowed = (strpos($_SERVER['HTTP_ACCEPT'], 'image/webp') !== false || strpos($_SERVER['HTTP_USER_AGENT'], ' Chrome/') !== false);
     $is_mobile = $browser->isMobile();
 
 
@@ -42,6 +42,7 @@ if (file_exists($source) && is_file($source)) {
         $images->resizeToWidth($width);
         $images->save($converted_filename);
     }
+
     if (file_exists($converted_filename_path) && is_file($converted_filename_path)) {
 
         $images->load($converted_filename_path);
@@ -52,7 +53,6 @@ if (file_exists($source) && is_file($source)) {
         header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000));
 
 
-
         if (!$browser_allowed) {
             header($header);
             echo file_get_contents($converted_filename_path);
@@ -60,7 +60,6 @@ if (file_exists($source) && is_file($source)) {
             header("Content-Type: image/webp");
             $images->output(IMAGETYPE_WEBP);
         }
-
 
 
     }

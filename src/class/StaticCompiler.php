@@ -95,9 +95,9 @@ class StaticCompiler
 
             if ($ext === "png" || $ext === "jpg") {
                 if (notempty($width)) {
-                    $file_folder = "images/display?render=render.lsgo.me-".VERSION."&width=" . $width. "&src=";
+                    $file_folder = "images/display?render=render.lsgo.me-" . VERSION . "&width=" . $width . "&src=";
                 } else {
-                    $file_folder = "images/display?render=render.lsgo.me-".VERSION."&src=";
+                    $file_folder = "images/display?render=render.lsgo.me-" . VERSION . "&src=";
                 }
             } else {
                 $file_folder = "public/images/";
@@ -105,6 +105,7 @@ class StaticCompiler
             $file_tag = "%s";
             $additional_folder = ($additional_folder === "" || $additional_folder === ".") ? null : $additional_folder . "/";
             $file = $initial . $file_folder . "/" . $additional_folder . $base;
+            $analyze = DIRNAME . "../../public/images/" . $additional_folder . $base;
             return sprintf($file_tag, $file);
 
         } catch (Exception $exception) {
