@@ -2,18 +2,18 @@
 require_once("./src/properties/index.php");
 
 $links_list = array(
-    array(
-        "title" => "Organize seu Instagram",
-        "url" => "https://ls-go.com/planilha",
-        "icon" => "far fa-download",
+    /*array(
+        "title" => "Oferta Premium Exclusiva",
+        "url" => "https://ls-go.com/telegram",
+        "icon" => "fab fa-telegram-plane",
         "tags" => array(
             array(
-                "text" => "Planilha Grátis",
-                "color" => "green"
+                "text" => "Grupo VIP",
+                "color" => "blue"
             )
         ),
         "locked" => false
-    ),
+    ),*/
     array(
         "title" => "Grupo do Leonardo no Telegram",
         "url" => "https://ls-go.com/telegram",
@@ -27,13 +27,26 @@ $links_list = array(
         "locked" => false
     ),
     array(
-        "title" => "Notes: Temporada 1",
+        "title" => "Notes: Temporada 1 - Episódio 2",
         "url" => "https://ls-go.com/H4PAJS",
         "icon" => "far fa-chevron-right",
         "tags" => array(
             array(
                 "text" => "Série Exclusiva",
                 "color" => "purple"
+            )
+        ),
+        "locked" => false
+    ),
+
+    array(
+        "title" => "Organize seu Instagram",
+        "url" => "https://ls-go.com/planilha",
+        "icon" => "far fa-download",
+        "tags" => array(
+            array(
+                "text" => "Planilha Grátis",
+                "color" => "green"
             )
         ),
         "locked" => true
@@ -279,7 +292,7 @@ $links_list = array(
         }
 
     </style>
-    <?= $static->load("stylesheet.min.css"); ?>
+    <?= $static->printCSS("stylesheet.min.css"); ?>
     <?php /* $social->getGoogleAnalyticsScript_Head(); ?>
     <?= $social->getFacebookPixel_Head("website"); */ ?>
 </head>
