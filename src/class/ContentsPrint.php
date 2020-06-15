@@ -20,6 +20,8 @@ class ContentsPrint
         $text = preg_replace("%(<h4[^>]*>.*?</h4>)%i", sprintf($prefix, "heading4") . "\${1}" . $suffix, $text);
         $text = preg_replace("%(<h5[^>]*>.*?</h5>)%i", sprintf($prefix, "heading5") . "\${1}" . $suffix, $text);
         $text = preg_replace("%(<h6[^>]*>.*?</h6>)%i", sprintf($prefix, "heading6") . "\${1}" . $suffix, $text);
+        $text = preg_replace("%(<ul[^>]*>.*?</ul>)%i", sprintf($prefix, "ulist") . "\${1}" . $suffix, $text);
+        $text = preg_replace("%(<ol[^>]*>.*?</ol>)%i", sprintf($prefix, "olist") . "\${1}" . $suffix, $text);
 
         @$dom->loadHTML($text);
         foreach ($dom->getElementsByTagName('lstext') as $node) {
