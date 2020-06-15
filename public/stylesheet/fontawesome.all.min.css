@@ -251,6 +251,9 @@
     content: "\f0c9"
 }
 
+.fa-telegram-plane:before {
+    content: "\f3fe"
+}
 
 @font-face {
     font-family: "Font Awesome 5 Pro";
