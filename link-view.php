@@ -17,7 +17,7 @@ $links_list = array(
     array(
         "title" => "Grupo do Leonardo no Telegram",
         "url" => "https://ls-go.com/telegram",
-        "icon" => "fab fa-telegram-plane",
+        "icon" => "far fa-chevron-right",
         "tags" => array(
             array(
                 "text" => "Grupo VIP",
