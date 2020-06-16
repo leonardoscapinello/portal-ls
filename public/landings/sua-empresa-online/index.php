@@ -100,10 +100,12 @@ if ($value <= 0) {
             </div>
             <div class="col-xl-6 col-lg-6 col-sm-12 center">
                 <h2 class="center">
-                    Ative o cupom com 90% desconto e pague apenas <span class="desktopbreak"></span><b>R$ 1,90</b> por esse e-book
+                    Ative o cupom com 90% desconto e pague apenas <span class="desktopbreak"></span><b>R$ 1,90</b> por
+                    esse e-book
                 </h2>
 
-                <p>Apenas <b class="blink"><span id="coupons"><?= $value+1 ?></span> cupons</b> de descontos disponíveis.
+                <p>Apenas <b class="blink"><span id="coupons"><?= $value + 1 ?></span> cupons</b> de descontos
+                    disponíveis.
                 </p>
 
                 <form method="POST" action="<?= $landing->getPurchaseUrl() ?>">
@@ -142,6 +144,13 @@ if ($value <= 0) {
 </div>
 <script type="text/javascript">
     window.setInterval(function () {
-        $("#coupons").load("./file/sua-empresa-online/coupons.txt", {cache: false});
+        $.ajax({
+            type: "GET",
+            url: "./file/sua-empresa-online/coupons.txt",
+            cache: false,
+            success: function (msg) {
+                $("#coupons").html(msg);
+            }
+        });
     }, 6000);
 </script>
