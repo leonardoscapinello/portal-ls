@@ -124,7 +124,7 @@ if ($value <= 0) {
                         </div>
                         <div class="input-d">
                             <label for="phone">WhatsApp</label>
-                            <input type="text" name="phone" id="phone" value="<?= $account->getPhoneNumber() ?>"
+                            <input type="tel" name="phone" id="phone" value="<?= $account->getPhoneNumber() ?>"
                                    placeholder="WhatsApp" required/>
                         </div>
                         <div class="input-d">
