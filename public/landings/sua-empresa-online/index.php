@@ -93,9 +93,14 @@ if ($value <= 0) {
 <div class="section seo">
     <div class="container">
         <div class="row">
+
+            <div class="col-xl-6 col-lg-6 col-sm-12">
+                <img src="<?= $landing->loadAsset("images/ebook-cover.png") ?>"
+                     alt="imagem meramente ilustrativa do ebook" style="border-radius: 5px;margin: 20px 0"/>
+            </div>
             <div class="col-xl-6 col-lg-6 col-sm-12 center">
                 <h2 class="center">
-                    Ative o cupom com 90% desconto e pague apenas <br /><b>R$ 1,90</b> por esse e-book
+                    Ative o cupom com 90% desconto e pague apenas <span class="desktopbreak"></span><b>R$ 1,90</b> por esse e-book
                 </h2>
 
                 <p>Apenas <b class="blink"><span id="coupons"><?= $value+1 ?></span> cupons</b> de descontos disponíveis.
@@ -131,10 +136,6 @@ if ($value <= 0) {
                     </div>
                 </form>
 
-            </div>
-            <div class="col-xl-6 col-lg-6 col-sm-12">
-                <img src="<?= $landing->loadAsset("images/ebook-cover.png") ?>"
-                     alt="imagem meramente ilustrativa do ebook" style="border-radius: 5px;margin: 20px 0"/>
             </div>
         </div>
     </div>
