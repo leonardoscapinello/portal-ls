@@ -27,7 +27,7 @@ body {
 
 .btn {
     display: inline-block;
-    font-family: 'Gilroy', Arial;
+    font-family: 'Gilroy', Arial, sans-serif;
     font-weight: 400;
     color: #4f5963;
     text-align: center;

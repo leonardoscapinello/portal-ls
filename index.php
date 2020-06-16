@@ -2,10 +2,10 @@
 require_once("./src/properties/index.php");
 
 //$less = new lessc;
-//$less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/stylesheet.css");
+//$less->compileFile(DIRNAME . "../../public/less/stylesheet.less", DIRNAME . "../../public/stylesheet/Gilroy.css");
 //$static->add(DIRNAME . "../../public/stylesheet/reset.css");
 //$static->add(DIRNAME . "../../public/stylesheet/container.css");
-//$static->add(DIRNAME . "../../public/stylesheet/stylesheet.css");
+//$static->add(DIRNAME . "../../public/stylesheet/Gilroy.css");
 //$static->add(DIRNAME . "../../public/stylesheet/owl.carousel.css");
 //$static->add(DIRNAME . "../../public/stylesheet/owl.theme.default.css");
 //$static->add(DIRNAME . "../../public/stylesheet/switch.css");
@@ -232,9 +232,6 @@ $social->mailChimp();
     <?php } ?>
 </div>
 
-<!--
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
--->
 <?= $static->printCSS("stylesheet.min.css"); ?>
 <?= $social->getBodyTags() ?>
 <?php if (notempty($contents->getSemanticUrl())) { ?>

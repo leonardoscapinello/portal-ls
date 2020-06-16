@@ -32,6 +32,7 @@ RewriteRule ^launch/stylesheet/(.*)$                             ./public/landin
 RewriteRule ^launch/javascript/(.*)$                             ./public/landings/_global/static/javascript/$1 [L,NC,QSA]
 RewriteRule ^launch/images/(.*)$                                 ./public/landings/_global/static/images/$1 [L,NC,QSA]
 RewriteRule ^launch/media/(.*)$                                  ./public/landings/_global/static/media/$1 [L,NC,QSA]
+RewriteRule ^launch/file/([a-zA-Z0-9-z\-\_]+)/(.*)$                 ./public/landings/$1/$2 [L,NC,QSA]
 RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/media/(.*)$             ./public/landings/$1/media/$2 [L,NC,QSA]
 RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/images/(.*)$            ./public/landings/$1/images/$2 [L,NC,QSA]
 RewriteRule ^launch/([a-zA-Z0-9-z\-\_]+)/stylesheet/(.*)$        ./public/landings/$1/stylesheet/$2 [L,NC,QSA]

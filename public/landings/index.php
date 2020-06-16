@@ -44,7 +44,6 @@ $expired = (date("Y-m-d H:i:s") > $landing->getExpireDate());
     <meta name="application-name" content="<?= $landing->getTitle() ?>"/>
     <meta name="msapplication-tooltip" content="<?= PAGE_TITLE ?>"/>
     <link rel="shortcut icon" href="<?= SERVER_ADDRESS ?>favicon.ico"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
     <?= $static->load("gilroy/Gilroy.ttf"); ?>
     <link href="<?= LAUNCH_ADDRESS ?>stylesheet/ls.default.css" type="text/css" rel="stylesheet">
     <?= $social->getHeadTags(); ?>
@@ -178,29 +177,6 @@ $expired = (date("Y-m-d H:i:s") > $landing->getExpireDate());
 <div id="skrollr-body">
     <div id="wrapper">
 
-        <?php if ($expired) { ?>
-            <div class="fm-dialog-overlay"></div>
-            <div class="fm-dialog confirmation-dialog" id="msgDialog">
-                <div class="fm-dialog-header">
-                    <div class="fm-dialog-title"><span>Oferta Encerrada</span></div>
-                    <div class="fm-dialog-close hidden"></div>
-                    <div class="clear"></div>
-                </div>
-                <div class="fm-notification-body">
-                    <div class="fm-notification-info">
-                        <p>Agradecemos seu interesse nessa oferta, mas não está mais disponível. Faça parte do <b>Canal
-                                no
-                                Telegram</b> para receber em primeira mão quando essa oferta estiver disponível.</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="fm-notifications-bottom grey-bg">
-                    <a href="<?= TELEGRAM_CHANNEL ?>" class="button default-green-button semi-big right confirm"><span>Entrar no Telegram</span></a>
-                    <a href="<?= SERVER_ADDRESS ?>" class="button default-white-button semi-big right cancel"><span>Fechar</span></a>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        <?php } ?>
 
         <div class="ld-container">
             <div class="loader loader-9"></div>
@@ -264,6 +240,31 @@ $expired = (date("Y-m-d H:i:s") > $landing->getExpireDate());
 
     </div>
 </div>
+
+<?php if ($expired) { ?>
+    <div class="fm-dialog-overlay"></div>
+    <div class="fm-dialog confirmation-dialog" id="msgDialog">
+        <div class="fm-dialog-header">
+            <div class="fm-dialog-title"><span>Oferta Encerrada</span></div>
+            <div class="fm-dialog-close hidden"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="fm-notification-body">
+            <div class="fm-notification-info">
+                <p>Agradecemos seu interesse nessa oferta, mas não está mais disponível. Faça parte do <b>Canal
+                        no
+                        Telegram</b> para receber em primeira mão quando essa oferta estiver disponível.</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="fm-notifications-bottom grey-bg">
+            <a href="<?= TELEGRAM_CHANNEL ?>" class="button default-green-button semi-big right confirm"><span>Entrar no Telegram</span></a>
+            <a href="<?= SERVER_ADDRESS ?>" class="button default-white-button semi-big right cancel"><span>Fechar</span></a>
+            <div class="clear"></div>
+        </div>
+    </div>
+<?php } ?>
+
 
 <?= $social->getBodyTags(); ?>
 <?= $static->load("fontawesome.all.min.css"); ?>

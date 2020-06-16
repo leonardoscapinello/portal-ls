@@ -1,0 +1,162 @@
+h1 {
+    font-size: 60px;
+    color: #001032;
+    line-height: 68px;
+    font-weight: 600;
+    position: relative;
+    padding-top: 110px;
+}
+
+
+h2 {
+    font-size: 40px;
+    color: #001032;
+    line-height: 46px;
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.section {
+    padding: 110px 0;
+}
+
+.container {
+    max-width: 1300px;
+}
+
+.blue-text {
+    color: #1877f2;
+}
+
+.light-blue {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(270deg, rgba(255, 255, 255, 1) 50%, rgba(223, 235, 245, 1) 50%, rgba(223, 235, 245, 1) 100%);
+}
+
+.size-img {
+    width: 100%;
+}
+
+@keyframes example {
+    0% {
+        content: "rápida";
+        color: #1877f2;
+    }
+    33% {
+        content: "prática";
+        color: #ba00b4;
+    }
+    66% {
+        content: "simples";
+        color: #0bd561;
+    }
+
+
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .2;
+    }
+}
+
+.blink{
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+.tochange:before {
+    content: "rápida";
+    animation-name: example;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+.section.seo {
+    display: block;
+    margin: 30px 0;
+}
+
+video {
+    width: 100%;
+}
+
+.video-frame {
+    width: 504px;
+    height: 705px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-frame video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h3 {
+    color: #001032;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.center {
+    text-align: center;
+}
+
+
+p {
+    color: #565e66;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 33px;
+}
+
+
+.form-widget {
+    background: #FFFFFF;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.form-widget .form-block {
+    margin: 10px 0;
+}
+
+.form-widget label {
+    display: block;
+    text-align: left;
+}
+
+.input-d label {
+    display: block;
+    margin: 20px 0 10px 0;
+}
+
+.last-btn {
+    margin: 15px auto;
+    text-align: center;
+}
+
+.input-d input[type="text"], .input-d input[type="email"], .input-d input[type="password"], .input-d input[type="tel"] {
+    line-height: 44px;
+    display: block;
+    border: 1px rgba(0, 0, 0, .2) solid;
+    font-size: 1em;
+    color: #001032;
+    width: 100%;
+    padding: 0 20px;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
